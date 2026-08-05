@@ -134,15 +134,91 @@
   <div class="container">
     <div class="eyebrow reveal">Resultados reais</div>
     <h2 class="title reveal">Transformações que falam por si</h2>
-    <p class="subtitle reveal">Arraste o controle e veja o resultado de um dos nossos protocolos de estética corporal.</p>
+    <p class="subtitle reveal">Arraste o controle branco para comparar e deslize para o lado para ver os resultados de outros tratamentos.</p>
     <div class="ba-wrap" style="margin-top:50px;">
-      <div class="ba-slider reveal">
-        <img class="ba-img" src="https://placehold.co/800x600/2a1230/8a2f8f?text=ANTES" alt="Antes do tratamento">
-        <img class="ba-img ba-after" id="baAfter" src="https://placehold.co/800x600/cda44d/33103a?text=DEPOIS" alt="Depois do tratamento">
-        <span class="ba-tag before-tag">Antes</span>
-        <span class="ba-tag after-tag">Depois</span>
-        <div class="ba-handle" id="baHandle"><div class="grip"><i class="ri-drag-move-2-line"></i></div></div>
-        <input type="range" min="0" max="100" value="50" class="ba-range" id="baRange">
+
+      <div class="ba-carousel reveal" id="baCarousel">
+        <div class="ba-viewport">
+          <div class="ba-track">
+
+            <div class="ba-slide">
+              <div class="ba-slider">
+                <img class="ba-img" src="https://placehold.co/800x600/2a1230/8a2f8f?text=ANTES+Criolip%C3%B3lise" alt="Antes do tratamento de criolipólise">
+                <img class="ba-img ba-after" src="https://placehold.co/800x600/cda44d/33103a?text=DEPOIS+Criolip%C3%B3lise" alt="Depois do tratamento de criolipólise">
+                <span class="ba-tag before-tag">Antes</span>
+                <span class="ba-tag after-tag">Depois</span>
+                <input type="range" min="0" max="100" value="50" class="ba-range" aria-label="Comparar antes e depois — Criolipólise">
+                <div class="ba-handle"><div class="grip"><i class="ri-drag-move-2-line"></i></div></div>
+                <div class="ba-caption"><strong>Criolipólise</strong><span>Estética corporal</span></div>
+              </div>
+            </div>
+
+            <div class="ba-slide">
+              <div class="ba-slider">
+                <img class="ba-img" loading="lazy" src="https://placehold.co/800x600/2a1230/8a2f8f?text=ANTES+Hidrolipoclasia" alt="Antes do tratamento de hidrolipoclasia">
+                <img class="ba-img ba-after" loading="lazy" src="https://placehold.co/800x600/cda44d/33103a?text=DEPOIS+Hidrolipoclasia" alt="Depois do tratamento de hidrolipoclasia">
+                <span class="ba-tag before-tag">Antes</span>
+                <span class="ba-tag after-tag">Depois</span>
+                <input type="range" min="0" max="100" value="50" class="ba-range" aria-label="Comparar antes e depois — Hidrolipoclasia não aspirativa">
+                <div class="ba-handle"><div class="grip"><i class="ri-drag-move-2-line"></i></div></div>
+                <div class="ba-caption"><strong>Hidrolipoclasia não aspirativa</strong><span>Estética corporal</span></div>
+              </div>
+            </div>
+
+            <div class="ba-slide">
+              <div class="ba-slider">
+                <img class="ba-img" loading="lazy" src="https://placehold.co/800x600/2a1230/8a2f8f?text=ANTES+Preenchimento" alt="Antes do preenchimento facial">
+                <img class="ba-img ba-after" loading="lazy" src="https://placehold.co/800x600/cda44d/33103a?text=DEPOIS+Preenchimento" alt="Depois do preenchimento facial">
+                <span class="ba-tag before-tag">Antes</span>
+                <span class="ba-tag after-tag">Depois</span>
+                <input type="range" min="0" max="100" value="50" class="ba-range" aria-label="Comparar antes e depois — Preenchimento facial">
+                <div class="ba-handle"><div class="grip"><i class="ri-drag-move-2-line"></i></div></div>
+                <div class="ba-caption"><strong>Preenchimento facial</strong><span>Estética facial</span></div>
+              </div>
+            </div>
+
+            <div class="ba-slide">
+              <div class="ba-slider">
+                <img class="ba-img" loading="lazy" src="https://placehold.co/800x600/2a1230/8a2f8f?text=ANTES+Peeling" alt="Antes do peeling coreano">
+                <img class="ba-img ba-after" loading="lazy" src="https://placehold.co/800x600/cda44d/33103a?text=DEPOIS+Peeling" alt="Depois do peeling coreano">
+                <span class="ba-tag before-tag">Antes</span>
+                <span class="ba-tag after-tag">Depois</span>
+                <input type="range" min="0" max="100" value="50" class="ba-range" aria-label="Comparar antes e depois — Peeling coreano">
+                <div class="ba-handle"><div class="grip"><i class="ri-drag-move-2-line"></i></div></div>
+                <div class="ba-caption"><strong>Peeling coreano</strong><span>Estética facial</span></div>
+              </div>
+            </div>
+
+            <div class="ba-slide">
+              <div class="ba-slider">
+                <img class="ba-img" loading="lazy" src="https://placehold.co/800x600/2a1230/8a2f8f?text=ANTES+Sorriso" alt="Antes da harmonização do sorriso">
+                <img class="ba-img ba-after" loading="lazy" src="https://placehold.co/800x600/cda44d/33103a?text=DEPOIS+Sorriso" alt="Depois da harmonização do sorriso">
+                <span class="ba-tag before-tag">Antes</span>
+                <span class="ba-tag after-tag">Depois</span>
+                <input type="range" min="0" max="100" value="50" class="ba-range" aria-label="Comparar antes e depois — Harmonização do sorriso">
+                <div class="ba-handle"><div class="grip"><i class="ri-drag-move-2-line"></i></div></div>
+                <div class="ba-caption"><strong>Harmonização do sorriso</strong><span>Odontologia estética</span></div>
+              </div>
+            </div>
+
+            <div class="ba-slide">
+              <div class="ba-slider">
+                <img class="ba-img" loading="lazy" src="https://placehold.co/800x600/2a1230/8a2f8f?text=ANTES+Fotodepila%C3%A7%C3%A3o" alt="Antes da fotodepilação">
+                <img class="ba-img ba-after" loading="lazy" src="https://placehold.co/800x600/cda44d/33103a?text=DEPOIS+Fotodepila%C3%A7%C3%A3o" alt="Depois da fotodepilação">
+                <span class="ba-tag before-tag">Antes</span>
+                <span class="ba-tag after-tag">Depois</span>
+                <input type="range" min="0" max="100" value="50" class="ba-range" aria-label="Comparar antes e depois — Fotodepilação">
+                <div class="ba-handle"><div class="grip"><i class="ri-drag-move-2-line"></i></div></div>
+                <div class="ba-caption"><strong>Fotodepilação</strong><span>Depilação definitiva</span></div>
+              </div>
+            </div>
+
+          </div>
+          <button type="button" class="ba-nav prev" aria-label="Resultado anterior"><i class="ri-arrow-left-s-line"></i></button>
+          <button type="button" class="ba-nav next" aria-label="Próximo resultado"><i class="ri-arrow-right-s-line"></i></button>
+          <span class="ba-counter" aria-hidden="true">1/6</span>
+        </div>
+        <div class="ba-dots" role="tablist" aria-label="Escolher resultado"></div>
       </div>
       <div class="ba-list reveal reveal-delay-1">
         <div class="ba-list-item"><i class="ri-checkbox-circle-fill"></i><div><h4>Protocolo de Criolipólise</h4><p>Redução de medidas localizada, sem cirurgia e sem tempo de recuperação.</p></div></div>
@@ -598,16 +674,130 @@ filterButtons.forEach(function(btn){
   });
 });
 
-/* Antes e depois slider */
-var baRange = document.getElementById('baRange');
-var baAfter = document.getElementById('baAfter');
-var baHandle = document.getElementById('baHandle');
-function updateBA(v){
-  baAfter.style.clipPath = 'inset(0 ' + (100 - v) + '% 0 0)';
-  baHandle.style.left = v + '%';
+/* Antes e depois — carrossel com um comparador em cada slide */
+var baCarousel = document.getElementById('baCarousel');
+if(baCarousel){
+  var baViewport = baCarousel.querySelector('.ba-viewport');
+  var baTrack = baCarousel.querySelector('.ba-track');
+  var baSlides = [].slice.call(baCarousel.querySelectorAll('.ba-slide'));
+  var baDots = baCarousel.querySelector('.ba-dots');
+  var baCounter = baCarousel.querySelector('.ba-counter');
+  var baPrev = baCarousel.querySelector('.ba-nav.prev');
+  var baNext = baCarousel.querySelector('.ba-nav.next');
+  var baIndex = 0;
+
+  /* cada slide controla o proprio antes/depois */
+  baSlides.forEach(function(slide){
+    var sl = slide.querySelector('.ba-slider');
+    var after = sl.querySelector('.ba-after');
+    var handle = sl.querySelector('.ba-handle');
+    var range = sl.querySelector('.ba-range');
+    sl.baPos = 50;
+    sl.setBA = function(v){
+      v = Math.max(0, Math.min(100, v));
+      sl.baPos = v;
+      after.style.clipPath = 'inset(0 ' + (100 - v) + '% 0 0)';
+      handle.style.left = v + '%';
+      range.value = v;
+    };
+    sl.setBA(50);
+    range.addEventListener('input', function(){ sl.setBA(parseFloat(range.value)); });
+  });
+
+  /* navegacao */
+  baSlides.forEach(function(slide, i){
+    var dot = document.createElement('button');
+    dot.type = 'button';
+    dot.className = 'ba-dot';
+    dot.setAttribute('aria-label', 'Resultado ' + (i + 1) + ' de ' + baSlides.length);
+    dot.addEventListener('click', function(){ baGoTo(i); });
+    baDots.appendChild(dot);
+  });
+
+  function baGoTo(i){
+    baIndex = Math.max(0, Math.min(baSlides.length - 1, i));
+    baTrack.classList.remove('no-anim');
+    baTrack.style.transform = 'translateX(' + (-baIndex * 100) + '%)';
+    baDots.querySelectorAll('.ba-dot').forEach(function(d, n){ d.classList.toggle('active', n === baIndex); });
+    baCounter.textContent = (baIndex + 1) + '/' + baSlides.length;
+    baPrev.disabled = baIndex === 0;
+    baNext.disabled = baIndex === baSlides.length - 1;
+  }
+
+  baPrev.addEventListener('click', function(){ baGoTo(baIndex - 1); });
+  baNext.addEventListener('click', function(){ baGoTo(baIndex + 1); });
+
+  /* um gesto so: perto do controle branco compara, no resto do foto navega */
+  var baStartX = 0, baStartY = 0, baMode = null, baDragSlider = null, baWidth = 0;
+
+  /* a geometria vem sempre do viewport (que nao se move) e do slide atual —
+     ler o rect do slide daria valores errados no meio da transicao */
+  function baCurrent(){ return baSlides[baIndex].querySelector('.ba-slider'); }
+  function baPercentAt(clientX){
+    var r = baViewport.getBoundingClientRect();
+    return (clientX - r.left) / r.width * 100;
+  }
+
+  baCarousel.addEventListener('pointerdown', function(e){
+    if(e.target.closest('.ba-nav') || e.target.closest('.ba-dot')) return;
+    if(!e.target.closest('.ba-viewport')) return;
+    var r = baViewport.getBoundingClientRect();
+    baStartX = e.clientX; baStartY = e.clientY; baMode = null; baDragSlider = null;
+    baWidth = r.width;
+    var sl = baCurrent();
+    if(Math.abs(e.clientX - (r.left + (sl.baPos / 100) * r.width)) <= 44){
+      baMode = 'compare';
+      baDragSlider = sl;
+      sl.classList.add('comparing');
+    }
+    baCarousel.setPointerCapture(e.pointerId);
+  });
+
+  baCarousel.addEventListener('pointermove', function(e){
+    if(!baCarousel.hasPointerCapture(e.pointerId)) return;
+    var dx = e.clientX - baStartX, dy = e.clientY - baStartY;
+    if(baMode === 'compare'){
+      baDragSlider.setBA(baPercentAt(e.clientX));
+      e.preventDefault();
+      return;
+    }
+    if(baMode === null){
+      if(Math.abs(dy) > 10 && Math.abs(dy) > Math.abs(dx)){ baMode = 'scroll'; return; }
+      if(Math.abs(dx) > 8){ baMode = 'swipe'; baTrack.classList.add('no-anim'); }
+      else return;
+    }
+    if(baMode === 'swipe'){
+      var limit = (baIndex === 0 && dx > 0) || (baIndex === baSlides.length - 1 && dx < 0);
+      baTrack.style.transform = 'translateX(' + (-baIndex * baWidth + (limit ? dx * 0.3 : dx)) + 'px)';
+      e.preventDefault();
+    }
+  });
+
+  function baEndDrag(e){
+    if(!baCarousel.hasPointerCapture(e.pointerId)) return;
+    baCarousel.releasePointerCapture(e.pointerId);
+    if(baDragSlider){ baDragSlider.classList.remove('comparing'); }
+    if(baMode === 'swipe'){
+      var dx = e.clientX - baStartX;
+      baGoTo(Math.abs(dx) > baWidth * 0.16 ? baIndex + (dx < 0 ? 1 : -1) : baIndex);
+    } else if(baMode === null && e.pointerType === 'mouse' && e.target.closest('.ba-viewport')){
+      /* clique simples no desktop leva o comparador ate o ponto clicado */
+      baCurrent().setBA(baPercentAt(e.clientX));
+    }
+    baMode = null; baDragSlider = null;
+  }
+
+  baCarousel.addEventListener('pointerup', baEndDrag);
+  baCarousel.addEventListener('pointercancel', baEndDrag);
+
+  baCarousel.addEventListener('keydown', function(e){
+    if(e.target.classList.contains('ba-range')) return;
+    if(e.key === 'ArrowLeft'){ baGoTo(baIndex - 1); }
+    if(e.key === 'ArrowRight'){ baGoTo(baIndex + 1); }
+  });
+
+  baGoTo(0);
 }
-baRange.addEventListener('input', function(e){ updateBA(e.target.value); });
-updateBA(50);
 
 /* Quiz interativo */
 var quizAnswers = { area: null, urgencia: null };
