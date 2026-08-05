@@ -46,7 +46,8 @@ Dá para trocar o endereço por um nome melhor em *Site settings → Change site
 
 ## Antes de mandar o link para o cliente
 
-- [ ] **Trocar as imagens de exemplo.** Há 23 imagens vindas do `placehold.co` (os retângulos roxos escritos "Foto Real da Clínica", "Post 1", "ANTES", "DEPOIS" etc.). Procure por `placehold.co` no `index.html` e substitua pelas fotos reais.
+- [ ] **Montar o carrossel de fotos do hero.** São 5 fotos da clínica (recepção, sala de atendimento, equipe, tecnologia e ambiente), em formato retrato 4:5. Para incluir ou remover uma, duplique ou apague um bloco `<div class="hero-slide">` — bolinhas e contador se ajustam sozinhos.
+- [ ] **Trocar as imagens de exemplo.** Há 27 imagens vindas do `placehold.co` (os retângulos roxos escritos "Foto Real da Clínica", "Post 1", "ANTES", "DEPOIS" etc.). Procure por `placehold.co` no `index.html` e substitua pelas fotos reais.
 - [ ] **Montar o carrossel de antes e depois.** São 6 casos (Criolipólise, Hidrolipoclasia, Preenchimento facial, Peeling coreano, Harmonização do sorriso e Fotodepilação), cada um com um par de fotos. As duas fotos de cada par **precisam ter o mesmo enquadramento, distância e iluminação** — é isso que faz a comparação funcionar. Para incluir ou remover um caso, basta duplicar ou apagar um bloco `<div class="ba-slide">`: as bolinhas, o contador e as setas se ajustam sozinhos.
 - [ ] **Conferir a autorização de uso de imagem** dos pacientes antes de publicar qualquer antes e depois.
 - [ ] **Conferir a nota do Google.** O site afirma "4,8 / 5,0 · +120 avaliações no Google" na seção hero. Confirme no perfil real da clínica antes de publicar.
@@ -74,6 +75,12 @@ Definida em `:root`, no topo do `styles.css`. Para mudar qualquer cor do site, a
 
 `--star` (`#bd7f15`) é usado só nas estrelinhas de avaliação.
 
+## Tipografia
+
+A base é **17px** (`html{font-size:106.25%}`), não os 16px padrão do navegador. Como todos os tamanhos do site são em `rem`, mudar esse único valor aumenta ou diminui o texto da página inteira de uma vez.
+
+**O site não usa itálico em lugar nenhum** — por pedido da clínica. A regra `em{font-style:normal}` garante isso mesmo se alguém colar um `<em>` novo, e a fonte Cormorant é carregada sem o eixo itálico.
+
 ## Estrutura
 
 ```
@@ -94,7 +101,7 @@ Recursos externos carregados via CDN (funcionam normalmente em HTTPS):
 
 ### Seções
 
-`#hero` · `#sobre` · `#tratamentos` (com filtro por categoria) · `#resultados` (carrossel de antes e depois) · quiz "Descubra o seu" · `#depoimentos` · Instagram · `#blog` (artigos abrem na própria página) · `#contato` (formulário que envia para o WhatsApp) · rodapé
+`#hero` (carrossel de fotos da clínica) · `#sobre` · `#tratamentos` (com filtro por categoria) · `#resultados` (carrossel de antes e depois) · quiz "Descubra o seu" · `#depoimentos` · Instagram · `#blog` (artigos abrem na própria página) · `#contato` (formulário que envia para o WhatsApp) · rodapé
 
 ### Contatos configurados no site
 

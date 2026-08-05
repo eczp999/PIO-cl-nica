@@ -6,7 +6,7 @@
 <title>Clínica PIO | Estética Avançada, Saúde Integrativa & Odontologia em Londrina</title>
 <meta name="description" content="Clínica PIO em Londrina: mais de 25 anos cuidando de você com medicina funcional integrativa, biomedicina estética avançada, odontologia estética e terapias corporais e faciais.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,500&family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css">
 <link rel="stylesheet" href="styles.css">
 </head>
@@ -51,7 +51,21 @@
       </div>
     </div>
     <div class="hero-visual">
-      <div class="hero-photo"><img src="https://placehold.co/700x900/dac9df/81638b?text=Foto+Real+da+Cl%C3%ADnica" alt="Ambiente da Clínica PIO"></div>
+      <div class="hero-carousel" id="heroCarousel">
+        <div class="hero-viewport">
+          <div class="hero-track">
+            <div class="hero-slide"><img src="https://placehold.co/700x900/dac9df/81638b?text=Recep%C3%A7%C3%A3o" alt="Recepção da Clínica PIO"></div>
+            <div class="hero-slide"><img loading="lazy" src="https://placehold.co/700x900/b695c0/ffffff?text=Sala+de+Atendimento" alt="Sala de atendimento da Clínica PIO"></div>
+            <div class="hero-slide"><img loading="lazy" src="https://placehold.co/700x900/f7bfd8/33103a?text=Nossa+Equipe" alt="Equipe da Clínica PIO"></div>
+            <div class="hero-slide"><img loading="lazy" src="https://placehold.co/700x900/81638b/fbd5e5?text=Tecnologia" alt="Equipamentos da Clínica PIO"></div>
+            <div class="hero-slide"><img loading="lazy" src="https://placehold.co/700x900/fbd5e5/81638b?text=Ambiente" alt="Ambiente da Clínica PIO"></div>
+          </div>
+          <button type="button" class="hero-nav prev" aria-label="Foto anterior"><i class="ri-arrow-left-s-line"></i></button>
+          <button type="button" class="hero-nav next" aria-label="Próxima foto"><i class="ri-arrow-right-s-line"></i></button>
+          <span class="hero-counter" aria-hidden="true">1/5</span>
+          <div class="hero-dots" role="tablist" aria-label="Escolher foto"></div>
+        </div>
+      </div>
       <div class="floating-card rating">
         <i class="ri-google-fill"></i>
         <div><span class="stars">★★★★★</span><strong>4,8 / 5,0</strong><small>+120 avaliações no Google</small></div>
@@ -673,6 +687,91 @@ filterButtons.forEach(function(btn){
     });
   });
 });
+
+/* Carrossel de fotos do hero */
+var heroCarousel = document.getElementById('heroCarousel');
+if(heroCarousel){
+  var hViewport = heroCarousel.querySelector('.hero-viewport');
+  var hTrack = heroCarousel.querySelector('.hero-track');
+  var hSlides = [].slice.call(heroCarousel.querySelectorAll('.hero-slide'));
+  var hDots = heroCarousel.querySelector('.hero-dots');
+  var hCounter = heroCarousel.querySelector('.hero-counter');
+  var hPrev = heroCarousel.querySelector('.hero-nav.prev');
+  var hNext = heroCarousel.querySelector('.hero-nav.next');
+  var hIndex = 0, hTimer = null, hStartX = 0, hStartY = 0, hMode = null, hWidth = 0;
+  var hReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  hSlides.forEach(function(s, i){
+    var dot = document.createElement('button');
+    dot.type = 'button';
+    dot.className = 'hero-dot';
+    dot.setAttribute('aria-label', 'Foto ' + (i + 1) + ' de ' + hSlides.length);
+    dot.addEventListener('click', function(){ hStop(); hGoTo(i); });
+    hDots.appendChild(dot);
+  });
+
+  /* wrap=true da a volta (setas e passagem automatica);
+     no arraste ele para nas pontas, senao a resistencia do dedo mentiria */
+  function hGoTo(i, wrap){
+    hIndex = wrap ? (i + hSlides.length) % hSlides.length
+                  : Math.max(0, Math.min(hSlides.length - 1, i));
+    hTrack.classList.remove('no-anim');
+    hTrack.style.transform = 'translateX(' + (-hIndex * 100) + '%)';
+    hDots.querySelectorAll('.hero-dot').forEach(function(d, n){ d.classList.toggle('active', n === hIndex); });
+    hCounter.textContent = (hIndex + 1) + '/' + hSlides.length;
+  }
+
+  /* passa sozinho ate a primeira interacao do visitante */
+  function hStart(){ if(!hReduced && !hTimer){ hTimer = setInterval(function(){ hGoTo(hIndex + 1, true); }, 5000); } }
+  function hStop(){ clearInterval(hTimer); hTimer = null; }
+
+  hPrev.addEventListener('click', function(){ hStop(); hGoTo(hIndex - 1, true); });
+  hNext.addEventListener('click', function(){ hStop(); hGoTo(hIndex + 1, true); });
+  heroCarousel.addEventListener('mouseenter', hStop);
+
+  hViewport.addEventListener('pointerdown', function(e){
+    if(e.target.closest('.hero-nav') || e.target.closest('.hero-dot')) return;
+    hStop();
+    hStartX = e.clientX; hStartY = e.clientY; hMode = null;
+    hWidth = hViewport.getBoundingClientRect().width;
+    hViewport.setPointerCapture(e.pointerId);
+  });
+
+  hViewport.addEventListener('pointermove', function(e){
+    if(!hViewport.hasPointerCapture(e.pointerId)) return;
+    var dx = e.clientX - hStartX, dy = e.clientY - hStartY;
+    if(hMode === null){
+      if(Math.abs(dy) > 10 && Math.abs(dy) > Math.abs(dx)){ hMode = 'scroll'; return; }
+      if(Math.abs(dx) > 8){ hMode = 'swipe'; hTrack.classList.add('no-anim'); }
+      else return;
+    }
+    if(hMode === 'swipe'){
+      var limit = (hIndex === 0 && dx > 0) || (hIndex === hSlides.length - 1 && dx < 0);
+      hTrack.style.transform = 'translateX(' + (-hIndex * hWidth + (limit ? dx * 0.3 : dx)) + 'px)';
+      e.preventDefault();
+    }
+  });
+
+  function hEnd(e){
+    if(!hViewport.hasPointerCapture(e.pointerId)) return;
+    hViewport.releasePointerCapture(e.pointerId);
+    if(hMode === 'swipe'){
+      var dx = e.clientX - hStartX;
+      hGoTo(Math.abs(dx) > hWidth * 0.16 ? hIndex + (dx < 0 ? 1 : -1) : hIndex);
+    }
+    hMode = null;
+  }
+  hViewport.addEventListener('pointerup', hEnd);
+  hViewport.addEventListener('pointercancel', hEnd);
+
+  heroCarousel.addEventListener('keydown', function(e){
+    if(e.key === 'ArrowLeft'){ hStop(); hGoTo(hIndex - 1, true); }
+    if(e.key === 'ArrowRight'){ hStop(); hGoTo(hIndex + 1, true); }
+  });
+
+  hGoTo(0);
+  hStart();
+}
 
 /* Antes e depois — carrossel com um comparador em cada slide */
 var baCarousel = document.getElementById('baCarousel');
