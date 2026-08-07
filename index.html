@@ -638,12 +638,34 @@
       </div>
       <a href="https://www.instagram.com/clinicapiolondrina/" target="_blank" class="btn btn-outline reveal"><i class="ri-instagram-line"></i> Seguir perfil</a>
     </div>
-    <div class="insta-grid">
-      <div class="insta-item reveal"><img src="https://placehold.co/400x400/b695c0/ffffff?text=Post+1" alt="Instagram Clínica PIO"><div class="ov"><i class="ri-instagram-line"></i></div></div>
-      <div class="insta-item reveal reveal-delay-1"><img src="https://placehold.co/400x400/dac9df/81638b?text=Post+2" alt="Instagram Clínica PIO"><div class="ov"><i class="ri-instagram-line"></i></div></div>
-      <div class="insta-item reveal reveal-delay-2"><img src="https://placehold.co/400x400/f7bfd8/33103a?text=Post+3" alt="Instagram Clínica PIO"><div class="ov"><i class="ri-instagram-line"></i></div></div>
-      <div class="insta-item reveal reveal-delay-3"><img src="https://placehold.co/400x400/f7bfd8/33103a?text=Post+4" alt="Instagram Clínica PIO"><div class="ov"><i class="ri-instagram-line"></i></div></div>
-      <div class="insta-item reveal"><img src="https://placehold.co/400x400/81638b/fbd5e5?text=Post+5" alt="Instagram Clínica PIO"><div class="ov"><i class="ri-instagram-line"></i></div></div>
+    <!-- Janelinha do Instagram: posts reais da conta, embutidos pelo player
+         oficial da Meta (embed.js). Para trocar um post, basta substituir o
+         link em data-instgrm-permalink pelo link do post novo. -->
+    <div class="insta-janela reveal">
+      <div class="insta-janela-topo">
+        <span class="insta-avatar"><i class="ri-instagram-line"></i></span>
+        <div class="insta-ident">
+          <strong>@clinicapiolondrina</strong>
+          <span>Clínica de Estética em Londrina</span>
+        </div>
+        <a href="https://www.instagram.com/clinicapiolondrina/" target="_blank" rel="noopener" class="btn btn-primary insta-seguir">Seguir</a>
+      </div>
+
+      <div class="insta-janela-corpo">
+        <div class="insta-post">
+          <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DbOf_NGs357/" data-instgrm-version="14"></blockquote>
+        </div>
+        <div class="insta-post">
+          <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DbOXxWAMEsr/" data-instgrm-version="14"></blockquote>
+        </div>
+        <div class="insta-post">
+          <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DbOSww4s1Qe/" data-instgrm-version="14"></blockquote>
+        </div>
+      </div>
+
+      <div class="insta-janela-rodape">
+        <a href="https://www.instagram.com/clinicapiolondrina/" target="_blank" rel="noopener">Ver todos os 604 posts no Instagram <i class="ri-arrow-right-line"></i></a>
+      </div>
     </div>
   </div>
 </section>
@@ -1001,6 +1023,10 @@
     </div>
   </div>
 </div>
+
+<!-- player oficial do Instagram: transforma os blockquote.instagram-media
+     em janelas com o post real e cuida da altura de cada uma -->
+<script async src="https://www.instagram.com/embed.js"></script>
 
 <script>
 window.addEventListener('load', function(){
