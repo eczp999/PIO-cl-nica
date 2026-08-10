@@ -56,13 +56,12 @@
           <div class="hero-track">
             <div class="hero-slide"><img src="images/frenteclinica.jpg" alt="Recepção da Clínica PIO"></div>
             <div class="hero-slide"><img loading="lazy" src="images/limpeza de pele.jpeg" alt="Sala de atendimento da Clínica PIO"></div>
-            <div class="hero-slide"><img loading="lazy" src="https://placehold.co/700x900/f7bfd8/33103a?text=Nossa+Equipe" alt="Equipe da Clínica PIO"></div>
-            <div class="hero-slide"><img loading="lazy" src="https://placehold.co/700x900/81638b/fbd5e5?text=Tecnologia" alt="Equipamentos da Clínica PIO"></div>
+            <div class="hero-slide"><img loading="lazy" src="https://placehold.co/900x560/f7bfd8/33103a?text=Nossa+Equipe" alt="Equipe da Clínica PIO"></div>
             <div class="hero-slide"><img loading="lazy" src="images/ambiente.jpg" alt="Ambiente da Clínica PIO"></div>
           </div>
           <button type="button" class="hero-nav prev" aria-label="Foto anterior"><i class="ri-arrow-left-s-line"></i></button>
           <button type="button" class="hero-nav next" aria-label="Próxima foto"><i class="ri-arrow-right-s-line"></i></button>
-          <span class="hero-counter" aria-hidden="true">1/5</span>
+          <span class="hero-counter" aria-hidden="true">1/4</span>
           <div class="hero-dots" role="tablist" aria-label="Escolher foto"></div>
         </div>
       </div>
@@ -98,7 +97,21 @@
 <section id="sobre">
   <div class="container about-grid">
     <div class="about-media reveal">
-      <div class="about-photo-main"><img src="images/hall social.jpeg" alt="Recepção Clínica PIO"></div>
+      <div class="about-carousel" id="aboutCarousel">
+        <div class="about-viewport">
+          <div class="about-track">
+            <div class="about-slide"><img src="images/hall social.jpeg" alt="Recepção Clínica PIO"></div>
+            <div class="about-slide"><img loading="lazy" src="https://placehold.co/700x933/f7bfd8/33103a?text=Foto+2" alt="Ambiente da Clínica PIO"></div>
+            <div class="about-slide"><img loading="lazy" src="https://placehold.co/700x933/81638b/fbd5e5?text=Foto+3" alt="Sala de atendimento da Clínica PIO"></div>
+            <div class="about-slide"><img loading="lazy" src="https://placehold.co/700x933/f7bfd8/33103a?text=Foto+4" alt="Equipe da Clínica PIO"></div>
+            <div class="about-slide"><img loading="lazy" src="https://placehold.co/700x933/81638b/fbd5e5?text=Foto+5" alt="Estrutura da Clínica PIO"></div>
+          </div>
+          <button type="button" class="about-nav prev" aria-label="Foto anterior"><i class="ri-arrow-left-s-line"></i></button>
+          <button type="button" class="about-nav next" aria-label="Próxima foto"><i class="ri-arrow-right-s-line"></i></button>
+          <span class="about-counter" aria-hidden="true">1/5</span>
+          <div class="about-dots" role="tablist" aria-label="Escolher foto"></div>
+        </div>
+      </div>
     </div>
     <div class="about-content reveal reveal-delay-1">
       <div class="eyebrow">Sobre a clínica</div>
@@ -1204,23 +1217,25 @@ filterButtons.forEach(function(btn){
   });
 });
 
-/* Carrossel de fotos do hero */
-var heroCarousel = document.getElementById('heroCarousel');
-if(heroCarousel){
-  var hViewport = heroCarousel.querySelector('.hero-viewport');
-  var hTrack = heroCarousel.querySelector('.hero-track');
-  var hSlides = [].slice.call(heroCarousel.querySelectorAll('.hero-slide'));
-  var hDots = heroCarousel.querySelector('.hero-dots');
-  var hCounter = heroCarousel.querySelector('.hero-counter');
-  var hPrev = heroCarousel.querySelector('.hero-nav.prev');
-  var hNext = heroCarousel.querySelector('.hero-nav.next');
+/* Carrossel de fotos (hero e sobre) — mesma mecanica nos dois,
+   muda apenas o prefixo das classes de cada secao */
+function montarCarrosselFotos(rootId, prefixo){
+  var raiz = document.getElementById(rootId);
+  if(!raiz) return;
+  var hViewport = raiz.querySelector('.' + prefixo + '-viewport');
+  var hTrack = raiz.querySelector('.' + prefixo + '-track');
+  var hSlides = [].slice.call(raiz.querySelectorAll('.' + prefixo + '-slide'));
+  var hDots = raiz.querySelector('.' + prefixo + '-dots');
+  var hCounter = raiz.querySelector('.' + prefixo + '-counter');
+  var hPrev = raiz.querySelector('.' + prefixo + '-nav.prev');
+  var hNext = raiz.querySelector('.' + prefixo + '-nav.next');
   var hIndex = 0, hTimer = null, hStartX = 0, hStartY = 0, hMode = null, hWidth = 0;
   var hReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   hSlides.forEach(function(s, i){
     var dot = document.createElement('button');
     dot.type = 'button';
-    dot.className = 'hero-dot';
+    dot.className = prefixo + '-dot';
     dot.setAttribute('aria-label', 'Foto ' + (i + 1) + ' de ' + hSlides.length);
     dot.addEventListener('click', function(){ hStop(); hGoTo(i); });
     hDots.appendChild(dot);
@@ -1233,7 +1248,7 @@ if(heroCarousel){
                   : Math.max(0, Math.min(hSlides.length - 1, i));
     hTrack.classList.remove('no-anim');
     hTrack.style.transform = 'translateX(' + (-hIndex * 100) + '%)';
-    hDots.querySelectorAll('.hero-dot').forEach(function(d, n){ d.classList.toggle('active', n === hIndex); });
+    hDots.querySelectorAll('.' + prefixo + '-dot').forEach(function(d, n){ d.classList.toggle('active', n === hIndex); });
     hCounter.textContent = (hIndex + 1) + '/' + hSlides.length;
   }
 
@@ -1243,10 +1258,10 @@ if(heroCarousel){
 
   hPrev.addEventListener('click', function(){ hStop(); hGoTo(hIndex - 1, true); });
   hNext.addEventListener('click', function(){ hStop(); hGoTo(hIndex + 1, true); });
-  heroCarousel.addEventListener('mouseenter', hStop);
+  raiz.addEventListener('mouseenter', hStop);
 
   hViewport.addEventListener('pointerdown', function(e){
-    if(e.target.closest('.hero-nav') || e.target.closest('.hero-dot')) return;
+    if(e.target.closest('.' + prefixo + '-nav') || e.target.closest('.' + prefixo + '-dot')) return;
     hStop();
     hStartX = e.clientX; hStartY = e.clientY; hMode = null;
     hWidth = hViewport.getBoundingClientRect().width;
@@ -1280,7 +1295,7 @@ if(heroCarousel){
   hViewport.addEventListener('pointerup', hEnd);
   hViewport.addEventListener('pointercancel', hEnd);
 
-  heroCarousel.addEventListener('keydown', function(e){
+  raiz.addEventListener('keydown', function(e){
     if(e.key === 'ArrowLeft'){ hStop(); hGoTo(hIndex - 1, true); }
     if(e.key === 'ArrowRight'){ hStop(); hGoTo(hIndex + 1, true); }
   });
@@ -1288,6 +1303,8 @@ if(heroCarousel){
   hGoTo(0);
   hStart();
 }
+montarCarrosselFotos('heroCarousel', 'hero');
+montarCarrosselFotos('aboutCarousel', 'about');
 
 /* Antes e depois — carrossel com um comparador em cada slide */
 var baCarousel = document.getElementById('baCarousel');
