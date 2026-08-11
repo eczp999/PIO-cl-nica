@@ -649,11 +649,15 @@
       </div>
       <a href="https://www.instagram.com/clinicapiolondrina/" target="_blank" class="btn btn-outline reveal"><i class="ri-instagram-line"></i> Seguir perfil</a>
     </div>
-    <!-- Janelinha do Instagram: vitrine propria com fotos da clinica.
-         O embed oficial da Meta (embed.js) mostrava erro de midia dentro das
-         janelas (o poster do reel vem de um CDN que falha fora do app), entao
-         cada cartao usa uma foto local e leva direto ao reel real no Instagram.
-         Para trocar um cartao, basta trocar o href e a imagem. -->
+    <!-- Janelinha do Instagram: grade 3x3 com os posts REAIS de
+         @clinicapiolondrina, no mesmo formato do feed do app.
+         As miniaturas ficam em images/instagram/ (baixadas do proprio perfil)
+         porque a URL do CDN da Meta e assinada e expira em poucos dias.
+         O embed oficial (embed.js) foi descartado: o iframe fica com altura 0
+         porque o handshake de altura da Meta nao acontece mais, e a janela
+         colapsava mostrando erro.
+         PARA ATUALIZAR: troque o arquivo em images/instagram/ e o href do
+         post correspondente (reels usam /reel/CODIGO/, fotos usam /p/CODIGO/). -->
     <div class="insta-janela reveal">
       <div class="insta-janela-topo">
         <span class="insta-avatar"><i class="ri-instagram-line"></i></span>
@@ -664,26 +668,62 @@
         <a href="https://www.instagram.com/clinicapiolondrina/" target="_blank" rel="noopener" class="btn btn-primary insta-seguir">Seguir</a>
       </div>
 
+      <div class="insta-stats">
+        <span><strong>601</strong> publicações</span>
+        <span><strong>5.882</strong> seguidores</span>
+        <span><strong>938</strong> seguindo</span>
+      </div>
+
       <div class="insta-janela-corpo">
-        <a class="insta-post" href="https://www.instagram.com/reel/DbOf_NGs357/" target="_blank" rel="noopener" aria-label="Assistir reel da Clínica PIO no Instagram">
-          <img loading="lazy" src="images/massagens.jpeg" alt="Massagem terapêutica na Clínica PIO">
-          <span class="insta-badge"><i class="ri-instagram-line"></i></span>
-          <span class="insta-overlay"><i class="ri-play-circle-line"></i><span>Assistir no Instagram</span></span>
+        <a class="insta-post" href="https://www.instagram.com/p/DXhsNS2jJKQ/" target="_blank" rel="noopener">
+          <img loading="lazy" src="images/instagram/post-1.jpg" alt="Post da Clínica PIO sobre limpeza de pele com microagulhamento">
+          <span class="insta-tipo"><i class="ri-image-2-fill"></i></span>
+          <span class="insta-overlay"><span>Limpeza de pele com microagulhamento</span></span>
         </a>
-        <a class="insta-post" href="https://www.instagram.com/reel/DbOXxWAMEsr/" target="_blank" rel="noopener" aria-label="Assistir reel da Clínica PIO no Instagram">
-          <img loading="lazy" src="images/limpeza de pele.jpeg" alt="Limpeza de pele na Clínica PIO">
-          <span class="insta-badge"><i class="ri-instagram-line"></i></span>
-          <span class="insta-overlay"><i class="ri-play-circle-line"></i><span>Assistir no Instagram</span></span>
+        <a class="insta-post" href="https://www.instagram.com/p/Db5ryjzMS5M/" target="_blank" rel="noopener">
+          <img loading="lazy" src="images/instagram/post-2.jpg" alt="Post da Clínica PIO sobre peeling de cristal e peeling químico">
+          <span class="insta-tipo"><i class="ri-image-2-fill"></i></span>
+          <span class="insta-overlay"><span>Peeling de cristal + peeling químico</span></span>
         </a>
-        <a class="insta-post" href="https://www.instagram.com/reel/DbOSww4s1Qe/" target="_blank" rel="noopener" aria-label="Assistir reel da Clínica PIO no Instagram">
-          <img loading="lazy" src="images/frenteclinica.jpg" alt="Fachada da Clínica PIO em Londrina">
-          <span class="insta-badge"><i class="ri-instagram-line"></i></span>
-          <span class="insta-overlay"><i class="ri-play-circle-line"></i><span>Assistir no Instagram</span></span>
+        <a class="insta-post" href="https://www.instagram.com/reel/DbyeW2hM7xd/" target="_blank" rel="noopener">
+          <img loading="lazy" src="images/instagram/post-3.jpg" alt="Reel da Clínica PIO sobre PDRN para rejuvenescimento do colo">
+          <span class="insta-tipo"><i class="ri-play-circle-fill"></i></span>
+          <span class="insta-overlay"><span>PDRN no colo: firmeza e viço</span></span>
+        </a>
+        <a class="insta-post" href="https://www.instagram.com/reel/Dbyb1TIM6II/" target="_blank" rel="noopener">
+          <img loading="lazy" src="images/instagram/post-4.jpg" alt="Reel da Clínica PIO sobre PDRN na região das pálpebras">
+          <span class="insta-tipo"><i class="ri-play-circle-fill"></i></span>
+          <span class="insta-overlay"><span>PDRN nas pálpebras: olhar descansado</span></span>
+        </a>
+        <a class="insta-post" href="https://www.instagram.com/reel/DbybpEeMdcy/" target="_blank" rel="noopener">
+          <img loading="lazy" src="images/instagram/post-5.jpg" alt="Reel da Clínica PIO sobre PDRN no rosto, pálpebras e papada">
+          <span class="insta-tipo"><i class="ri-play-circle-fill"></i></span>
+          <span class="insta-overlay"><span>PDRN no rosto, pálpebras e papada</span></span>
+        </a>
+        <a class="insta-post" href="https://www.instagram.com/reel/Dbya0rpMe8a/" target="_blank" rel="noopener">
+          <img loading="lazy" src="images/instagram/post-6.jpg" alt="Reel da Clínica PIO sobre laser CO2 com PDRN no tratamento de estrias">
+          <span class="insta-tipo"><i class="ri-play-circle-fill"></i></span>
+          <span class="insta-overlay"><span>Laser CO2 + PDRN para estrias</span></span>
+        </a>
+        <a class="insta-post" href="https://www.instagram.com/reel/DbOf_NGs357/" target="_blank" rel="noopener">
+          <img loading="lazy" src="images/instagram/post-7.jpg" alt="Reel da Clínica PIO sobre liberação miofascial">
+          <span class="insta-tipo"><i class="ri-play-circle-fill"></i></span>
+          <span class="insta-overlay"><span>Liberação miofascial</span></span>
+        </a>
+        <a class="insta-post" href="https://www.instagram.com/reel/DbOXxWAMEsr/" target="_blank" rel="noopener">
+          <img loading="lazy" src="images/instagram/post-8.jpg" alt="Reel da Clínica PIO sobre massagem com pedras quentes">
+          <span class="insta-tipo"><i class="ri-play-circle-fill"></i></span>
+          <span class="insta-overlay"><span>Massagem com pedras quentes</span></span>
+        </a>
+        <a class="insta-post" href="https://www.instagram.com/reel/DalhVp7sQhW/" target="_blank" rel="noopener">
+          <img loading="lazy" src="images/instagram/post-9.jpg" alt="Reel da Clínica PIO sobre massagens">
+          <span class="insta-tipo"><i class="ri-play-circle-fill"></i></span>
+          <span class="insta-overlay"><span>Massagens que cuidam de você</span></span>
         </a>
       </div>
 
       <div class="insta-janela-rodape">
-        <a href="https://www.instagram.com/clinicapiolondrina/" target="_blank" rel="noopener">Ver todos os 604 posts no Instagram <i class="ri-arrow-right-line"></i></a>
+        <a href="https://www.instagram.com/clinicapiolondrina/" target="_blank" rel="noopener">Ver todos os 601 posts no Instagram <i class="ri-arrow-right-line"></i></a>
       </div>
     </div>
   </div>
@@ -852,7 +892,7 @@
         <p style="font-size:.88rem;max-width:280px;">Clínica multidisciplinar de estética, saúde e odontologia em Londrina - PR. Mais de 30 anos transformando autoestima.</p>
         <div class="footer-social">
           <a href="https://www.instagram.com/clinicapiolondrina/" target="_blank"><i class="ri-instagram-line"></i></a>
-          <a href="#" target="_blank"><i class="ri-facebook-fill"></i></a>
+          <a href="https://www.facebook.com/cpiolondrina?locale=pt_BR" target="_blank" rel="noopener" aria-label="Facebook da Clínica PIO"><i class="ri-facebook-fill"></i></a>
           <a href="https://wa.me/5543991656200" target="_blank"><i class="ri-whatsapp-line"></i></a>
         </div>
       </div>
