@@ -75,7 +75,6 @@
       </div>
     </div>
   </div>
-  <div class="scroll-cue"><span>Role a página</span><div class="line"></div></div>
 </section>
 
 <div class="marquee-wrap">
@@ -650,9 +649,11 @@
       </div>
       <a href="https://www.instagram.com/clinicapiolondrina/" target="_blank" class="btn btn-outline reveal"><i class="ri-instagram-line"></i> Seguir perfil</a>
     </div>
-    <!-- Janelinha do Instagram: posts reais da conta, embutidos pelo player
-         oficial da Meta (embed.js). Para trocar um post, basta substituir o
-         link em data-instgrm-permalink pelo link do post novo. -->
+    <!-- Janelinha do Instagram: vitrine propria com fotos da clinica.
+         O embed oficial da Meta (embed.js) mostrava erro de midia dentro das
+         janelas (o poster do reel vem de um CDN que falha fora do app), entao
+         cada cartao usa uma foto local e leva direto ao reel real no Instagram.
+         Para trocar um cartao, basta trocar o href e a imagem. -->
     <div class="insta-janela reveal">
       <div class="insta-janela-topo">
         <span class="insta-avatar"><i class="ri-instagram-line"></i></span>
@@ -664,15 +665,21 @@
       </div>
 
       <div class="insta-janela-corpo">
-        <div class="insta-post">
-          <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DbOf_NGs357/" data-instgrm-version="14"></blockquote>
-        </div>
-        <div class="insta-post">
-          <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DbOXxWAMEsr/" data-instgrm-version="14"></blockquote>
-        </div>
-        <div class="insta-post">
-          <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DbOSww4s1Qe/" data-instgrm-version="14"></blockquote>
-        </div>
+        <a class="insta-post" href="https://www.instagram.com/reel/DbOf_NGs357/" target="_blank" rel="noopener" aria-label="Assistir reel da Clínica PIO no Instagram">
+          <img loading="lazy" src="images/massagens.jpeg" alt="Massagem terapêutica na Clínica PIO">
+          <span class="insta-badge"><i class="ri-instagram-line"></i></span>
+          <span class="insta-overlay"><i class="ri-play-circle-line"></i><span>Assistir no Instagram</span></span>
+        </a>
+        <a class="insta-post" href="https://www.instagram.com/reel/DbOXxWAMEsr/" target="_blank" rel="noopener" aria-label="Assistir reel da Clínica PIO no Instagram">
+          <img loading="lazy" src="images/limpeza de pele.jpeg" alt="Limpeza de pele na Clínica PIO">
+          <span class="insta-badge"><i class="ri-instagram-line"></i></span>
+          <span class="insta-overlay"><i class="ri-play-circle-line"></i><span>Assistir no Instagram</span></span>
+        </a>
+        <a class="insta-post" href="https://www.instagram.com/reel/DbOSww4s1Qe/" target="_blank" rel="noopener" aria-label="Assistir reel da Clínica PIO no Instagram">
+          <img loading="lazy" src="images/frenteclinica.jpg" alt="Fachada da Clínica PIO em Londrina">
+          <span class="insta-badge"><i class="ri-instagram-line"></i></span>
+          <span class="insta-overlay"><i class="ri-play-circle-line"></i><span>Assistir no Instagram</span></span>
+        </a>
       </div>
 
       <div class="insta-janela-rodape">
@@ -1035,10 +1042,6 @@
     </div>
   </div>
 </div>
-
-<!-- player oficial do Instagram: transforma os blockquote.instagram-media
-     em janelas com o post real e cuida da altura de cada uma -->
-<script async src="https://www.instagram.com/embed.js"></script>
 
 <script>
 window.addEventListener('load', function(){

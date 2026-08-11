@@ -13,8 +13,11 @@
 }
 *{margin:0;padding:0;box-sizing:border-box;}
 /* base de 17px em vez de 16px — aumenta todo o texto do site de uma vez */
-html{scroll-behavior:smooth;font-size:106.25%;}
-body{font-family:var(--font-sans);color:var(--ink);background:var(--cream);overflow-x:hidden;line-height:1.7;}
+/* overflow-x nos DOIS elementos: so no body o iOS ignora e a pagina
+   fica "solta" para o lado no celular. clip e mais barato que hidden
+   (nao cria contexto de rolagem); hidden fica como fallback antigo */
+html{scroll-behavior:smooth;font-size:106.25%;overflow-x:hidden;overflow-x:clip;}
+body{font-family:var(--font-sans);color:var(--ink);background:var(--cream);overflow-x:hidden;overflow-x:clip;line-height:1.7;}
 em{font-style:normal;}
 h1,h2,h3,h4,.serif{font-family:var(--font-serif);font-weight:600;color:var(--purple-900);}
 img{max-width:100%;display:block;}
@@ -22,6 +25,10 @@ a{text-decoration:none;color:inherit;}
 ul{list-style:none;}
 button{font-family:inherit;cursor:pointer;border:none;background:none;}
 .container{width:min(1200px,92%);margin:0 auto;}
+/* itens de grid nascem com min-width:auto e nao encolhem abaixo do proprio
+   conteudo (o select longo do formulario e a lista de diferenciais do sobre
+   empurravam a pagina inteira para 489px no celular) */
+.hero-grid>*,.about-grid>*,.ba-wrap>*,.contact-grid>*{min-width:0;}
 section{padding:120px 0;position:relative;}
 .eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:.78rem;letter-spacing:.22em;text-transform:uppercase;color:var(--purple-700);font-weight:600;margin-bottom:18px;}
 .eyebrow::before{content:'';width:34px;height:1px;background:var(--lilac-500);}
@@ -115,9 +122,6 @@ header#navbar{position:fixed;top:0;left:0;width:100%;z-index:1000;padding:26px 0
 .floating-card i{font-size:1.6rem;color:var(--purple-700);}
 .floating-card strong{font-size:1.15rem;color:var(--purple-900);display:block;}
 @keyframes bob{0%,100%{transform:translateY(0);}50%{transform:translateY(-14px);}}
-.scroll-cue{position:absolute;bottom:30px;left:50%;transform:translateX(-50%);z-index:3;display:flex;flex-direction:column;align-items:center;gap:8px;color:var(--ink-soft);font-size:.72rem;letter-spacing:.15em;text-transform:uppercase;}
-.scroll-cue .line{width:1px;height:40px;background:linear-gradient(var(--purple-700),transparent);animation:scrollLine 1.8s ease-in-out infinite;}
-@keyframes scrollLine{0%{transform:scaleY(0);transform-origin:top;}50%{transform:scaleY(1);transform-origin:top;}51%{transform-origin:bottom;}100%{transform:scaleY(0);transform-origin:bottom;}}
 .marquee-wrap{background:var(--lilac-700);padding:22px 0;overflow:hidden;position:relative;z-index:2;}
 .marquee-track{display:flex;gap:60px;white-space:nowrap;animation:marquee 32s linear infinite;width:max-content;}
 .marquee-track span{font-family:var(--font-serif);font-size:1.3rem;color:rgba(255,255,255,.92);display:flex;align-items:center;gap:60px;}
@@ -130,7 +134,9 @@ header#navbar{position:fixed;top:0;left:0;width:100%;z-index:1000;padding:26px 0
 .stat-box p{color:var(--ink-soft);font-size:.95rem;text-transform:uppercase;letter-spacing:.06em;}
 #sobre .about-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:70px;align-items:center;}
 .about-media{position:relative;}
-.about-feature-list{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:36px;}
+/* minmax(0,1fr) em vez de 1fr: as colunas tambem tem piso de min-content
+   e estouravam a largura da tela no celular */
+.about-feature-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px;margin-top:36px;}
 .feature-item{display:flex;gap:14px;align-items:flex-start;}
 .feature-item .ic{width:44px;height:44px;flex:0 0 44px;border-radius:12px;background:var(--pink-200);display:flex;align-items:center;justify-content:center;color:var(--purple-800);font-size:1.2rem;}
 .feature-item h4{font-size:1rem;color:var(--purple-900);margin-bottom:4px;font-family:var(--font-sans);font-weight:600;}
@@ -239,19 +245,16 @@ header#navbar{position:fixed;top:0;left:0;width:100%;z-index:1000;padding:26px 0
 .insta-ident strong{font-size:.98rem;color:var(--purple-900);font-weight:600;}
 .insta-ident span{font-size:.82rem;color:var(--ink-soft);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
 .insta-seguir{padding:10px 22px;font-size:.82rem;flex:0 0 auto;}
-/* o embed do Instagram nao renderiza abaixo de 326px de largura — por isso a
-   grade usa auto-fit com esse minimo em vez de um numero fixo de colunas
-   (o min(...,100%) evita que a coluna estoure a tela em celular estreito) */
-.insta-janela-corpo{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(326px,100%),1fr));gap:18px;padding:26px;background:var(--cream);align-items:start;justify-items:center;}
-.insta-post{min-width:0;width:100%;}
-.insta-post .instagram-media{width:100% !important;max-width:100% !important;margin:0 !important;border-radius:var(--radius-md) !important;box-shadow:0 8px 24px rgba(90,55,102,.1) !important;}
-/* enquanto o embed.js nao troca o blockquote pelo iframe, reserva o espaco
-   para a secao nao "pular" quando os posts entrarem */
-.insta-post blockquote.instagram-media{min-height:560px;background:var(--lilac-300);border:0 !important;}
-/* o embed.js so define a altura do iframe quando o post responde por
-   postMessage; se isso demorar ou for bloqueado, o iframe fica com 2px de
-   altura e a secao colapsa — este piso garante que o post sempre apareca */
-.insta-post iframe.instagram-media{min-height:600px !important;}
+/* vitrine propria: cada cartao e uma foto local que leva ao reel real —
+   nada carrega de servidor externo, entao nenhum erro aparece na janela */
+.insta-janela-corpo{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;padding:26px;background:var(--cream);}
+.insta-post{position:relative;display:block;min-width:0;aspect-ratio:4/5;border-radius:var(--radius-md);overflow:hidden;background:var(--lilac-300);box-shadow:0 8px 24px rgba(90,55,102,.1);}
+.insta-post img{width:100%;height:100%;object-fit:cover;transition:.5s;}
+.insta-post:hover img{transform:scale(1.05);}
+.insta-badge{position:absolute;top:12px;right:12px;width:34px;height:34px;border-radius:50%;background:rgba(0,0,0,.45);backdrop-filter:blur(4px);color:#fff;display:flex;align-items:center;justify-content:center;font-size:1.05rem;z-index:2;}
+.insta-overlay{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;background:linear-gradient(to top,rgba(51,16,58,.6),rgba(51,16,58,.2));color:#fff;font-weight:600;font-size:.9rem;opacity:0;transition:.35s;}
+.insta-overlay i{font-size:2.2rem;}
+.insta-post:hover .insta-overlay,.insta-post:focus-visible .insta-overlay{opacity:1;}
 .insta-janela-rodape{padding:18px 26px;border-top:1px solid rgba(129,99,139,.14);text-align:center;}
 .insta-janela-rodape a{font-size:.9rem;font-weight:600;color:var(--purple-700);display:inline-flex;align-items:center;gap:8px;}
 .insta-janela-rodape a:hover i{transform:translateX(4px);}
@@ -348,7 +351,7 @@ header#navbar{position:fixed;top:0;left:0;width:100%;z-index:1000;padding:26px 0
 .form-row{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:20px;}
 .form-group{margin-bottom:20px;}
 .form-group label{display:block;font-size:.82rem;font-weight:600;color:var(--purple-900);margin-bottom:8px;}
-.form-group input,.form-group select,.form-group textarea{width:100%;padding:14px 16px;border-radius:12px;border:1.5px solid rgba(129,99,139,.28);font-family:inherit;font-size:.92rem;background:var(--pink-100);transition:.3s;color:var(--ink);}
+.form-group input,.form-group select,.form-group textarea{width:100%;max-width:100%;min-width:0;padding:14px 16px;border-radius:12px;border:1.5px solid rgba(129,99,139,.28);font-family:inherit;font-size:.92rem;background:var(--pink-100);transition:.3s;color:var(--ink);}
 .form-group input:focus,.form-group select:focus,.form-group textarea:focus{outline:none;border-color:var(--purple-700);background:#fff;}
 .form-group textarea{resize:vertical;min-height:110px;}
 footer{background:var(--lilac-700);color:rgba(255,255,255,.85);padding:80px 0 30px;}
@@ -422,7 +425,7 @@ body.painel-travado{overflow:hidden;}
 }
 @media(max-width:768px){
   .trigger-grid,.trigger-grid.cols-4{grid-template-columns:1fr;gap:20px;}
-  .painel-caixa{width:100%;max-height:100vh;height:100vh;margin:0;border-radius:0;}
+  .painel-caixa{width:100%;max-height:100vh;max-height:100dvh;height:100vh;height:100dvh;margin:0;border-radius:0;}
   .painel-topo{padding:24px 22px 18px;}
   .painel-corpo{padding:26px 22px 34px;}
 }
@@ -430,12 +433,23 @@ body.painel-travado{overflow:hidden;}
 /* o CTA "Agendar avaliacao gratuita" e largo — o menu vira gaveta mais cedo
    para o cabecalho nao estourar a largura da tela */
 @media(max-width:1100px){
-  .nav-links{position:fixed;top:0;right:-100%;width:78%;height:100vh;background:var(--white);flex-direction:column;justify-content:center;gap:30px;transition:.45s;box-shadow:-10px 0 40px rgba(90,55,102,.18);}
+  /* 100dvh acompanha a barra de endereco do navegador do celular;
+     100vh fica como fallback para navegadores antigos */
+  .nav-links{position:fixed;top:0;right:-100%;width:78%;height:100vh;height:100dvh;background:var(--white);flex-direction:column;justify-content:center;gap:30px;transition:.45s;box-shadow:-10px 0 40px rgba(90,55,102,.18);}
   .nav-links.open{right:0;}
   .burger{display:flex;}
 }
 @media(max-width:560px){
   .nav-icon-btn{display:none;}
+  /* respiro lateral e cartoes mais enxutos em tela estreita */
+  .about-feature-list{grid-template-columns:1fr;}
+  .test-slide{padding:34px 22px;}
+  .test-slide p{font-size:1.08rem;}
+  .contact-info-card{padding:34px 24px;}
+  .contact-form{padding:34px 22px;}
+  /* os botoes flutuantes ocupavam muito da tela pequena */
+  .whatsapp-float{width:56px;height:56px;font-size:1.5rem;bottom:20px;right:20px;}
+  #backToTop{width:44px;height:44px;bottom:20px;left:20px;}
   /* .btn tem white-space:nowrap, entao o CTA inteiro nao cabe ao lado do
      logo + burger em telas de celular — encurtamos o rotulo e o logo */
   .cta-long{display:none;}
@@ -462,11 +476,7 @@ body.painel-travado{overflow:hidden;}
 @media(max-width:768px){
   section{padding:80px 0;}
   .treat-grid,.stats-grid,.dif-grid,.blog-grid,.footer-grid{grid-template-columns:1fr;}
-  /* o iframe do Instagram traz min-width:326px de fabrica; em tela estreita
-     isso vaza para fora do cartao, entao liberamos o encolhimento e apertamos
-     o respiro lateral da janela */
-  .insta-janela-corpo{padding:12px;gap:16px;}
-  .insta-post iframe.instagram-media,.insta-post blockquote.instagram-media{min-width:0 !important;}
+  .insta-janela-corpo{grid-template-columns:repeat(2,minmax(0,1fr));padding:14px;gap:14px;}
   .insta-janela-topo{padding:16px 18px;gap:12px;}
   .insta-seguir{padding:9px 16px;font-size:.76rem;}
   .quiz-options{grid-template-columns:1fr;}
@@ -491,4 +501,9 @@ body.painel-travado{overflow:hidden;}
   .mod-preco{min-width:0;}
   .course-inclui,.team-nota{padding:32px 24px;}
   .team-nota{flex-direction:column;gap:16px;}
+}
+/* depois do bloco de 768px de proposito: em celular estreito a vitrine
+   do Instagram passa de 2 colunas para 1 */
+@media(max-width:560px){
+  .insta-janela-corpo{grid-template-columns:1fr;}
 }
