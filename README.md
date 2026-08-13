@@ -46,16 +46,16 @@ Dá para trocar o endereço por um nome melhor em *Site settings → Change site
 
 ## Antes de mandar o link para o cliente
 
-- [ ] **Montar o carrossel de fotos do hero.** São 5 fotos da clínica (recepção, sala de atendimento, equipe, tecnologia e ambiente), em formato retrato 4:5. Para incluir ou remover uma, duplique ou apague um bloco `<div class="hero-slide">` — bolinhas e contador se ajustam sozinhos.
+- [ ] **Fechar as fotos da faixa de destaque.** É a faixa larga no topo da página (`#destaque`), com as fotos passando de ponta a ponta. São **4 fotos, e esse é o limite definido pela clínica** — e só de **tratamento**: foto do ambiente não entra nesta faixa. O formato ideal é **1440×576 (proporção 5:2)** — nessa medida a foto aparece inteira, sem corte. Para trocar uma, substitua o `src` do bloco `<div class="destaque-slide">` correspondente.
 - [ ] **Trocar as imagens de exemplo.** Há 27 imagens vindas do `placehold.co` (os retângulos roxos escritos "Foto Real da Clínica", "Post 1", "ANTES", "DEPOIS" etc.). Procure por `placehold.co` no `index.html` e substitua pelas fotos reais.
 - [ ] **Montar o carrossel de antes e depois.** São 6 casos (Criolipólise, Hidrolipoclasia, Preenchimento facial, Peeling coreano, Harmonização do sorriso e Fotodepilação), cada um com um par de fotos. As duas fotos de cada par **precisam ter o mesmo enquadramento, distância e iluminação** — é isso que faz a comparação funcionar. Para incluir ou remover um caso, basta duplicar ou apagar um bloco `<div class="ba-slide">`: as bolinhas, o contador e as setas se ajustam sozinhos.
 - [ ] **Conferir a autorização de uso de imagem** dos pacientes antes de publicar qualquer antes e depois.
 - [ ] **Confirmar os preços dos cursos.** Os valores em `cursos.html` foram copiados do site atual da clínica e podem estar desatualizados — publicar preço errado gera problema com o consumidor.
-- [ ] **Trocar as fotos da equipe** em `equipe.html` (3 placeholders) e confirmar nomes, cargos e a grafia dos títulos profissionais.
+- [ ] **Conferir a equipe.** A seção `#equipe` e o painel "Ver equipe completa" listam hoje 2 profissionais (Dr. Adriano Zanutto e Rayane Cristina). Confirmar nomes, cargos e a grafia dos títulos profissionais, e avisar se entrar mais alguém — os dois blocos ficam no `index.html` e precisam ser atualizados juntos.
 - [ ] **Pedir o arquivo original da logo** à clínica. O `logo-pio.svg` daqui foi tirado do site atual deles e é uma imagem embutida (não é vetor de verdade), então perde nitidez se for muito ampliada.
 - [ ] **Revisar os textos dos tratamentos** com a responsável técnica. Foram parafraseados das páginas do site atual e envolvem alegações de saúde — as regras de publicidade dos conselhos (CFM, CRO, CREFITO) são rígidas quanto a prometer resultado.
 - [ ] **Conferir a nota do Google.** O site afirma "4,8 / 5,0 · +120 avaliações no Google" na seção hero. Confirme no perfil real da clínica antes de publicar.
-- [ ] **Trocar os 3 depoimentos de exemplo.** A seção tem 5 cards. Os 2 primeiros (Rosangela Glasses e William de Souza Paulino Duarte) são avaliações **reais**, copiadas do Google Maps. Os 3 seguintes (Débora F., Eliziane A. e Berenice L.) são **textos de demonstração — clientes inventados**, marcados com comentário no HTML. Precisam ser substituídos por avaliações verdadeiras antes de o site entrar no ar: publicar depoimento fabricado é propaganda enganosa (CDC, art. 37).
+- [ ] **Trocar os 3 depoimentos de exemplo.** A seção tem 4 cards. O primeiro (Rosangela Glasses) é uma avaliação **real**, copiada do Google Maps. Os 3 seguintes (Débora F., Eliziane A. e Berenice L.) são **textos de demonstração — clientes inventados**, marcados com comentário no HTML. Precisam ser substituídos por avaliações verdadeiras antes de o site entrar no ar: publicar depoimento fabricado é propaganda enganosa (CDC, art. 37).
 - [ ] **Revisar o conteúdo do blog.** Os três artigos foram escritos a partir das publicações do site atual. O texto de "Bum bum na nuca" foi ampliado (o original era só um anúncio) e o de hidrolipoclasia ganhou informações complementares — vale passar pela responsável técnica antes de publicar, por serem alegações de saúde.
 - [ ] **Comprimir as fotos** antes de subir (WebP ou JPG, largura máxima ~1600px). O site é leve hoje; fotos pesadas jogam essa vantagem fora.
 
@@ -67,17 +67,40 @@ Definida em `:root`, no topo do `styles.css`. Para mudar qualquer cor do site, a
 
 | Variável | Cor | Onde aparece |
 |---|---|---|
-| `--lilac-700` | `#81638b` | faixa de tratamentos, banner de CTA, card de contato e rodapé |
-| `--lilac-500` | `#b695c0` | detalhes, gradientes e traços decorativos |
-| `--lilac-300` | `#dac9df` | fundo da seção de resultados e do hero |
-| `--pink-300` | `#f7bfd8` | fundo do hero e manchas de luz |
-| `--pink-200` | `#fbd5e5` | chips de ícone, campos e detalhes sobre fundo escuro |
-| `--pink-100` | `#fdeaf2` | fundo das seções claras |
-| `--cream` | `#fffbfd` | fundo geral da página |
+| `--lilac-700` | `#8a6395` | detalhes e apoio das faixas escuras |
+| `--lilac-500` | `#c199cb` | detalhes, gradientes e traços decorativos |
+| `--lilac-300` | `#e2ccea` | ponta "roxa" do fade das seções |
+| `--lilac-200` | `#eddef2` | meio do fade |
+| `--lilac-100` | `#f6ecf9` | meio do fade nas seções mais lavadas |
+| `--pink-300` | `#f9bcd9` | ponta "rosa" do fade forte (hero e depoimentos) |
+| `--pink-200` | `#fcd3e6` | chips de ícone, campos e detalhes sobre fundo escuro |
+| `--pink-100` | `#fdeaf3` | ponta rosa do fade das seções |
+| `--pink-050` | `#fff5fa` | ponta rosa do fade nas seções mais lavadas |
+| `--cream` | `#fff8fc` | fundo geral da página |
 
 **O roxo escuro (`--purple-900`, `--purple-800`, `--purple-700`) ficou reservado** aos botões de agendamento, aos títulos e aos links. É ele que faz o CTA saltar da tela — se for usado como fundo de seção, esse contraste se perde.
 
 `--star` (`#bd7f15`) é usado só nas estrelinhas de avaliação.
+
+### O fade horizontal
+
+Nenhuma seção tem fundo chapado: cada uma recebe um degradê que atravessa a
+tela **da esquerda para a direita**, e o sentido **inverte de uma seção para a
+outra** (rosa claro → roxo claro, roxo claro → rosa claro, e assim por diante
+até o rodapé). É o que dá o efeito de onda de cor ao rolar a página.
+
+Os degradês estão em seis tokens no `:root`, sempre em pares de sentido oposto:
+
+| Token | Uso |
+|---|---|
+| `--fade-a` / `--fade-b` | intensidade padrão (tratamentos, quiz, blog) |
+| `--fade-suave-a` / `--fade-suave-b` | versão lavada, para as seções com muito texto |
+| `--fade-forte-a` / `--fade-forte-b` | versão saturada (hero, resultados, depoimentos) |
+| `--fade-escuro-a` / `--fade-escuro-b` | faixas escuras (marquee, banner de CTA, card de contato e rodapé) |
+
+A distribuição seção a seção fica logo abaixo da regra do `body`, num bloco
+comentado com a ordem da página. Para trocar o efeito inteiro, mexa só nos
+tokens; para trocar uma seção de sentido, troque o `-a` pelo `-b` nesse bloco.
 
 ## Tipografia
 
@@ -119,7 +142,12 @@ Recursos externos carregados via CDN (funcionam normalmente em HTTPS):
 
 ### Seções
 
-`#hero` (carrossel de fotos da clínica) · `#sobre` · `#tratamentos` (com filtro por categoria) · `#resultados` (carrossel de antes e depois) · quiz "Descubra o seu" · `#depoimentos` · Instagram · `#blog` (artigos abrem na própria página) · `#contato` (formulário que envia para o WhatsApp) · rodapé
+`#destaque` (faixa de fotos grandes de ponta a ponta) · `#hero` (a parte escrita: título, chamada e números) · `#sobre` · `#tratamentos` (com filtro por categoria) · `#resultados` (carrossel de antes e depois) · `#equipe` · `#cursos` · quiz "Descubra o seu" · `#diferenciais` · `#depoimentos` · Instagram · `#blog` (artigos abrem na própria página) · `#contato` (formulário que envia para o WhatsApp) · rodapé
+
+Os três carrosséis de fotos (`#destaque`, `#sobre` e o de antes e depois)
+compartilham a mesma mecânica de arraste, setas e bolinhas — a função
+`montarCarrosselFotos` no fim do `index.html` monta os dois primeiros, mudando
+só o prefixo das classes (`destaque-` e `about-`).
 
 ### Contatos configurados no site
 

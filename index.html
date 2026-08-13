@@ -16,7 +16,7 @@
 
 <header id="navbar">
   <div class="container nav-inner">
-    <a href="#hero" class="logo" aria-label="Clínica PIO — página inicial"><img src="images/logo-pio-transparente.png" alt="Clínica PIO Beleza e Saúde"></a>
+    <a href="#destaque" class="logo" aria-label="Clínica PIO — página inicial"><img src="images/logo-pio-transparente.png" alt="Clínica PIO Beleza e Saúde"></a>
     <nav class="nav-links" id="navLinks">
       <a href="#sobre">Sobre</a>
       <a href="#tratamentos">Tratamentos</a>
@@ -32,6 +32,41 @@
     </div>
   </div>
 </header>
+
+<!-- ===================== DESTAQUE: FAIXA DE FOTOS =====================
+     Fotos grandes atravessando a tela de ponta a ponta, no espirito do
+     site antigo da clinica. As fotos vieram do carrossel que ficava
+     dentro do #hero — la embaixo sobrou so a parte escrita.
+     A mecanica e a mesma dos outros carrosseis do site (setas, bolinhas,
+     arraste e passagem automatica vem de montarCarrosselFotos, no fim
+     do arquivo).
+     SAO 4 FOTOS, E O LIMITE — pedido da clinica. Aqui entram so fotos de
+     TRATAMENTO; foto do ambiente da clinica nao entra nesta faixa.
+     PARA TROCAR: substitua o src de um bloco .destaque-slide. Se um dia
+     precisar mexer na quantidade, bolinhas, contador e setas se ajustam
+     sozinhos — mas o combinado sao 4. As fotos de banner da clinica sao
+     1440x576 (proporcao 5:2), que e a proporcao da faixa: nessa medida
+     elas aparecem inteiras, sem corte.
+     Nenhuma foto daqui usa loading="lazy" de proposito: como os slides
+     ficam deslocados para fora da tela, o navegador adiaria o download e
+     a segunda foto entraria em branco na primeira virada. Por isso vale
+     manter os arquivos leves — ver a nota sobre compressao no README. -->
+<section id="destaque" aria-label="Destaques da Clínica PIO">
+  <div class="destaque-carousel" id="destaqueCarousel">
+    <div class="destaque-viewport">
+      <div class="destaque-track">
+        <div class="destaque-slide"><img src="images/drenagemlinfatica.jpeg" fetchpriority="high" alt="Drenagem linfática na Clínica PIO"></div>
+        <div class="destaque-slide"><img src="images/limpeza de pele.jpeg" alt="Limpeza de pele na Clínica PIO"></div>
+        <div class="destaque-slide"><img src="images/tratamendogorduralocalizada.jpeg" alt="Tratamento de gordura localizada na Clínica PIO"></div>
+        <div class="destaque-slide"><img src="images/massagens.jpeg" alt="Massagens na Clínica PIO"></div>
+      </div>
+      <button type="button" class="destaque-nav prev" aria-label="Foto anterior"><i class="ri-arrow-left-s-line"></i></button>
+      <button type="button" class="destaque-nav next" aria-label="Próxima foto"><i class="ri-arrow-right-s-line"></i></button>
+      <span class="destaque-counter" aria-hidden="true">1/4</span>
+      <div class="destaque-dots" role="tablist" aria-label="Escolher foto"></div>
+    </div>
+  </div>
+</section>
 
 <section id="hero">
   <div class="blob blob-1"></div><div class="blob blob-2"></div><div class="blob blob-3"></div>
@@ -50,37 +85,13 @@
         <div class="stat-item"><h3 data-count="48" data-decimal="10">0</h3><span>Nota no Google</span></div>
       </div>
     </div>
-    <div class="hero-visual">
-      <div class="hero-carousel" id="heroCarousel">
-        <div class="hero-viewport">
-          <div class="hero-track">
-            <div class="hero-slide"><img src="images/drenagemlinfatica.jpeg" alt="Recepção da Clínica PIO"></div>
-            <div class="hero-slide"><img loading="lazy" src="images/limpeza de pele.jpeg" alt="Sala de atendimento da Clínica PIO"></div>
-            <div class="hero-slide"><img loading="lazy" src="images/tratamendogorduralocalizada.jpeg" alt="Equipe da Clínica PIO"></div>
-            <div class="hero-slide"><img loading="lazy" src="images/ambiente.jpg" alt="Ambiente da Clínica PIO"></div>
-          </div>
-          <button type="button" class="hero-nav prev" aria-label="Foto anterior"><i class="ri-arrow-left-s-line"></i></button>
-          <button type="button" class="hero-nav next" aria-label="Próxima foto"><i class="ri-arrow-right-s-line"></i></button>
-          <span class="hero-counter" aria-hidden="true">1/4</span>
-          <div class="hero-dots" role="tablist" aria-label="Escolher foto"></div>
-        </div>
-      </div>
-      <div class="floating-card rating">
-        <i class="ri-google-fill"></i>
-        <div><span class="stars">★★★★★</span><strong>4,8 / 5,0</strong><small>+120 avaliações no Google</small></div>
-      </div>
-      <div class="floating-card years">
-        <i class="ri-award-fill"></i>
-        <div><strong>+7.000</strong><small>clientes atendidos</small></div>
-      </div>
-    </div>
   </div>
 </section>
 
 <div class="marquee-wrap">
   <div class="marquee-track">
-    <span><i class="ri-asterisk"></i>Medicina Funcional Integrativa<i class="ri-asterisk"></i>Biomedicina Estética Avançada<i class="ri-asterisk"></i>Odontologia Estética<i class="ri-asterisk"></i>Fotodepilação<i class="ri-asterisk"></i>Estética Corporal<i class="ri-asterisk"></i>Estética Facial<i class="ri-asterisk"></i>Fisioterapia<i class="ri-asterisk"></i>Massoterapia</span>
-    <span><i class="ri-asterisk"></i>Medicina Funcional Integrativa<i class="ri-asterisk"></i>Biomedicina Estética Avançada<i class="ri-asterisk"></i>Odontologia Estética<i class="ri-asterisk"></i>Fotodepilação<i class="ri-asterisk"></i>Estética Corporal<i class="ri-asterisk"></i>Estética Facial<i class="ri-asterisk"></i>Fisioterapia<i class="ri-asterisk"></i>Massoterapia</span>
+    <span><i class="ri-asterisk"></i>Medicina Funcional Integrativa<i class="ri-asterisk"></i>Biomedicina Estética Avançada<i class="ri-asterisk"></i>Odontologia Estética<i class="ri-asterisk"></i>Fotodepilação<i class="ri-asterisk"></i>Estética Corporal<i class="ri-asterisk"></i>Estética Facial<i class="ri-asterisk"></i>Massoterapia<i class="ri-asterisk"></i>Massagem</span>
+    <span><i class="ri-asterisk"></i>Medicina Funcional Integrativa<i class="ri-asterisk"></i>Biomedicina Estética Avançada<i class="ri-asterisk"></i>Odontologia Estética<i class="ri-asterisk"></i>Fotodepilação<i class="ri-asterisk"></i>Estética Corporal<i class="ri-asterisk"></i>Estética Facial<i class="ri-asterisk"></i>Massoterapia<i class="ri-asterisk"></i>Massagem</span>
   </div>
 </div>
 
@@ -100,10 +111,10 @@
         <div class="about-viewport">
           <div class="about-track">
             <div class="about-slide"><img src="images/hall social.jpeg" alt="Recepção Clínica PIO"></div>
-            <div class="about-slide"><img loading="lazy" src="https://placehold.co/700x933/f7bfd8/33103a?text=Foto+2" alt="Ambiente da Clínica PIO"></div>
-            <div class="about-slide"><img loading="lazy" src="https://placehold.co/700x933/81638b/fbd5e5?text=Foto+3" alt="Sala de atendimento da Clínica PIO"></div>
-            <div class="about-slide"><img loading="lazy" src="https://placehold.co/700x933/f7bfd8/33103a?text=Foto+4" alt="Equipe da Clínica PIO"></div>
-            <div class="about-slide"><img loading="lazy" src="https://placehold.co/700x933/81638b/fbd5e5?text=Foto+5" alt="Estrutura da Clínica PIO"></div>
+            <div class="about-slide"><img loading="lazy" src="https://placehold.co/700x933/f9bcd9/3a1142?text=Foto+2" alt="Ambiente da Clínica PIO"></div>
+            <div class="about-slide"><img loading="lazy" src="https://placehold.co/700x933/8a6395/fcd3e6?text=Foto+3" alt="Sala de atendimento da Clínica PIO"></div>
+            <div class="about-slide"><img loading="lazy" src="https://placehold.co/700x933/f9bcd9/3a1142?text=Foto+4" alt="Equipe da Clínica PIO"></div>
+            <div class="about-slide"><img loading="lazy" src="https://placehold.co/700x933/8a6395/fcd3e6?text=Foto+5" alt="Estrutura da Clínica PIO"></div>
           </div>
           <button type="button" class="about-nav prev" aria-label="Foto anterior"><i class="ri-arrow-left-s-line"></i></button>
           <button type="button" class="about-nav next" aria-label="Próxima foto"><i class="ri-arrow-right-s-line"></i></button>
@@ -307,42 +318,46 @@
         </div>
       </article>
       <article class="treat-card show" data-cat="saude corporal">
-        <div class="ic"><i class="ri-walk-line"></i></div>
-        <h4>Fisioterapia</h4>
-        <p>Reabilitação, alívio de dores e recuperação de movimento.</p>
-        <button type="button" class="card-more" aria-expanded="false" aria-controls="treatPanel"><span>Saiba mais</span> <i class="ri-arrow-right-line"></i></button>
-        <div class="post-content">
-          <span class="meta">Saúde e corporal</span>
-          <h3>Fisioterapia</h3>
-          <p>As sessões de fisioterapia na Clínica PIO são voltadas ao fortalecimento da articulação, ao alívio da dor e à prevenção do agravamento de lesões, com terapias anti-inflamatórias associadas.</p>
-          <h4>Fisioterapia dermatofuncional</h4>
-          <p>Nossa fisioterapeuta está habilitada a atender com eletroterapia nos casos de flacidez corporal e facial, gordura localizada, celulite, estrias e pré e pós-operatório. A área abrange ainda massagem relaxante, massagem terapêutica para dor, bambuterapia, drenagem linfática, limpeza de pele e peeling para rejuvenescimento da pele — um trabalho que melhora a parte funcional e, junto com ela, a autoestima e a qualidade de vida.</p>
-          <h4>Pós-operatório</h4>
-          <p>A fisioterapia dispõe de técnicas eficazes para tratar os tecidos em cicatrização, usadas na prevenção e no controle da formação de fibroses. Para o tratamento funcionar é preciso respeitar as características do tecido cicatricial — por isso o acompanhamento deve ser feito por profissional especializado.</p>
-          <h4>Vacuum laser</h4>
-          <p>A terapia com ventosas é usada há milhares de anos. Costuma ser associada à medicina tradicional chinesa, mas aparece em várias culturas: está no Papiro de Ebers, escrito no Egito por volta de 1550 a.C., nos textos de Hipócrates e no uso dos povos indígenas norte-americanos e da medicina islâmica.</p>
-        </div>
-      </article>
-      <article class="treat-card show" data-cat="saude corporal">
         <div class="ic"><i class="ri-hand-heart-line"></i></div>
         <h4>Massoterapia</h4>
-        <p>Massagens terapêuticas e relaxantes para corpo e mente.</p>
+        <p>Técnicas terapêuticas para dor, inchaço e modelagem do corpo.</p>
         <button type="button" class="card-more" aria-expanded="false" aria-controls="treatPanel"><span>Saiba mais</span> <i class="ri-arrow-right-line"></i></button>
         <div class="post-content">
           <span class="meta">Saúde e corporal</span>
           <h3>Massoterapia</h3>
-          <p>Diferentes técnicas de massagem, escolhidas conforme o que você procura: relaxar, aliviar uma dor específica, tratar inchaço ou modelar o corpo.</p>
+          <p>A massoterapia reúne as técnicas de massagem com objetivo terapêutico: tratar uma dor específica, controlar o inchaço, ativar a circulação e trabalhar o contorno do corpo. Cada protocolo é definido depois da avaliação, conforme a sua queixa.</p>
           <h4>Técnicas disponíveis</h4>
           <ul>
             <li><strong>Drenagem linfática</strong> — movimentos suaves e contínuos</li>
             <li><strong>Massagem modeladora</strong> — movimentos intensos e profundos</li>
-            <li><strong>Massagem relaxante</strong> — pressão constante e ritmo lento</li>
             <li><strong>Massagem terapêutica</strong> — shiatsu e liberação miofascial</li>
-            <li><strong>Bambuterapia</strong> — varas de bambu como extensão das mãos</li>
-            <li><strong>Pedras quentes</strong> — basalto aquecido</li>
+            <li><strong>Liberação miofascial</strong> — desativação dos pontos-gatilho</li>
+            <li><strong>Fascite plantar</strong> — alívio da dor no pé e no calcanhar</li>
+            <li><strong>Pré e pós-operatório</strong> — recuperação e controle do inchaço</li>
           </ul>
           <p>A drenagem linfática manual usa movimentos suaves, contínuos, lentos e harmônicos para coletar líquidos e transportá-los pelos vasos. É indicada em casos de inchaço, circulação de retorno comprometida e musculatura tensa.</p>
-          <p>A massagem modeladora vai na direção oposta: movimentos mais intensos, que alcançam as camadas profundas da pele, melhoram a circulação e o metabolismo local e agem especialmente sobre a celulite. Já a terapêutica reúne shiatsu, relaxamento e liberação miofascial para dores específicas — cervical, lombar, ciático — com alívio imediato e desativação dos pontos-gatilho.</p>
+          <p>A massagem modeladora vai na direção oposta: movimentos mais intensos, que alcançam as camadas profundas da pele, melhoram a circulação e o metabolismo local e agem especialmente sobre a celulite.</p>
+          <p>Já a massagem terapêutica reúne shiatsu e liberação miofascial para dores específicas — cervical, lombar, ciático — com alívio imediato e desativação dos pontos-gatilho.</p>
+        </div>
+      </article>
+      <article class="treat-card show" data-cat="corporal">
+        <div class="ic"><i class="ri-open-arm-line"></i></div>
+        <h4>Massagem</h4>
+        <p>Massagens de relaxamento e bem-estar para corpo e mente.</p>
+        <button type="button" class="card-more" aria-expanded="false" aria-controls="treatPanel"><span>Saiba mais</span> <i class="ri-arrow-right-line"></i></button>
+        <div class="post-content">
+          <span class="meta">Corporal</span>
+          <h3>Massagem</h3>
+          <p>Aqui o objetivo é relaxar. São sessões pensadas para aliviar a tensão do dia a dia, soltar a musculatura e devolver a sensação de bem-estar — sem a finalidade clínica dos protocolos de massoterapia.</p>
+          <h4>Nossas massagens</h4>
+          <ul>
+            <li><strong>Massagem relaxante</strong> — pressão constante e ritmo lento</li>
+            <li><strong>Pedras quentes</strong> — basalto aquecido sobre o corpo</li>
+            <li><strong>Bambuterapia</strong> — varas de bambu como extensão das mãos</li>
+            <li><strong>Corpo todo com modelagem abdominal</strong> — sessão completa</li>
+            <li><strong>Esculpe detox</strong> — relaxamento com estímulo circulatório</li>
+          </ul>
+          <p>A massagem relaxante trabalha com pressão constante e ritmo lento, do começo ao fim da sessão: é ela que desacelera a respiração, solta os ombros e tira o corpo do estado de alerta em que a rotina o mantém.</p>
           <p>Na bambuterapia, as varas de bambu agem como se fossem o prolongamento dos dedos, alcançando coxas, glúteos, flancos e abdômen, e também relaxando pés e costas. E a massagem com pedras quentes usa basalto aquecido para relaxar, ativar a circulação, aliviar tensões musculares e favorecer a drenagem.</p>
         </div>
       </article>
@@ -374,8 +389,8 @@
 
             <div class="ba-slide">
               <div class="ba-slider">
-                <img class="ba-img" src="https://placehold.co/800x600/dac9df/81638b?text=ANTES+Criolip%C3%B3lise" alt="Antes do tratamento de criolipólise">
-                <img class="ba-img ba-after" src="https://placehold.co/800x600/f7bfd8/33103a?text=DEPOIS+Criolip%C3%B3lise" alt="Depois do tratamento de criolipólise">
+                <img class="ba-img" src="https://placehold.co/800x600/e2ccea/8a6395?text=ANTES+Criolip%C3%B3lise" alt="Antes do tratamento de criolipólise">
+                <img class="ba-img ba-after" src="https://placehold.co/800x600/f9bcd9/3a1142?text=DEPOIS+Criolip%C3%B3lise" alt="Depois do tratamento de criolipólise">
                 <span class="ba-tag before-tag">Antes</span>
                 <span class="ba-tag after-tag">Depois</span>
                 <input type="range" min="0" max="100" value="50" class="ba-range" aria-label="Comparar antes e depois — Criolipólise">
@@ -386,8 +401,8 @@
 
             <div class="ba-slide">
               <div class="ba-slider">
-                <img class="ba-img" loading="lazy" src="https://placehold.co/800x600/dac9df/81638b?text=ANTES+Hidrolipoclasia" alt="Antes do tratamento de hidrolipoclasia">
-                <img class="ba-img ba-after" loading="lazy" src="https://placehold.co/800x600/f7bfd8/33103a?text=DEPOIS+Hidrolipoclasia" alt="Depois do tratamento de hidrolipoclasia">
+                <img class="ba-img" loading="lazy" src="https://placehold.co/800x600/e2ccea/8a6395?text=ANTES+Hidrolipoclasia" alt="Antes do tratamento de hidrolipoclasia">
+                <img class="ba-img ba-after" loading="lazy" src="https://placehold.co/800x600/f9bcd9/3a1142?text=DEPOIS+Hidrolipoclasia" alt="Depois do tratamento de hidrolipoclasia">
                 <span class="ba-tag before-tag">Antes</span>
                 <span class="ba-tag after-tag">Depois</span>
                 <input type="range" min="0" max="100" value="50" class="ba-range" aria-label="Comparar antes e depois — Hidrolipoclasia não aspirativa">
@@ -398,8 +413,8 @@
 
             <div class="ba-slide">
               <div class="ba-slider">
-                <img class="ba-img" loading="lazy" src="https://placehold.co/800x600/dac9df/81638b?text=ANTES+Preenchimento" alt="Antes do preenchimento facial">
-                <img class="ba-img ba-after" loading="lazy" src="https://placehold.co/800x600/f7bfd8/33103a?text=DEPOIS+Preenchimento" alt="Depois do preenchimento facial">
+                <img class="ba-img" loading="lazy" src="https://placehold.co/800x600/e2ccea/8a6395?text=ANTES+Preenchimento" alt="Antes do preenchimento facial">
+                <img class="ba-img ba-after" loading="lazy" src="https://placehold.co/800x600/f9bcd9/3a1142?text=DEPOIS+Preenchimento" alt="Depois do preenchimento facial">
                 <span class="ba-tag before-tag">Antes</span>
                 <span class="ba-tag after-tag">Depois</span>
                 <input type="range" min="0" max="100" value="50" class="ba-range" aria-label="Comparar antes e depois — Preenchimento facial">
@@ -410,8 +425,8 @@
 
             <div class="ba-slide">
               <div class="ba-slider">
-                <img class="ba-img" loading="lazy" src="https://placehold.co/800x600/dac9df/81638b?text=ANTES+Peeling" alt="Antes do peeling coreano">
-                <img class="ba-img ba-after" loading="lazy" src="https://placehold.co/800x600/f7bfd8/33103a?text=DEPOIS+Peeling" alt="Depois do peeling coreano">
+                <img class="ba-img" loading="lazy" src="https://placehold.co/800x600/e2ccea/8a6395?text=ANTES+Peeling" alt="Antes do peeling coreano">
+                <img class="ba-img ba-after" loading="lazy" src="https://placehold.co/800x600/f9bcd9/3a1142?text=DEPOIS+Peeling" alt="Depois do peeling coreano">
                 <span class="ba-tag before-tag">Antes</span>
                 <span class="ba-tag after-tag">Depois</span>
                 <input type="range" min="0" max="100" value="50" class="ba-range" aria-label="Comparar antes e depois — Peeling coreano">
@@ -422,8 +437,8 @@
 
             <div class="ba-slide">
               <div class="ba-slider">
-                <img class="ba-img" loading="lazy" src="https://placehold.co/800x600/dac9df/81638b?text=ANTES+Sorriso" alt="Antes da harmonização do sorriso">
-                <img class="ba-img ba-after" loading="lazy" src="https://placehold.co/800x600/f7bfd8/33103a?text=DEPOIS+Sorriso" alt="Depois da harmonização do sorriso">
+                <img class="ba-img" loading="lazy" src="https://placehold.co/800x600/e2ccea/8a6395?text=ANTES+Sorriso" alt="Antes da harmonização do sorriso">
+                <img class="ba-img ba-after" loading="lazy" src="https://placehold.co/800x600/f9bcd9/3a1142?text=DEPOIS+Sorriso" alt="Depois da harmonização do sorriso">
                 <span class="ba-tag before-tag">Antes</span>
                 <span class="ba-tag after-tag">Depois</span>
                 <input type="range" min="0" max="100" value="50" class="ba-range" aria-label="Comparar antes e depois — Harmonização do sorriso">
@@ -434,8 +449,8 @@
 
             <div class="ba-slide">
               <div class="ba-slider">
-                <img class="ba-img" loading="lazy" src="https://placehold.co/800x600/dac9df/81638b?text=ANTES+Fotodepila%C3%A7%C3%A3o" alt="Antes da fotodepilação">
-                <img class="ba-img ba-after" loading="lazy" src="https://placehold.co/800x600/f7bfd8/33103a?text=DEPOIS+Fotodepila%C3%A7%C3%A3o" alt="Depois da fotodepilação">
+                <img class="ba-img" loading="lazy" src="https://placehold.co/800x600/e2ccea/8a6395?text=ANTES+Fotodepila%C3%A7%C3%A3o" alt="Antes da fotodepilação">
+                <img class="ba-img ba-after" loading="lazy" src="https://placehold.co/800x600/f9bcd9/3a1142?text=DEPOIS+Fotodepila%C3%A7%C3%A3o" alt="Depois da fotodepilação">
                 <span class="ba-tag before-tag">Antes</span>
                 <span class="ba-tag after-tag">Depois</span>
                 <input type="range" min="0" max="100" value="50" class="ba-range" aria-label="Comparar antes e depois — Fotodepilação">
@@ -466,10 +481,10 @@
     <div class="center reveal" style="max-width:700px;">
       <div class="eyebrow">Nossa equipe</div>
       <h2 class="title">Conheça quem vai cuidar de você</h2>
-      <p class="subtitle">Uma equipe multidisciplinar reunida no mesmo lugar: odontologia, estética facial e terapias corporais. Clique em um profissional para ver o perfil completo.</p>
+      <p class="subtitle">Uma equipe multidisciplinar reunida no mesmo lugar: odontologia, estética facial e estética corporal. Clique em um profissional para ver o perfil completo.</p>
     </div>
 
-    <div class="trigger-grid">
+    <div class="trigger-grid cols-2">
       <button type="button" class="trigger-card reveal" data-painel="painel-equipe" data-alvo="prof-adriano">
         <span class="trigger-foto"><img src="images/Dr. Adriano Zanutto.jpeg" width="600" height="720" alt="Dr. Adriano Zanutto, dentista da Clínica PIO"></span>
         <span class="trigger-body">
@@ -488,14 +503,6 @@
         </span>
       </button>
 
-      <button type="button" class="trigger-card reveal reveal-delay-2" data-painel="painel-equipe" data-alvo="prof-william">
-        <span class="trigger-foto"><img loading="lazy" src="images/Willian Duarte.jpg" width="600" height="720" alt="William Duarte, massoterapeuta da Clínica PIO"></span>
-        <span class="trigger-body">
-          <h3>William Duarte</h3>
-          <span class="trigger-cargo">Massoterapeuta integrativo</span>
-          <span class="trigger-mais">Ver perfil <i class="ri-arrow-right-line"></i></span>
-        </span>
-      </button>
     </div>
 
     <div class="secao-acao reveal">
@@ -504,7 +511,7 @@
   </div>
 </section>
 
-<section id="cursos" style="background:var(--cream);">
+<section id="cursos">
   <div class="container">
     <div class="center reveal" style="max-width:700px;">
       <div class="eyebrow">Formação profissional</div>
@@ -625,9 +632,8 @@
       <p class="subtitle">Avaliações reais de pacientes, publicadas no Google — 4,8 de 5 em 120 avaliações.</p>
     </div>
     <div class="test-carousel reveal reveal-delay-1">
-      <!-- REAIS: copiadas do perfil da clínica no Google Maps -->
+      <!-- REAL: copiada do perfil da clínica no Google Maps -->
       <div class="test-slide active"><div class="stars">★★★★★</div><p>"Eu amo esse lugar, me sinto acolhida. As mãos da Eli são simplesmente regenerativas! Energia positiva total! Já está na minha lista de lugar preferido!"</p><strong>Rosangela Glasses</strong><span>Avaliação no Google · há 1 mês</span></div>
-      <div class="test-slide"><div class="stars">★★★★★</div><p>"Um lugar maravilhoso, aconchegante e ótimos profissionais."</p><strong>William de Souza Paulino Duarte</strong><span>Avaliação no Google · há 1 ano</span></div>
 
       <!-- EXEMPLOS: textos de demonstração, NÃO são clientes reais.
            Substituir por avaliações verdadeiras antes de o site entrar no ar. -->
@@ -649,8 +655,9 @@
       </div>
       <a href="https://www.instagram.com/clinicapiolondrina/" target="_blank" class="btn btn-outline reveal"><i class="ri-instagram-line"></i> Seguir perfil</a>
     </div>
-    <!-- Janelinha do Instagram: grade 3x3 com os posts REAIS de
-         @clinicapiolondrina, no mesmo formato do feed do app.
+    <!-- Janelinha do Instagram: grade 3x2 com os posts REAIS de
+         @clinicapiolondrina, em tiles 4:5 (retrato), no mesmo formato do
+         feed do app.
          As miniaturas ficam em images/instagram/ (baixadas do proprio perfil)
          porque a URL do CDN da Meta e assinada e expira em poucos dias.
          O embed oficial (embed.js) foi descartado: o iframe fica com altura 0
@@ -704,21 +711,6 @@
           <img loading="lazy" src="images/instagram/post-6.jpg" alt="Reel da Clínica PIO sobre laser CO2 com PDRN no tratamento de estrias">
           <span class="insta-tipo"><i class="ri-play-circle-fill"></i></span>
           <span class="insta-overlay"><span>Laser CO2 + PDRN para estrias</span></span>
-        </a>
-        <a class="insta-post" href="https://www.instagram.com/reel/DbOf_NGs357/" target="_blank" rel="noopener">
-          <img loading="lazy" src="images/instagram/post-7.jpg" alt="Reel da Clínica PIO sobre liberação miofascial">
-          <span class="insta-tipo"><i class="ri-play-circle-fill"></i></span>
-          <span class="insta-overlay"><span>Liberação miofascial</span></span>
-        </a>
-        <a class="insta-post" href="https://www.instagram.com/reel/DbOXxWAMEsr/" target="_blank" rel="noopener">
-          <img loading="lazy" src="images/instagram/post-8.jpg" alt="Reel da Clínica PIO sobre massagem com pedras quentes">
-          <span class="insta-tipo"><i class="ri-play-circle-fill"></i></span>
-          <span class="insta-overlay"><span>Massagem com pedras quentes</span></span>
-        </a>
-        <a class="insta-post" href="https://www.instagram.com/reel/DalhVp7sQhW/" target="_blank" rel="noopener">
-          <img loading="lazy" src="images/instagram/post-9.jpg" alt="Reel da Clínica PIO sobre massagens">
-          <span class="insta-tipo"><i class="ri-play-circle-fill"></i></span>
-          <span class="insta-overlay"><span>Massagens que cuidam de você</span></span>
         </a>
       </div>
 
@@ -864,14 +856,14 @@
             <option>Estética Corporal</option>
             <option>Odontologia Estética</option>
             <option>Medicina Funcional Integrativa</option>
-            <option>Fisioterapia</option>
             <option>Massoterapia</option>
+            <option>Massagem</option>
             <option>Massagem relaxante</option>
             <option>Drenagem Linfática</option>
             <option>Pós Operatório</option>
             <option>Massagem Terapêutica</option>
-            <option>Liberação Miofacial</option>
-            <option>Facite Plantar</option>
+            <option>Liberação Miofascial</option>
+            <option>Fascite Plantar</option>
             <option>Esculpe Detox</option>
             <option>Massagem corpo todo com modelagem abdominal</option>
             <option>Outro</option>
@@ -904,7 +896,7 @@
       <div class="footer-col"><h4>Tratamentos</h4><ul>
         <li><a href="#tratamentos">Medicina Funcional</a></li><li><a href="#tratamentos">Biomedicina Estética</a></li>
         <li><a href="#tratamentos">Odontologia Estética</a></li><li><a href="#tratamentos">Estética Corporal</a></li>
-        <li><a href="#tratamentos">Fisioterapia</a></li><li><a href="#tratamentos">Massoterapia</a></li>
+        <li><a href="#tratamentos">Massoterapia</a></li><li><a href="#tratamentos">Massagem</a></li>
       </ul></div>
       <div class="footer-col"><h4>Contato</h4><ul>
         <li>Rua Ibiporã, 426 - Londrina, PR</li><li>(43) 3327-6200</li><li>(43) 99165-6200</li>
@@ -934,7 +926,7 @@
     </div>
 
     <div class="painel-corpo">
-      <div class="team-grid">
+      <div class="team-grid cols-2">
 
         <article class="team-card" id="prof-adriano">
           <div class="team-foto"><img loading="lazy" src="images/Dr. Adriano Zanutto.jpeg" width="600" height="720" alt="Dr. Adriano Zanutto, dentista da Clínica PIO"></div>
@@ -956,23 +948,13 @@
           </div>
         </article>
 
-        <article class="team-card" id="prof-william">
-          <div class="team-foto"><img loading="lazy" src="images/Willian Duarte.jpg" width="600" height="720" alt="William Duarte, massoterapeuta da Clínica PIO"></div>
-          <div class="team-info">
-            <h3>William Duarte</h3>
-            <span class="team-cargo">Massoterapeuta integrativo — técnicas ocidentais e orientais</span>
-            <p>Atende com massagem terapêutica, relaxante e drenagem, unindo abordagens ocidentais e orientais.</p>
-            <a href="#tratamentos" class="team-link" data-fechar>Ver massoterapia <i class="ri-arrow-right-line"></i></a>
-          </div>
-        </article>
-
       </div>
 
       <div class="team-nota">
         <i class="ri-team-line"></i>
         <div>
           <h3>Uma equipe maior do que cabe neste painel</h3>
-          <p>A Clínica PIO reúne profissionais de medicina funcional, biomedicina estética, fisioterapia e odontologia. Na avaliação gratuita você é direcionado ao especialista certo para o seu objetivo.</p>
+          <p>A Clínica PIO reúne profissionais de medicina funcional, biomedicina estética, terapias corporais e odontologia. Na avaliação gratuita você é direcionado ao especialista certo para o seu objetivo.</p>
           <a href="#contato" class="btn btn-primary" data-fechar><i class="ri-calendar-check-line"></i> Agendar avaliação gratuita</a>
         </div>
       </div>
@@ -1346,7 +1328,7 @@ function montarCarrosselFotos(rootId, prefixo){
   hGoTo(0);
   hStart();
 }
-montarCarrosselFotos('heroCarousel', 'hero');
+montarCarrosselFotos('destaqueCarousel', 'destaque');
 montarCarrosselFotos('aboutCarousel', 'about');
 
 /* Antes e depois — carrossel com um comparador em cada slide */
@@ -1528,7 +1510,7 @@ function goToSlide(i){
   slides[current].classList.add('active');
   dotsWrap.children[current].classList.add('active');
 }
-setInterval(function(){ goToSlide((current + 1) % slides.length); }, 5500);
+setInterval(function(){ goToSlide((current + 1) % slides.length); }, 4000);
 
 /* Formulário (front-end apenas) */
 document.getElementById('contactForm').addEventListener('submit', function(e){
