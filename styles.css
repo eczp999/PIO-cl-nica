@@ -173,13 +173,15 @@ header#navbar{position:fixed;top:0;left:0;width:100%;z-index:1000;padding:26px 0
 .hero-stats-row{display:flex;gap:40px;flex-wrap:wrap;justify-content:center;}
 .hero-stats-row .stat-item h3{color:var(--purple-800);font-size:2rem;margin-bottom:4px;}
 .hero-stats-row .stat-item span{color:var(--ink-soft);font-size:.82rem;text-transform:uppercase;letter-spacing:.08em;}
-/* carrossel vertical do "sobre" — mesma mecanica da faixa de destaque,
-   muda a proporcao (3:4) e a moldura arredondada */
+/* carrossel do "sobre" — mesma mecanica da faixa de destaque, muda a
+   moldura arredondada e a proporcao: quadrada (1:1), porque as fotos da
+   clinica vem misturadas (tres em pe, duas deitadas) e no quadrado todas
+   perdem a mesma fatia, em vez de uma orientacao ficar mutilada */
 .about-carousel{position:relative;}
 .about-viewport{position:relative;border-radius:var(--radius-lg);overflow:hidden;box-shadow:var(--shadow-strong);border:1px solid rgba(255,255,255,.6);background:var(--lilac-300);touch-action:pan-y;}
 .about-track{display:flex;transition:transform .55s cubic-bezier(.4,0,.2,1);}
 .about-track.no-anim{transition:none;}
-.about-slide{flex:0 0 100%;min-width:0;cursor:grab;user-select:none;aspect-ratio:3/4;}
+.about-slide{flex:0 0 100%;min-width:0;cursor:grab;user-select:none;aspect-ratio:1/1;}
 .about-slide img{width:100%;height:100%;object-fit:cover;pointer-events:none;}
 .about-nav{position:absolute;top:50%;transform:translateY(-50%);width:40px;height:40px;border-radius:50%;border:0;background:rgba(255,255,255,.9);color:var(--purple-900);display:flex;align-items:center;justify-content:center;font-size:1.4rem;cursor:pointer;z-index:4;box-shadow:0 6px 18px rgba(0,0,0,.28);opacity:0;transition:opacity .3s, background .3s;}
 .about-carousel:hover .about-nav,.about-nav:focus-visible{opacity:1;}

@@ -107,14 +107,22 @@
 <section id="sobre">
   <div class="container about-grid">
     <div class="about-media reveal">
+      <!-- As 5 fotos reais da clinica, NA ORDEM definida por ela:
+           1 fachada · 2 recepcao · 3 sala de espera · 4 sala de atendimento
+           · 5 sala de fotodepilacao. Trocar a ordem aqui muda a ordem no site.
+           A moldura e quadrada (1:1) de proposito: as fotos 1, 2 e 5 sao em pe
+           e as 3 e 4 sao deitadas — no quadrado todas perdem a mesma fatia
+           (12,5% de cada lado), em vez de uma orientacao ser mutilada.
+           Sem loading="lazy" pelo mesmo motivo da faixa de destaque: os
+           slides ficam fora da tela e a foto seguinte entraria em branco. -->
       <div class="about-carousel" id="aboutCarousel">
         <div class="about-viewport">
           <div class="about-track">
-            <div class="about-slide"><img src="images/hall social.jpeg" alt="Recepção Clínica PIO"></div>
-            <div class="about-slide"><img loading="lazy" src="https://placehold.co/700x933/f9bcd9/3a1142?text=Foto+2" alt="Ambiente da Clínica PIO"></div>
-            <div class="about-slide"><img loading="lazy" src="https://placehold.co/700x933/8a6395/fcd3e6?text=Foto+3" alt="Sala de atendimento da Clínica PIO"></div>
-            <div class="about-slide"><img loading="lazy" src="https://placehold.co/700x933/f9bcd9/3a1142?text=Foto+4" alt="Equipe da Clínica PIO"></div>
-            <div class="about-slide"><img loading="lazy" src="https://placehold.co/700x933/8a6395/fcd3e6?text=Foto+5" alt="Estrutura da Clínica PIO"></div>
+            <div class="about-slide"><img src="images/sobre-1-fachada.webp" alt="Fachada da Clínica PIO, na Rua Ibiporã, 426, em Londrina"></div>
+            <div class="about-slide"><img src="images/sobre-2-recepcao.webp" alt="Recepção da Clínica PIO"></div>
+            <div class="about-slide"><img src="images/sobre-3-sala-de-espera.webp" alt="Sala de espera da Clínica PIO"></div>
+            <div class="about-slide"><img src="images/sobre-4-sala-de-atendimento.webp" alt="Sala de atendimento da Clínica PIO, com os equipamentos de estética facial"></div>
+            <div class="about-slide"><img src="images/sobre-5-fotodepilacao.webp" alt="Sala de fotodepilação da Clínica PIO"></div>
           </div>
           <button type="button" class="about-nav prev" aria-label="Foto anterior"><i class="ri-arrow-left-s-line"></i></button>
           <button type="button" class="about-nav next" aria-label="Próxima foto"><i class="ri-arrow-right-s-line"></i></button>
@@ -1262,7 +1270,7 @@ function montarCarrosselFotos(rootId, prefixo){
     dot.type = 'button';
     dot.className = prefixo + '-dot';
     dot.setAttribute('aria-label', 'Foto ' + (i + 1) + ' de ' + hSlides.length);
-    dot.addEventListener('click', function(){ hStop(); hGoTo(i); });
+    dot.addEventListener('click', function(){ hGoTo(i); hReiniciar(); });
     hDots.appendChild(dot);
   });
 
@@ -1277,13 +1285,17 @@ function montarCarrosselFotos(rootId, prefixo){
     hCounter.textContent = (hIndex + 1) + '/' + hSlides.length;
   }
 
-  /* passa sozinho ate a primeira interacao do visitante */
+  /* gira sozinho de 5 em 5 segundos, sem parar nunca — inclusive dando a
+     volta no fim (hGoTo com wrap=true). Qualquer interacao do visitante
+     (seta, bolinha, arraste ou teclado) apenas REINICIA a contagem, para a
+     foto nao trocar no susto logo depois do toque. O unico caso em que o
+     giro nao comeca e quando o sistema pede menos animacao (hReduced) */
   function hStart(){ if(!hReduced && !hTimer){ hTimer = setInterval(function(){ hGoTo(hIndex + 1, true); }, 5000); } }
   function hStop(){ clearInterval(hTimer); hTimer = null; }
+  function hReiniciar(){ hStop(); hStart(); }
 
-  hPrev.addEventListener('click', function(){ hStop(); hGoTo(hIndex - 1, true); });
-  hNext.addEventListener('click', function(){ hStop(); hGoTo(hIndex + 1, true); });
-  raiz.addEventListener('mouseenter', hStop);
+  hPrev.addEventListener('click', function(){ hGoTo(hIndex - 1, true); hReiniciar(); });
+  hNext.addEventListener('click', function(){ hGoTo(hIndex + 1, true); hReiniciar(); });
 
   hViewport.addEventListener('pointerdown', function(e){
     if(e.target.closest('.' + prefixo + '-nav') || e.target.closest('.' + prefixo + '-dot')) return;
@@ -1316,13 +1328,14 @@ function montarCarrosselFotos(rootId, prefixo){
       hGoTo(Math.abs(dx) > hWidth * 0.16 ? hIndex + (dx < 0 ? 1 : -1) : hIndex);
     }
     hMode = null;
+    hReiniciar();
   }
   hViewport.addEventListener('pointerup', hEnd);
   hViewport.addEventListener('pointercancel', hEnd);
 
   raiz.addEventListener('keydown', function(e){
-    if(e.key === 'ArrowLeft'){ hStop(); hGoTo(hIndex - 1, true); }
-    if(e.key === 'ArrowRight'){ hStop(); hGoTo(hIndex + 1, true); }
+    if(e.key === 'ArrowLeft'){ hGoTo(hIndex - 1, true); hReiniciar(); }
+    if(e.key === 'ArrowRight'){ hGoTo(hIndex + 1, true); hReiniciar(); }
   });
 
   hGoTo(0);

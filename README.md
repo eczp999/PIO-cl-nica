@@ -46,8 +46,9 @@ Dá para trocar o endereço por um nome melhor em *Site settings → Change site
 
 ## Antes de mandar o link para o cliente
 
+- [ ] **Confirmar a ordem das 5 fotos do "Sobre a clínica".** Estão na ordem fachada → recepção → sala de espera → sala de atendimento → sala de fotodepilação. Ver a seção "Fotos do Sobre a clínica", mais abaixo.
 - [ ] **Fechar as fotos da faixa de destaque.** É a faixa larga no topo da página (`#destaque`), com as fotos passando de ponta a ponta. São **4 fotos, e esse é o limite definido pela clínica** — e só de **tratamento**: foto do ambiente não entra nesta faixa. O formato ideal é **1440×576 (proporção 5:2)** — nessa medida a foto aparece inteira, sem corte. Para trocar uma, substitua o `src` do bloco `<div class="destaque-slide">` correspondente.
-- [ ] **Trocar as imagens de exemplo.** Há 27 imagens vindas do `placehold.co` (os retângulos roxos escritos "Foto Real da Clínica", "Post 1", "ANTES", "DEPOIS" etc.). Procure por `placehold.co` no `index.html` e substitua pelas fotos reais.
+- [ ] **Trocar as imagens de exemplo.** Sobraram **12** imagens vindas do `placehold.co`, todas no carrossel de antes e depois (os retângulos escritos "ANTES" e "DEPOIS"). Procure por `placehold.co` no `index.html` e substitua pelas fotos reais. As demais seções já estão com foto de verdade.
 - [ ] **Montar o carrossel de antes e depois.** São 6 casos (Criolipólise, Hidrolipoclasia, Preenchimento facial, Peeling coreano, Harmonização do sorriso e Fotodepilação), cada um com um par de fotos. As duas fotos de cada par **precisam ter o mesmo enquadramento, distância e iluminação** — é isso que faz a comparação funcionar. Para incluir ou remover um caso, basta duplicar ou apagar um bloco `<div class="ba-slide">`: as bolinhas, o contador e as setas se ajustam sozinhos.
 - [ ] **Conferir a autorização de uso de imagem** dos pacientes antes de publicar qualquer antes e depois.
 - [ ] **Confirmar os preços dos cursos.** Os valores em `cursos.html` foram copiados do site atual da clínica e podem estar desatualizados — publicar preço errado gera problema com o consumidor.
@@ -148,6 +149,37 @@ Os três carrosséis de fotos (`#destaque`, `#sobre` e o de antes e depois)
 compartilham a mesma mecânica de arraste, setas e bolinhas — a função
 `montarCarrosselFotos` no fim do `index.html` monta os dois primeiros, mudando
 só o prefixo das classes (`destaque-` e `about-`).
+
+**Os dois giram sozinhos de 5 em 5 segundos, sem parar nunca**, dando a volta
+no fim. Seta, bolinha, arraste e teclado não interrompem o giro: só reiniciam
+a contagem dos 5 segundos, para a foto não trocar logo depois do toque. A
+única exceção é o visitante que pede menos animação no sistema
+(`prefers-reduced-motion`) — aí o giro automático não começa, e ele navega
+pelas setas. Para mudar o intervalo, procure por `5000` dentro de
+`montarCarrosselFotos`.
+
+### Fotos do "Sobre a clínica"
+
+São 5, **nesta ordem**, e a ordem é definida pela clínica:
+
+| # | Arquivo | Foto | Original |
+|---|---|---|---|
+| 1 | `images/sobre-1-fachada.webp` | fachada, na Rua Ibiporã, 426 | 1200×1600, em pé |
+| 2 | `images/sobre-2-recepcao.webp` | recepção | 960×1280, em pé |
+| 3 | `images/sobre-3-sala-de-espera.webp` | sala de espera | 1280×960, deitada |
+| 4 | `images/sobre-4-sala-de-atendimento.webp` | sala de atendimento | 1280×960, deitada |
+| 5 | `images/sobre-5-fotodepilacao.webp` | sala de fotodepilação | 960×1280, em pé |
+
+A moldura é **quadrada (1:1)** de propósito: as fotos vieram misturadas (três
+em pé, duas deitadas), e no quadrado todas perdem a mesma fatia — 12,5% de
+cada lado — em vez de uma das orientações ficar mutilada. Se um dia todas as
+fotos forem da mesma orientação, vale voltar `.about-slide` para `3/4` (em pé)
+ou `4/3` (deitada) no `styles.css`.
+
+São os únicos arquivos **`.webp`** do site (os demais são `.jpg`/`.jpeg`). É de
+propósito: já chegaram nesse formato, entre 93 KB e 332 KB, e com resolução de
+1,9× a 2,4× o tamanho da moldura — ou seja, nítidas até em tela retina, sem
+precisar comprimir nada. WebP é lido por todos os navegadores atuais.
 
 ### Contatos configurados no site
 
