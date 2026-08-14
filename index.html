@@ -489,10 +489,10 @@
     <div class="center reveal" style="max-width:700px;">
       <div class="eyebrow">Nossa equipe</div>
       <h2 class="title">Conheça quem vai cuidar de você</h2>
-      <p class="subtitle">Uma equipe multidisciplinar reunida no mesmo lugar: odontologia, estética facial e estética corporal. Clique em um profissional para ver o perfil completo.</p>
+      <p class="subtitle">Uma equipe multidisciplinar reunida no mesmo lugar: odontologia, estética facial, estética corporal, emagrecimento e terapias manuais. Clique em um profissional para ver o perfil completo.</p>
     </div>
 
-    <div class="trigger-grid cols-2">
+    <div class="trigger-grid">
       <button type="button" class="trigger-card reveal" data-painel="painel-equipe" data-alvo="prof-adriano">
         <span class="trigger-foto"><img src="images/Dr. Adriano Zanutto.jpeg" width="600" height="720" alt="Dr. Adriano Zanutto, dentista da Clínica PIO"></span>
         <span class="trigger-body">
@@ -507,6 +507,42 @@
         <span class="trigger-body">
           <h3>Rayane Cristina</h3>
           <span class="trigger-cargo">Esteticista — estética facial</span>
+          <span class="trigger-mais">Ver perfil <i class="ri-arrow-right-line"></i></span>
+        </span>
+      </button>
+
+      <button type="button" class="trigger-card reveal reveal-delay-2" data-painel="painel-equipe" data-alvo="prof-beatriz">
+        <span class="trigger-foto"><img loading="lazy" src="images/Dra. Beatriz Barela.jpeg" width="700" height="840" alt="Dra. Beatriz Barela, responsável pelos protocolos de toxina botulínica da Clínica PIO"></span>
+        <span class="trigger-body">
+          <h3>Dra. Beatriz Barela</h3>
+          <span class="trigger-cargo">Toxina botulínica e harmonização facial</span>
+          <span class="trigger-mais">Ver perfil <i class="ri-arrow-right-line"></i></span>
+        </span>
+      </button>
+
+      <button type="button" class="trigger-card reveal" data-painel="painel-equipe" data-alvo="prof-egon">
+        <span class="trigger-foto"><img loading="lazy" src="images/Dr. Egon Dittrich.jpeg" width="700" height="840" alt="Dr. Egon Dittrich, responsável pelos programas de emagrecimento da Clínica PIO"></span>
+        <span class="trigger-body">
+          <h3>Dr. Egon Dittrich</h3>
+          <span class="trigger-cargo">Emagrecimento e saúde metabólica</span>
+          <span class="trigger-mais">Ver perfil <i class="ri-arrow-right-line"></i></span>
+        </span>
+      </button>
+
+      <button type="button" class="trigger-card reveal reveal-delay-1" data-painel="painel-equipe" data-alvo="prof-jaqueline">
+        <span class="trigger-foto"><img loading="lazy" src="images/Jaqueline Arai.jpeg" width="700" height="840" alt="Jaqueline Arai, biomédica da Clínica PIO"></span>
+        <span class="trigger-body">
+          <h3>Jaqueline Arai</h3>
+          <span class="trigger-cargo">Biomédica</span>
+          <span class="trigger-mais">Ver perfil <i class="ri-arrow-right-line"></i></span>
+        </span>
+      </button>
+
+      <button type="button" class="trigger-card reveal reveal-delay-2" data-painel="painel-equipe" data-alvo="prof-eliete">
+        <span class="trigger-foto"><img loading="lazy" src="images/Eliete Bento.jpeg" width="700" height="840" alt="Eliete Bento, massoterapeuta da Clínica PIO"></span>
+        <span class="trigger-body">
+          <h3>Eliete Bento</h3>
+          <span class="trigger-cargo">Massoterapeuta</span>
           <span class="trigger-mais">Ver perfil <i class="ri-arrow-right-line"></i></span>
         </span>
       </button>
@@ -934,7 +970,7 @@
     </div>
 
     <div class="painel-corpo">
-      <div class="team-grid cols-2">
+      <div class="team-grid">
 
         <article class="team-card" id="prof-adriano">
           <div class="team-foto"><img loading="lazy" src="images/Dr. Adriano Zanutto.jpeg" width="600" height="720" alt="Dr. Adriano Zanutto, dentista da Clínica PIO"></div>
@@ -956,13 +992,53 @@
           </div>
         </article>
 
+        <article class="team-card" id="prof-beatriz">
+          <div class="team-foto"><img loading="lazy" src="images/Dra. Beatriz Barela.jpeg" width="700" height="840" alt="Dra. Beatriz Barela, responsável pelos protocolos de toxina botulínica da Clínica PIO"></div>
+          <div class="team-info">
+            <h3>Dra. Beatriz Barela</h3>
+            <span class="team-cargo">Toxina botulínica e harmonização facial</span>
+            <p>Conduz os protocolos de toxina botulínica da clínica. Cada aplicação parte da leitura das linhas de expressão do rosto, com doses individualizadas que suavizam marcas sem tirar a naturalidade dos seus traços.</p>
+            <a href="#tratamentos" class="team-link" data-fechar>Ver tratamentos faciais <i class="ri-arrow-right-line"></i></a>
+          </div>
+        </article>
+
+        <article class="team-card" id="prof-egon">
+          <div class="team-foto"><img loading="lazy" src="images/Dr. Egon Dittrich.jpeg" width="700" height="840" alt="Dr. Egon Dittrich, responsável pelos programas de emagrecimento da Clínica PIO"></div>
+          <div class="team-info">
+            <h3>Dr. Egon Dittrich</h3>
+            <span class="team-cargo">Emagrecimento e saúde metabólica</span>
+            <p>Responsável pelos programas de emagrecimento da clínica. Trabalha com avaliação individual, metas realistas e acompanhamento de perto — do primeiro dia à manutenção do resultado.</p>
+            <a href="#tratamentos" class="team-link" data-fechar>Ver tratamentos corporais <i class="ri-arrow-right-line"></i></a>
+          </div>
+        </article>
+
+        <article class="team-card" id="prof-jaqueline">
+          <div class="team-foto"><img loading="lazy" src="images/Jaqueline Arai.jpeg" width="700" height="840" alt="Jaqueline Arai, biomédica da Clínica PIO"></div>
+          <div class="team-info">
+            <h3>Jaqueline Arai</h3>
+            <span class="team-cargo">Biomédica</span>
+            <p>Une o olhar técnico da biomedicina ao cuidado estético: avalia a pele em detalhe, indica o protocolo adequado a cada caso e acompanha a evolução sessão a sessão.</p>
+            <a href="#tratamentos" class="team-link" data-fechar>Ver tratamentos estéticos <i class="ri-arrow-right-line"></i></a>
+          </div>
+        </article>
+
+        <article class="team-card" id="prof-eliete">
+          <div class="team-foto"><img loading="lazy" src="images/Eliete Bento.jpeg" width="700" height="840" alt="Eliete Bento, massoterapeuta da Clínica PIO"></div>
+          <div class="team-info">
+            <h3>Eliete Bento</h3>
+            <span class="team-cargo">Massoterapeuta</span>
+            <p>Conduz as terapias manuais da clínica, da drenagem linfática às massagens relaxantes. Um toque preciso, ritmo ajustado ao seu objetivo e aquele cuidado que se percebe já na primeira sessão.</p>
+            <a href="#tratamentos" class="team-link" data-fechar>Ver massagens e terapias <i class="ri-arrow-right-line"></i></a>
+          </div>
+        </article>
+
       </div>
 
       <div class="team-nota">
         <i class="ri-team-line"></i>
         <div>
-          <h3>Uma equipe maior do que cabe neste painel</h3>
-          <p>A Clínica PIO reúne profissionais de medicina funcional, biomedicina estética, terapias corporais e odontologia. Na avaliação gratuita você é direcionado ao especialista certo para o seu objetivo.</p>
+          <h3>Não sabe com quem falar primeiro?</h3>
+          <p>A Clínica PIO reúne odontologia, estética facial e corporal, emagrecimento, biomedicina estética e terapias manuais no mesmo endereço. Na avaliação gratuita você é direcionado ao especialista certo para o seu objetivo.</p>
           <a href="#contato" class="btn btn-primary" data-fechar><i class="ri-calendar-check-line"></i> Agendar avaliação gratuita</a>
         </div>
       </div>
