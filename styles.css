@@ -31,7 +31,10 @@
 /* overflow-x nos DOIS elementos: so no body o iOS ignora e a pagina
    fica "solta" para o lado no celular. clip e mais barato que hidden
    (nao cria contexto de rolagem); hidden fica como fallback antigo */
-html{scroll-behavior:smooth;font-size:106.25%;overflow-x:hidden;overflow-x:clip;}
+/* scroll-padding-top: o cabecalho e fixo, entao sem isso qualquer link de
+   ancora para com o topo do alvo escondido atras da barra. O valor cobre a
+   altura do header ja no estado .scrolled, que e como ele fica ao rolar. */
+html{scroll-behavior:smooth;font-size:106.25%;overflow-x:hidden;overflow-x:clip;scroll-padding-top:100px;}
 body{font-family:var(--font-sans);color:var(--ink);background:var(--fade-site);overflow-x:hidden;overflow-x:clip;line-height:1.7;}
 
 /* -------------------------------------------------------------------------
@@ -92,7 +95,7 @@ header#navbar{position:fixed;top:0;left:0;width:100%;z-index:1000;padding:14px 0
    precisa ser bem maior que a de uma logo deitada para o "Beleza & Saude"
    continuar legivel. O padding do cabecalho encolheu na mesma medida, para
    a barra nao ficar mais alta do que era */
-.logo img{height:76px;width:auto;display:block;transition:height .45s cubic-bezier(.4,0,.2,1);}
+.logo img{height:68px;width:auto;display:block;transition:height .45s cubic-bezier(.4,0,.2,1);}
 .nav-links{display:flex;align-items:center;gap:28px;}
 .nav-links a{color:var(--ink);font-size:.92rem;font-weight:500;position:relative;padding:4px 0;white-space:nowrap;}
 .nav-links a::after{content:'';position:absolute;bottom:-2px;left:0;width:0;height:1.5px;background:var(--purple-700);transition:.35s;}
@@ -106,7 +109,7 @@ header#navbar{position:fixed;top:0;left:0;width:100%;z-index:1000;padding:14px 0
 .nav-icon-btn:hover{background:var(--purple-800);color:var(--white);}
 /* ao rolar, a barra fica compacta: o selo diminui junto, sem sumir */
 #navbar.scrolled{padding:8px 0;background:rgba(255,255,255,.9);backdrop-filter:blur(14px);box-shadow:0 10px 30px rgba(90,55,102,.12);}
-#navbar.scrolled .logo img{height:56px;}
+#navbar.scrolled .logo img{height:50px;}
 .burger{display:none;flex-direction:column;gap:5px;width:30px;cursor:pointer;z-index:1200;}
 .burger span{height:2px;background:var(--purple-900);border-radius:2px;transition:.35s;}
 
@@ -425,7 +428,7 @@ footer{color:rgba(255,255,255,.85);padding:80px 0 30px;}
 .footer-logo{margin-bottom:22px;}
 /* selo redondo tambem aqui: em 52px ele virava um botao perdido na coluna.
    O filtro garante o branco solido mesmo se a arte trocada for a roxa */
-.footer-logo img{height:108px;width:auto;display:block;filter:brightness(0) invert(1);}
+.footer-logo img{height:97px;width:auto;display:block;filter:brightness(0) invert(1);}
 .footer-col h4{color:#fff;font-size:1rem;margin-bottom:20px;font-family:var(--font-sans);font-weight:600;}
 .footer-col ul li{margin-bottom:12px;font-size:.94rem;}
 .footer-col ul li a:hover{color:var(--pink-200);}
@@ -434,6 +437,37 @@ footer{color:rgba(255,255,255,.85);padding:80px 0 30px;}
 .footer-social a:hover{background:var(--pink-200);color:var(--purple-900);}
 .footer-bottom{border-top:1px solid rgba(255,255,255,.25);padding-top:26px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;font-size:.8rem;}
 .whatsapp-float{position:fixed;bottom:28px;right:28px;width:64px;height:64px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-size:1.8rem;box-shadow:0 12px 30px rgba(0,0,0,.25);z-index:900;animation:pulse 2.4s infinite;}
+/* -------------------------------------------------------------------------
+   PAINEL DE ASSUNTO DO WHATSAPP
+   O botao verde mandava sempre o mesmo texto generico, e a recepcao nao sabia
+   do que a pessoa queria falar. Em vez de obrigar a preencher o formulario
+   (que e o que a pessoa esta justamente evitando ao clicar aqui), o painel
+   pede UM toque e ja monta a mensagem com o assunto e a origem.
+   No desktop ele ancora acima do botao; no celular vira folha de baixo.
+   ------------------------------------------------------------------------- */
+.wa-fundo{position:fixed;inset:0;background:rgba(51,16,58,.45);backdrop-filter:blur(3px);z-index:940;opacity:0;transition:opacity .28s ease;}
+.wa-fundo.aberto{opacity:1;}
+.wa-painel{position:fixed;right:28px;bottom:104px;width:min(330px,calc(100vw - 40px));background:var(--white);border-radius:var(--radius-md);box-shadow:0 26px 60px rgba(51,16,58,.32);z-index:950;overflow:hidden;transform:translateY(14px) scale(.97);opacity:0;transform-origin:bottom right;transition:transform .28s cubic-bezier(.16,.8,.3,1), opacity .28s ease;}
+.wa-painel.aberto{transform:translateY(0) scale(1);opacity:1;}
+.wa-topo{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;padding:18px 18px 14px;background:var(--fade-site);}
+.wa-topo strong{display:block;font-family:var(--font-serif);font-size:1.16rem;color:var(--purple-900);line-height:1.25;}
+.wa-topo span{display:block;font-size:.8rem;color:var(--ink-soft);margin-top:4px;}
+.wa-fechar{width:30px;height:30px;flex:0 0 30px;border-radius:50%;background:rgba(255,255,255,.75);color:var(--purple-900);font-size:1.2rem;line-height:1;display:flex;align-items:center;justify-content:center;transition:.25s;}
+.wa-fechar:hover{background:var(--purple-900);color:var(--white);}
+.wa-opcoes{display:flex;flex-direction:column;padding:8px;}
+.wa-opcoes button{display:flex;align-items:center;gap:11px;width:100%;text-align:left;padding:12px 12px;border-radius:var(--radius-sm);font-size:.92rem;font-weight:500;color:var(--ink);transition:background .2s, color .2s;}
+.wa-opcoes button i{font-size:1.15rem;color:#25D366;flex:0 0 auto;}
+.wa-opcoes button:hover,.wa-opcoes button:focus-visible{background:var(--lilac-100);color:var(--purple-900);}
+.wa-form-link{width:100%;padding:13px;font-size:.83rem;color:var(--ink-soft);border-top:1px solid var(--lilac-200);transition:color .2s;}
+.wa-form-link:hover{color:var(--purple-700);}
+@media(max-width:560px){
+  /* no celular a folha ocupa a largura toda: alvo de toque maior e nao briga
+     com o proprio botao verde, que fica escondido enquanto o painel esta aberto */
+  .wa-painel{right:0;left:0;bottom:0;width:100%;border-radius:var(--radius-lg) var(--radius-lg) 0 0;transform-origin:bottom center;transform:translateY(100%);}
+  .wa-painel.aberto{transform:translateY(0);}
+  .wa-opcoes button{padding:14px 12px;font-size:.95rem;}
+  body.wa-aberto .whatsapp-float{opacity:0;pointer-events:none;}
+}
 @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(37,211,102,.5);}70%{box-shadow:0 0 0 18px rgba(37,211,102,0);}100%{box-shadow:0 0 0 0 rgba(37,211,102,0);}}
 #backToTop{position:fixed;bottom:28px;left:28px;width:50px;height:50px;background:var(--white);color:var(--purple-800);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.2rem;box-shadow:var(--shadow-soft);z-index:900;opacity:0;pointer-events:none;transition:.35s;}
 #backToTop.show{opacity:1;pointer-events:auto;}
@@ -501,8 +535,8 @@ body.painel-travado{overflow:hidden;}
 /* entre 1100 e 1280 o menu ainda esta na horizontal e a barra fica apertada:
    o selo cede alguns pixels para o CTA nao ser espremido */
 @media(max-width:1280px){
-  .logo img{height:64px;}
-  #navbar.scrolled .logo img{height:52px;}
+  .logo img{height:58px;}
+  #navbar.scrolled .logo img{height:47px;}
 }
 
 /* o CTA "Agendar avaliacao gratuita" e largo — o menu vira gaveta mais cedo
@@ -541,10 +575,11 @@ body.painel-travado{overflow:hidden;}
   .nav-actions{gap:12px;}
   .nav-actions .btn,.nav-cta{padding:10px 16px;font-size:.78rem;}
   .logo{font-size:1.6rem;}
+  html{scroll-padding-top:80px;}
   header#navbar{padding:12px 0;}
-  .logo img{height:56px;}
+  .logo img{height:50px;}
   #navbar.scrolled{padding:8px 0;}
-  #navbar.scrolled .logo img{height:46px;}
+  #navbar.scrolled .logo img{height:41px;}
 }
 @media(max-width:1024px){
   #sobre .about-grid,.ba-wrap,#contato .contact-grid{grid-template-columns:1fr;}

@@ -27,7 +27,7 @@
     </nav>
     <div class="nav-actions">
       <a href="https://www.instagram.com/clinicapiolondrina/" target="_blank" class="nav-icon-btn"><i class="ri-instagram-line"></i></a>
-      <a href="#contato" class="btn btn-primary nav-cta">Agendar<span class="cta-long">&nbsp;avaliação gratuita</span></a>
+      <a href="#contactForm" class="btn btn-primary nav-cta">Agendar<span class="cta-long">&nbsp;avaliação gratuita</span></a>
       <div class="burger" id="burger"><span></span><span></span><span></span></div>
     </div>
   </div>
@@ -76,7 +76,7 @@
       <h1>Sua melhor versão <em>começa</em> na Clínica PIO</h1>
       <p class="lead">Medicina funcional, biomedicina estética avançada e odontologia em um só lugar — com tecnologia de ponta e um atendimento verdadeiramente humano.</p>
       <div class="hero-ctas">
-        <a href="#contato" class="btn btn-primary"><i class="ri-calendar-check-line"></i> Agendar avaliação gratuita</a>
+        <a href="#contactForm" class="btn btn-primary"><i class="ri-calendar-check-line"></i> Agendar avaliação gratuita</a>
         <a href="#tratamentos" class="btn btn-outline"><i class="ri-sparkling-2-line"></i> Ver tratamentos</a>
       </div>
       <div class="hero-stats-row">
@@ -142,7 +142,7 @@
         <div class="feature-item"><div class="ic"><svg class="icon-tooth" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.2c-1.4 0-2.2.5-3.4.5-1 0-1.9-.6-2.9-.1C4.1 4.4 3.6 6.1 3.6 8.1c0 1.9.6 3.2 1 4.9.3 1.3.5 2.9.8 4.3.2 1 .5 2.5 1.5 2.5s1.3-1.4 1.6-2.7c.3-1.4.5-2.9 1.1-3.8.3-.4.8-.6 1.4-.6s1.1.2 1.4.6c.6.9.8 2.4 1.1 3.8.3 1.3.6 2.7 1.6 2.7s1.3-1.5 1.5-2.5c.3-1.4.5-3 .8-4.3.4-1.7 1-3 1-4.9 0-2-.5-3.7-2.1-4.5-1-.5-1.9.1-2.9.1-1.2 0-2-.5-3.4-.5Z"/></svg></div><div><h4>Odontologia Estética</h4><p>Sorrisos naturais com tecnologia de ponta.</p></div></div>
         <div class="feature-item"><div class="ic"><i class="ri-user-heart-line"></i></div><div><h4>Atendimento humanizado</h4><p>Acompanhamento próximo em cada etapa.</p></div></div>
       </div>
-      <a href="#contato" class="btn btn-primary" style="margin-top:36px;"><i class="ri-arrow-right-up-line"></i> Conheça a clínica de perto</a>
+      <a href="#contactForm" class="btn btn-primary" style="margin-top:36px;"><i class="ri-arrow-right-up-line"></i> Conheça a clínica de perto</a>
     </div>
   </div>
 </section>
@@ -375,7 +375,7 @@
           <button type="button" class="exp-panel-close" aria-label="Fechar"><i class="ri-close-line"></i></button>
           <div class="exp-panel-body"></div>
           <div class="exp-panel-cta">
-            <a href="#contato" class="btn btn-primary">Agendar avaliação gratuita</a>
+            <a href="#contactForm" class="btn btn-primary">Agendar avaliação gratuita</a>
             <span>Nossa equipe indica o protocolo ideal para o seu caso.</span>
           </div>
         </div>
@@ -490,7 +490,7 @@
         <div class="ba-list-item"><i class="ri-checkbox-circle-fill"></i><div><h4>Protocolo de Criolipólise</h4><p>Redução de medidas localizada, sem cirurgia e sem tempo de recuperação.</p></div></div>
         <div class="ba-list-item"><i class="ri-checkbox-circle-fill"></i><div><h4>Hidrolipoclasia não aspirativa</h4><p>Modelagem corporal com enzimas e tecnologia de ponta.</p></div></div>
         <div class="ba-list-item"><i class="ri-checkbox-circle-fill"></i><div><h4>Acompanhamento fotográfico</h4><p>Cada etapa é documentada para você acompanhar sua evolução real.</p></div></div>
-        <a href="#contato" class="btn btn-primary" style="margin-top:10px;"><i class="ri-camera-3-line"></i> Quero meu antes e depois</a>
+        <a href="#contactForm" class="btn btn-primary" style="margin-top:10px;"><i class="ri-camera-3-line"></i> Quero meu antes e depois</a>
       </div>
     </div>
   </div>
@@ -862,7 +862,7 @@
           <button type="button" class="exp-panel-close" aria-label="Fechar artigo"><i class="ri-close-line"></i></button>
           <div class="exp-panel-body"></div>
           <div class="exp-panel-cta">
-            <a href="#contato" class="btn btn-primary">Agendar avaliação gratuita</a>
+            <a href="#contactForm" class="btn btn-primary">Agendar avaliação gratuita</a>
             <span>Tire suas dúvidas com a nossa equipe antes de decidir.</span>
           </div>
         </div>
@@ -965,7 +965,30 @@
   </div>
 </footer>
 
-<a href="https://wa.me/5543991656200?text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20gostaria%20de%20agendar%20uma%20avalia%C3%A7%C3%A3o%20gratuita." target="_blank" class="whatsapp-float"><i class="ri-whatsapp-line"></i></a>
+<!-- O href continua sendo o link direto de sempre: se o JS nao rodar, o botao
+     funciona exatamente como antes. O painel abaixo so entra por cima disso. -->
+<a href="https://wa.me/5543991656200?text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20gostaria%20de%20agendar%20uma%20avalia%C3%A7%C3%A3o%20gratuita." target="_blank" class="whatsapp-float" id="waFloat" aria-haspopup="dialog" aria-label="Falar no WhatsApp"><i class="ri-whatsapp-line"></i></a>
+
+<div class="wa-fundo" id="waFundo" hidden></div>
+<div class="wa-painel" id="waPainel" role="dialog" aria-modal="true" aria-labelledby="waPainelTitulo" hidden>
+  <div class="wa-topo">
+    <div>
+      <strong id="waPainelTitulo">Sobre o que você quer falar?</strong>
+      <span>Escolha um assunto e já abrimos a conversa.</span>
+    </div>
+    <button type="button" class="wa-fechar" id="waFechar" aria-label="Fechar">&times;</button>
+  </div>
+  <div class="wa-opcoes">
+    <button type="button" data-wa="Estética Facial"><i class="ri-sparkling-2-line"></i> Estética facial</button>
+    <button type="button" data-wa="Estética Corporal"><i class="ri-body-scan-line"></i> Estética corporal</button>
+    <button type="button" data-wa="Odontologia Estética"><i class="ri-empathize-line"></i> Odontologia estética</button>
+    <button type="button" data-wa="Fotodepilação"><i class="ri-flashlight-line"></i> Fotodepilação</button>
+    <button type="button" data-wa="Massoterapia e massagens"><i class="ri-hand-heart-line"></i> Massoterapia e massagens</button>
+    <button type="button" data-wa="os cursos para profissionais"><i class="ri-graduation-cap-line"></i> Cursos para profissionais</button>
+    <button type="button" data-wa=""><i class="ri-chat-3-line"></i> Outro assunto</button>
+  </div>
+  <button type="button" class="wa-form-link" id="waPreferoForm">Prefiro preencher o formulário</button>
+</div>
 <button id="backToTop"><i class="ri-arrow-up-line"></i></button>
 
 <!-- ===================== PAINEL: EQUIPE ===================== -->
@@ -1051,7 +1074,7 @@
         <div>
           <h3>Não sabe com quem falar primeiro?</h3>
           <p>A Clínica PIO reúne odontologia, estética facial e corporal, emagrecimento, biomedicina estética e terapias manuais no mesmo endereço. Na avaliação gratuita você é direcionado ao especialista certo para o seu objetivo.</p>
-          <a href="#contato" class="btn btn-primary" data-fechar><i class="ri-calendar-check-line"></i> Agendar avaliação gratuita</a>
+          <a href="#contactForm" class="btn btn-primary" data-fechar><i class="ri-calendar-check-line"></i> Agendar avaliação gratuita</a>
         </div>
       </div>
     </div>
@@ -1290,6 +1313,98 @@ var io = new IntersectionObserver(function(entries){
   });
 }, {threshold:.15});
 revealEls.forEach(function(el){ io.observe(el); });
+
+/* Botoes de agendamento: a rolagem tem que parar no formulario, nao no card
+   de endereco/telefone (no celular a grade empilha o card antes do form).
+   Dois detalhes que quebram a conta ingenua:
+   - o #contactForm carrega .reveal, que o desloca 36px por transform durante
+     0,9s. getBoundingClientRect devolve a posicao COM o transform, ou seja, a
+     posicao velha. Por isso somamos offsetTop, que ignora transform.
+   - a folga sai do scroll-padding-top do proprio CSS, que ja acompanha os
+     breakpoints do cabecalho — evita ter a mesma medida em dois lugares. */
+function pioTopoReal(el){
+  var y = 0;
+  while(el){ y += el.offsetTop; el = el.offsetParent; }
+  return y;
+}
+document.querySelectorAll('a[href="#contactForm"]').forEach(function(link){
+  link.addEventListener('click', function(e){
+    var form = document.getElementById('contactForm');
+    if(!form) return;
+    e.preventDefault();
+    form.classList.add('in-view');
+    var folga = parseFloat(getComputedStyle(document.documentElement).scrollPaddingTop) || 90;
+    window.scrollTo({top: Math.max(0, pioTopoReal(form) - folga), behavior:'smooth'});
+    history.replaceState(null, '', '#contactForm');
+  });
+});
+
+/* -------------------------------------------------------------------------
+   PAINEL DE ASSUNTO DO WHATSAPP
+   Um toque no botao verde escolhe o assunto; o texto vai montado com o
+   assunto E a origem ("Vim pelo site"), que e como a clinica separa quem
+   veio daqui de quem veio do Instagram. O href do <a> continua valendo como
+   fallback: se este script nao rodar, o clique abre o WhatsApp como antes.
+   ------------------------------------------------------------------------- */
+(function(){
+  var flut = document.getElementById('waFloat');
+  var painel = document.getElementById('waPainel');
+  var fundo = document.getElementById('waFundo');
+  if(!flut || !painel || !fundo) return;
+
+  var NUMERO = '5543991656200';
+  var ultimoFoco = null;
+
+  function abrir(e){
+    e.preventDefault();
+    ultimoFoco = document.activeElement;
+    fundo.hidden = false; painel.hidden = false;
+    document.body.classList.add('wa-aberto');
+    /* dois frames: o navegador precisa pintar o estado inicial antes da
+       transicao, senao o painel aparece pronto e a animacao nao acontece */
+    requestAnimationFrame(function(){ requestAnimationFrame(function(){
+      fundo.classList.add('aberto'); painel.classList.add('aberto');
+    }); });
+    var primeiro = painel.querySelector('.wa-opcoes button');
+    if(primeiro) primeiro.focus();
+  }
+
+  function fechar(){
+    fundo.classList.remove('aberto'); painel.classList.remove('aberto');
+    document.body.classList.remove('wa-aberto');
+    setTimeout(function(){ fundo.hidden = true; painel.hidden = true; }, 280);
+    if(ultimoFoco) ultimoFoco.focus();
+  }
+
+  function mensagem(assunto){
+    if(!assunto) return 'Olá! Vim pelo site e gostaria de falar com a equipe.';
+    return 'Olá! Vim pelo site e quero saber sobre ' + assunto + '.';
+  }
+
+  flut.addEventListener('click', abrir);
+  document.getElementById('waFechar').addEventListener('click', fechar);
+  fundo.addEventListener('click', fechar);
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'Escape' && !painel.hidden) fechar();
+  });
+
+  painel.querySelectorAll('.wa-opcoes button').forEach(function(b){
+    b.addEventListener('click', function(){
+      var texto = mensagem(b.getAttribute('data-wa'));
+      window.open('https://wa.me/' + NUMERO + '?text=' + encodeURIComponent(texto), '_blank');
+      fechar();
+    });
+  });
+
+  document.getElementById('waPreferoForm').addEventListener('click', function(){
+    fechar();
+    var form = document.getElementById('contactForm');
+    if(!form) return;
+    form.classList.add('in-view');
+    var folga = parseFloat(getComputedStyle(document.documentElement).scrollPaddingTop) || 90;
+    window.scrollTo({top: Math.max(0, pioTopoReal(form) - folga), behavior:'smooth'});
+  });
+})();
 
 /* Contadores animados */
 var counters = document.querySelectorAll('[data-count]');
