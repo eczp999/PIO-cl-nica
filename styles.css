@@ -454,9 +454,11 @@ footer{color:rgba(255,255,255,.85);padding:80px 0 30px;}
 .wa-topo span{display:block;font-size:.8rem;color:var(--ink-soft);margin-top:4px;}
 .wa-fechar{width:30px;height:30px;flex:0 0 30px;border-radius:50%;background:rgba(255,255,255,.75);color:var(--purple-900);font-size:1.2rem;line-height:1;display:flex;align-items:center;justify-content:center;transition:.25s;}
 .wa-fechar:hover{background:var(--purple-900);color:var(--white);}
-.wa-opcoes{display:flex;flex-direction:column;padding:8px;}
-.wa-opcoes button{display:flex;align-items:center;gap:11px;width:100%;text-align:left;padding:12px 12px;border-radius:var(--radius-sm);font-size:.92rem;font-weight:500;color:var(--ink);transition:background .2s, color .2s;}
-.wa-opcoes button i{font-size:1.15rem;color:#25D366;flex:0 0 auto;}
+/* a lista acompanha o select do formulario (14 servicos + "outro"), entao
+   precisa rolar dentro do painel: sem o max-height ela empurra o link do
+   formulario para fora da tela no celular */
+.wa-opcoes{display:flex;flex-direction:column;padding:8px;max-height:46vh;overflow-y:auto;overscroll-behavior:contain;-webkit-overflow-scrolling:touch;}
+.wa-opcoes button{display:block;width:100%;text-align:left;padding:11px 12px;border-radius:var(--radius-sm);font-size:.92rem;font-weight:500;line-height:1.35;color:var(--ink);transition:background .2s, color .2s;}
 .wa-opcoes button:hover,.wa-opcoes button:focus-visible{background:var(--lilac-100);color:var(--purple-900);}
 .wa-form-link{width:100%;padding:13px;font-size:.83rem;color:var(--ink-soft);border-top:1px solid var(--lilac-200);transition:color .2s;}
 .wa-form-link:hover{color:var(--purple-700);}
@@ -465,7 +467,8 @@ footer{color:rgba(255,255,255,.85);padding:80px 0 30px;}
      com o proprio botao verde, que fica escondido enquanto o painel esta aberto */
   .wa-painel{right:0;left:0;bottom:0;width:100%;border-radius:var(--radius-lg) var(--radius-lg) 0 0;transform-origin:bottom center;transform:translateY(100%);}
   .wa-painel.aberto{transform:translateY(0);}
-  .wa-opcoes button{padding:14px 12px;font-size:.95rem;}
+  .wa-opcoes{max-height:52vh;}
+  .wa-opcoes button{padding:13px 12px;font-size:.95rem;}
   body.wa-aberto .whatsapp-float{opacity:0;pointer-events:none;}
 }
 @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(37,211,102,.5);}70%{box-shadow:0 0 0 18px rgba(37,211,102,0);}100%{box-shadow:0 0 0 0 rgba(37,211,102,0);}}
