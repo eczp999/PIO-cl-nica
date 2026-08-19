@@ -236,6 +236,13 @@ header#navbar{position:fixed;top:0;left:0;width:100%;z-index:1000;padding:14px 0
    na mesma altura nas duas metades da comparacao. */
 .ba-mobilizacao .ba-img{object-position:50% 73%;}
 .ba-mobilizacao .ba-after{object-position:50% 62%;}
+/* As fotos do pos-operatorio sao bem deitadas (1,92 e 1,69) e o quadro e 4/3.
+   Com "cover" a de antes era ampliada ate preencher a altura e perdia 31% da
+   largura — era o "zoom demais". Com "contain" as duas aparecem inteiras e no
+   mesmo aumento; sobra uma faixa em cima e embaixo, que recebe um tom claro
+   do proprio site para ler como moldura, e nao como falha. */
+.ba-posop{background:var(--cream);}
+.ba-posop .ba-img{object-fit:contain;}
 .ba-tag{position:absolute;top:16px;padding:6px 16px;border-radius:100px;font-size:.75rem;font-weight:600;letter-spacing:.05em;background:rgba(0,0,0,.5);color:#fff;backdrop-filter:blur(4px);z-index:2;pointer-events:none;}
 .ba-tag.before-tag{left:16px;}
 .ba-tag.after-tag{right:16px;}
