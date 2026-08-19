@@ -458,7 +458,11 @@ footer{color:rgba(255,255,255,.85);padding:80px 0 30px;}
    precisa rolar dentro do painel: sem o max-height ela empurra o link do
    formulario para fora da tela no celular */
 .wa-opcoes{display:flex;flex-direction:column;padding:8px;max-height:46vh;overflow-y:auto;overscroll-behavior:contain;-webkit-overflow-scrolling:touch;}
-.wa-opcoes button{display:block;width:100%;text-align:left;padding:11px 12px;border-radius:var(--radius-sm);font-size:.92rem;font-weight:500;line-height:1.35;color:var(--ink);transition:background .2s, color .2s;}
+.wa-opcoes button{display:flex;align-items:center;gap:10px;width:100%;text-align:left;padding:11px 12px;border-radius:var(--radius-sm);font-size:.92rem;font-weight:500;line-height:1.35;color:var(--ink);transition:background .2s, color .2s;}
+/* icone pequeno no verde do WhatsApp. align-self:flex-start mantem o icone
+   junto da PRIMEIRA linha nos rotulos que quebram em duas (o de modelagem
+   abdominal quebra no celular) em vez de flutuar no meio do bloco. */
+.wa-opcoes button i{font-size:1.02rem;line-height:1.35;color:#25D366;flex:0 0 auto;align-self:flex-start;}
 .wa-opcoes button:hover,.wa-opcoes button:focus-visible{background:var(--lilac-100);color:var(--purple-900);}
 .wa-form-link{width:100%;padding:13px;font-size:.83rem;color:var(--ink-soft);border-top:1px solid var(--lilac-200);transition:color .2s;}
 .wa-form-link:hover{color:var(--purple-700);}
