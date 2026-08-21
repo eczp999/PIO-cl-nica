@@ -60,12 +60,13 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;}
    empurravam a pagina inteira para 489px no celular) */
 .hero-grid>*,.about-grid>*,.ba-wrap>*,.contact-grid>*{min-width:0;}
 section{padding:120px 0;position:relative;}
-.eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:.78rem;letter-spacing:.22em;text-transform:uppercase;color:var(--purple-700);font-weight:600;margin-bottom:18px;}
+.eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:.86rem;letter-spacing:.22em;text-transform:uppercase;color:var(--purple-700);font-weight:600;margin-bottom:18px;}
 .eyebrow::before{content:'';width:34px;height:1px;background:var(--lilac-500);}
 /* o h1 das paginas internas (equipe/cursos) usa a mesma classe .title,
    por isso a regra nao pode ficar presa ao h2 */
-h1.title,h2.title{font-size:clamp(2.3rem,4vw,3.4rem);line-height:1.1;margin-bottom:22px;}
-.subtitle{color:var(--ink-soft);font-size:1.1rem;max-width:620px;}
+/* +10% no tamanho dos titulos que separam as secoes do site */
+h1.title,h2.title{font-size:clamp(2.53rem,4.4vw,3.74rem);line-height:1.1;margin-bottom:22px;}
+.subtitle{color:var(--ink-soft);font-size:1.21rem;max-width:660px;}
 .center{text-align:center;margin-left:auto;margin-right:auto;}
 .center .subtitle{margin-left:auto;margin-right:auto;}
 .btn{display:inline-flex;align-items:center;gap:10px;padding:16px 34px;border-radius:100px;font-weight:600;font-size:.92rem;letter-spacing:.03em;transition:.4s cubic-bezier(.4,0,.2,1);position:relative;overflow:hidden;white-space:nowrap;}
@@ -305,34 +306,11 @@ header#navbar{position:fixed;top:0;left:0;width:100%;z-index:1000;padding:14px 0
 .test-dots{display:flex;justify-content:center;gap:10px;margin-top:30px;}
 .test-dots button{width:9px;height:9px;border-radius:50%;background:rgba(51,16,58,.25);transition:.3s;}
 .test-dots button.active{background:var(--purple-800);width:26px;border-radius:6px;}
-.insta-head{display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:20px;margin-bottom:40px;}
-/* ---- janelinha do Instagram: grade 3x3 com os posts reais do perfil ---- */
-.insta-janela{background:var(--white);border:1px solid rgba(129,99,139,.16);border-radius:var(--radius-lg);overflow:hidden;box-shadow:var(--shadow-soft);}
-.insta-janela-topo{display:flex;align-items:center;gap:16px;padding:20px 26px;border-bottom:1px solid rgba(129,99,139,.14);background:var(--pink-100);}
-.insta-avatar{width:46px;height:46px;flex:0 0 46px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.4rem;color:var(--white);background:linear-gradient(135deg,var(--pink-300),var(--lilac-500),var(--purple-700));}
-.insta-ident{display:flex;flex-direction:column;line-height:1.4;margin-right:auto;min-width:0;}
-.insta-ident strong{font-size:.98rem;color:var(--purple-900);font-weight:600;}
-.insta-ident span{font-size:.82rem;color:var(--ink-soft);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
-.insta-seguir{padding:10px 22px;font-size:.82rem;flex:0 0 auto;}
 /* linha de numeros do perfil, igual ao topo do app */
-.insta-stats{display:flex;gap:26px;flex-wrap:wrap;padding:14px 26px;border-bottom:1px solid rgba(129,99,139,.14);background:var(--white);font-size:.86rem;color:var(--ink-soft);}
-.insta-stats strong{color:var(--purple-900);font-weight:600;}
 /* grade 3x2 de tiles em retrato 4:5, com o respiro curto do feed do
    Instagram — e o formato que o proprio app usa hoje na grade do perfil,
    e o que faz a janela ser lida na hora como "isso e o Instagram deles" */
-.insta-janela-corpo{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:4px;padding:4px;background:var(--white);}
-.insta-post{position:relative;display:block;min-width:0;aspect-ratio:4/5;overflow:hidden;background:var(--lilac-300);}
-.insta-post img{width:100%;height:100%;object-fit:cover;transition:transform .5s cubic-bezier(.4,0,.2,1);}
-.insta-post:hover img{transform:scale(1.04);}
 /* icone de reel/foto no canto, como no app */
-.insta-tipo{position:absolute;top:8px;right:8px;color:#fff;font-size:1.15rem;line-height:1;z-index:2;filter:drop-shadow(0 1px 3px rgba(0,0,0,.5));pointer-events:none;}
-.insta-overlay{position:absolute;inset:0;display:flex;align-items:flex-end;padding:14px;background:linear-gradient(to top,rgba(16,4,20,.88),rgba(16,4,20,.25) 60%,rgba(16,4,20,0));color:#fff;font-size:.82rem;font-weight:600;line-height:1.4;opacity:0;transition:opacity .35s;}
-.insta-post:hover .insta-overlay,.insta-post:focus-visible .insta-overlay{opacity:1;}
-.insta-post:focus-visible{outline:3px solid var(--purple-700);outline-offset:-3px;}
-.insta-janela-rodape{padding:18px 26px;border-top:1px solid rgba(129,99,139,.14);text-align:center;}
-.insta-janela-rodape a{font-size:.9rem;font-weight:600;color:var(--purple-700);display:inline-flex;align-items:center;gap:8px;}
-.insta-janela-rodape a:hover i{transform:translateX(4px);}
-.insta-janela-rodape i{transition:.3s;}
 .blog-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:30px;}
 .blog-card{background:var(--white);border-radius:var(--radius-md);overflow:hidden;box-shadow:0 12px 30px rgba(90,55,102,.08);transition:.4s;border:1px solid rgba(129,99,139,.12);}
 .blog-card:hover{transform:translateY(-8px);box-shadow:var(--shadow-soft);}
@@ -612,16 +590,6 @@ body.painel-travado{overflow:hidden;}
 @media(max-width:768px){
   section{padding:80px 0;}
   .treat-grid,.stats-grid,.dif-grid,.blog-grid,.footer-grid{grid-template-columns:1fr;}
-  /* a grade continua com 3 colunas no celular — e assim que o feed do
-     Instagram aparece no app, e e isso que da a sensacao de estar vendo
-     o perfil */
-  .insta-janela-corpo{gap:3px;padding:3px;}
-  .insta-tipo{top:6px;right:6px;font-size:.95rem;}
-  .insta-overlay{display:none;}
-  .insta-janela-topo{padding:16px 18px;gap:12px;}
-  .insta-stats{padding:12px 18px;gap:16px;font-size:.8rem;}
-  .insta-seguir{padding:9px 16px;font-size:.76rem;}
-  .insta-janela-rodape{padding:16px 18px;}
   .quiz-options{grid-template-columns:1fr;}
   .quiz-box{padding:36px 24px;}
   .form-row{grid-template-columns:1fr;}
@@ -644,4 +612,79 @@ body.painel-travado{overflow:hidden;}
   .mod-preco{min-width:0;}
   .course-inclui,.team-nota{padding:32px 24px;}
   .team-nota{flex-direction:column;gap:16px;}
+}
+
+/* -------------------------------------------------------------------------
+   FUNDADORA — cartao horizontal, centralizado acima da grade da equipe.
+   O mesmo desenho se repete dentro do painel da equipe (.team-destaque),
+   so que sem o estado de clique, porque la ele nao e um botao.
+   A foto e um retrato de corpo inteiro (941x1672): o object-position mais
+   alto e o que mantem o rosto enquadrado quando o cartao encolhe.
+   ------------------------------------------------------------------------- */
+.fundadora-wrap{margin-top:50px;display:flex;justify-content:center;}
+.fundadora-card{display:grid;grid-template-columns:minmax(0,320px) minmax(0,1fr);align-items:stretch;text-align:left;width:min(940px,100%);background:var(--white);border:1px solid rgba(129,99,139,.16);border-radius:var(--radius-lg);overflow:hidden;box-shadow:0 18px 48px rgba(90,55,102,.14);transition:.4s cubic-bezier(.4,0,.2,1);cursor:pointer;font-family:inherit;}
+.fundadora-card:hover{transform:translateY(-8px);box-shadow:var(--shadow-strong);}
+.fundadora-card:focus-visible{outline:2px solid var(--purple-700);outline-offset:3px;}
+.fundadora-foto{display:block;overflow:hidden;background:var(--lilac-300);min-height:100%;}
+.fundadora-foto img{width:100%;height:100%;object-fit:cover;object-position:center 16%;transition:.5s;}
+.fundadora-card:hover .fundadora-foto img{transform:scale(1.05);}
+.fundadora-body{padding:40px 42px;display:flex;flex-direction:column;gap:6px;}
+.fundadora-selo,.team-destaque .fundadora-selo{align-self:flex-start;display:inline-flex;align-items:center;gap:8px;padding:7px 16px;border-radius:100px;background:linear-gradient(120deg,var(--pink-300),var(--pink-200));color:var(--purple-900);font-size:.7rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;margin-bottom:12px;}
+.fundadora-body h3{font-family:var(--font-serif);font-size:1.95rem;color:var(--purple-900);line-height:1.15;}
+.fundadora-cargo{font-size:.78rem;text-transform:uppercase;letter-spacing:.1em;color:var(--purple-700);font-weight:600;line-height:1.6;}
+.fundadora-body p{font-size:.98rem;color:var(--ink-soft);margin-top:10px;}
+.fundadora-body .trigger-mais{margin-top:auto;padding-top:20px;}
+.fundadora-card:hover .trigger-mais i{transform:translateX(4px);}
+
+.team-destaque{display:grid;grid-template-columns:minmax(0,280px) minmax(0,1fr);background:var(--white);border:1px solid rgba(129,99,139,.14);border-radius:var(--radius-lg);overflow:hidden;box-shadow:0 12px 34px rgba(90,55,102,.08);margin-bottom:32px;}
+.team-destaque-foto{overflow:hidden;background:var(--lilac-300);min-height:100%;}
+.team-destaque-foto img{width:100%;height:100%;object-fit:cover;object-position:center 16%;}
+.team-destaque-info{padding:34px 36px;display:flex;flex-direction:column;gap:6px;}
+.team-destaque-info h3{font-family:var(--font-serif);font-size:1.75rem;color:var(--purple-900);line-height:1.15;}
+.team-destaque-info p{font-size:.94rem;color:var(--ink-soft);margin-top:10px;}
+.team-destaque-info .team-link{margin-top:14px;align-self:flex-start;}
+
+/* -------------------------------------------------------------------------
+   INSTAGRAM — convite, sem feed.
+   A janela nao carrega mais miniaturas: elas envelheciam a cada post novo e
+   o embed oficial da Meta colapsava. Ficou um unico caminho: o botao.
+   ------------------------------------------------------------------------- */
+.insta-convite{position:relative;overflow:hidden;margin-top:50px;border-radius:var(--radius-lg);background:var(--fade-escuro-a);box-shadow:var(--shadow-soft);padding:64px 40px 58px;text-align:center;}
+.insta-convite-brilho{position:absolute;top:-45%;left:50%;transform:translateX(-50%);width:min(760px,120%);aspect-ratio:1;border-radius:50%;background:radial-gradient(circle,rgba(249,188,217,.34),rgba(249,188,217,0) 62%);pointer-events:none;}
+/* icones soltos ao fundo — dao o clima de rede social sem virar poluicao */
+.insta-marca{position:absolute;color:rgba(255,255,255,.11);pointer-events:none;line-height:1;}
+.insta-marca-1{top:36px;left:6%;font-size:4.4rem;transform:rotate(-12deg);}
+.insta-marca-2{bottom:44px;left:14%;font-size:2.6rem;transform:rotate(10deg);}
+.insta-marca-3{top:54px;right:8%;font-size:3.4rem;transform:rotate(9deg);}
+.insta-marca-4{bottom:38px;right:13%;font-size:2.9rem;transform:rotate(-8deg);}
+.insta-convite-corpo{position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;max-width:640px;margin:0 auto;}
+.insta-anel{display:flex;align-items:center;justify-content:center;width:112px;height:112px;border-radius:50%;padding:3px;background:conic-gradient(from 210deg,#f9bcd9,#c199cb,#77257e,#f9bcd9);box-shadow:0 12px 30px rgba(16,4,20,.3);}
+.insta-anel-interno{display:flex;align-items:center;justify-content:center;width:100%;height:100%;border-radius:50%;background:var(--purple-900);border:3px solid var(--purple-900);}
+.insta-anel-interno img{width:74%;height:auto;}
+.insta-arroba{display:block;margin-top:22px;color:var(--white);font-size:1.28rem;font-weight:600;letter-spacing:.01em;}
+.insta-bio{display:block;margin-top:6px;color:rgba(255,255,255,.78);font-size:.92rem;}
+.insta-convite-stats{display:flex;flex-wrap:wrap;justify-content:center;gap:14px 34px;margin-top:26px;padding:16px 30px;border-radius:100px;background:rgba(255,255,255,.09);border:1px solid rgba(255,255,255,.16);backdrop-filter:blur(4px);}
+.insta-convite-stats span{color:rgba(255,255,255,.76);font-size:.84rem;letter-spacing:.02em;}
+.insta-convite-stats strong{display:block;color:var(--white);font-family:var(--font-serif);font-size:1.5rem;font-weight:600;line-height:1.2;}
+.insta-convite-texto{margin-top:26px;color:rgba(255,255,255,.85);font-size:1.02rem;line-height:1.75;}
+.insta-convite-btn{margin-top:32px;padding:18px 42px;font-size:1rem;}
+.insta-convite-btn i{font-size:1.25rem;}
+.insta-convite-nota{display:inline-flex;align-items:center;gap:7px;margin-top:16px;color:rgba(255,255,255,.62);font-size:.82rem;}
+
+@media(max-width:900px){
+  .fundadora-card,.team-destaque{grid-template-columns:1fr;}
+  .fundadora-foto,.team-destaque-foto{aspect-ratio:4/5;max-height:440px;min-height:0;}
+  .fundadora-foto img,.team-destaque-foto img{object-position:center 14%;}
+  .fundadora-body{padding:32px 26px 34px;}
+  .team-destaque-info{padding:28px 24px 30px;}
+  .fundadora-body h3{font-size:1.7rem;}
+}
+@media(max-width:768px){
+  .insta-convite{padding:48px 22px 44px;}
+  .insta-marca{display:none;}
+  .insta-anel{width:92px;height:92px;}
+  .insta-convite-stats{gap:12px 22px;padding:14px 20px;border-radius:22px;}
+  .insta-convite-stats strong{font-size:1.3rem;}
+  .insta-convite-texto{font-size:.96rem;}
+  .insta-convite-btn{width:100%;justify-content:center;padding:17px 24px;}
 }
