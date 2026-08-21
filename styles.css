@@ -229,14 +229,14 @@ header#navbar{position:fixed;top:0;left:0;width:100%;z-index:1000;padding:14px 0
 .ba-slider.comparing{cursor:ew-resize;}
 .ba-slider .ba-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;pointer-events:none;}
 .ba-slider .ba-after{clip-path:inset(0 50% 0 0);}
-/* as fotos da mobilizacao organica sao verticais (1150x1600) e o quadro do
-   carrossel e 4/3 deitado. Sem reposicionar, o corte automatico centraliza
-   na flor do fundo e joga a regiao tratada para fora do enquadramento.
-   Os dois valores sao diferentes porque as fotos foram tiradas a distancias
-   diferentes — foram calibrados no navegador para o contorno do corpo cair
-   na mesma altura nas duas metades da comparacao. */
-.ba-mobilizacao .ba-img{object-position:50% 73%;}
-.ba-mobilizacao .ba-after{object-position:50% 62%;}
+/* as fotos da massagem modeladora sao verticais (941x1672) e o quadro do
+   carrossel e 4/3 deitado: so cabe uma faixa de ~42% da altura da foto.
+   Sem reposicionar, o corte automatico pega o lencol e joga o abdomen para
+   fora do enquadramento. Os dois valores sao diferentes porque as fotos
+   foram tiradas de angulos e distancias diferentes — foram calibrados para
+   o umbigo cair na mesma altura nas duas metades da comparacao. */
+.ba-modeladora .ba-img{object-position:50% 50%;}
+.ba-modeladora .ba-after{object-position:50% 38%;}
 /* As fotos do pos-operatorio sao bem deitadas (1,92 e 1,69) e o quadro e 4/3.
    Com "cover" a de antes era ampliada ate preencher a altura e perdia 31% da
    largura — era o "zoom demais". Com "contain" as duas aparecem inteiras e no
