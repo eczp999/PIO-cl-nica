@@ -440,7 +440,7 @@
         <div class="ba-viewport">
           <div class="ba-track">
 
-            <div class="ba-slide">
+            <div class="ba-slide" data-ratio="4/5">
               <div class="ba-slider ba-modeladora">
                 <img class="ba-img" loading="lazy" decoding="async" src="images/ANTES massagem modeladora.png" width="941" height="1672" alt="Abdômen antes das sessões de massagem modeladora na Clínica PIO">
                 <img class="ba-img ba-after" loading="lazy" decoding="async" src="images/DEPOIS massagem modeladora.png" width="941" height="1672" alt="Abdômen depois das sessões de massagem modeladora na Clínica PIO">
@@ -452,7 +452,7 @@
               </div>
             </div>
 
-            <div class="ba-slide">
+            <div class="ba-slide" data-ratio="4/3">
               <div class="ba-slider">
                 <img class="ba-img" loading="lazy" src="images/ANTES limpeza facial.jpeg" alt="Antes do tratamento de limpeza de pele na Clínica PIO">
                 <img class="ba-img ba-after" loading="lazy" src="images/DEPOIS limpeza facial.jpeg" alt="Depois do tratamento de limpeza de pele na Clínica PIO">
@@ -464,7 +464,7 @@
               </div>
             </div>
 
-            <div class="ba-slide">
+            <div class="ba-slide" data-ratio="16/9">
               <div class="ba-slider ba-posop">
                 <img class="ba-img" loading="lazy" src="images/ANTES pós-operatório.jpeg" alt="Antes do tratamento de pós-operatório na Clínica PIO">
                 <img class="ba-img ba-after" loading="lazy" src="images/DEPOIS pós-operatório.jpeg" alt="Depois do tratamento de pós-operatório na Clínica PIO">
@@ -1583,10 +1583,30 @@ if(baCarousel){
     baDots.appendChild(dot);
   });
 
+  /* cada slide tem a sua propria proporcao (data-ratio): o quadro muda de
+     formato ao trocar de resultado. A altura vai em px porque e assim que a
+     transicao do CSS consegue animar — de aspect-ratio para aspect-ratio o
+     navegador so daria o salto. */
+  function baProporcao(i){
+    var r = (baSlides[i].getAttribute('data-ratio') || '4/3').split('/');
+    var v = r.length === 2 ? parseFloat(r[0]) / parseFloat(r[1]) : parseFloat(r[0]);
+    return v > 0 ? v : 4/3;
+  }
+  function baAltura(){
+    var largura = baViewport.getBoundingClientRect().width;
+    if(!largura) return;
+    /* a classe desliga o aspect-ratio de reserva do CSS: com ele ligado e a
+       altura em px, o navegador passa a deduzir a largura do quadro pela
+       proporcao e a coluna encolhe a cada troca de slide */
+    baViewport.classList.add('altura-js');
+    baViewport.style.height = (largura / baProporcao(baIndex)) + 'px';
+  }
+
   function baGoTo(i){
     baIndex = Math.max(0, Math.min(baSlides.length - 1, i));
     baTrack.classList.remove('no-anim');
     baTrack.style.transform = 'translateX(' + (-baIndex * 100) + '%)';
+    baAltura();
     baDots.querySelectorAll('.ba-dot').forEach(function(d, n){ d.classList.toggle('active', n === baIndex); });
     baCounter.textContent = (baIndex + 1) + '/' + baSlides.length;
     baPrev.disabled = baIndex === 0;
@@ -1595,6 +1615,15 @@ if(baCarousel){
 
   baPrev.addEventListener('click', function(){ baGoTo(baIndex - 1); });
   baNext.addEventListener('click', function(){ baGoTo(baIndex + 1); });
+
+  baAltura();
+  var baResizeT;
+  window.addEventListener('resize', function(){
+    baViewport.classList.add('sem-anim');
+    baAltura();
+    clearTimeout(baResizeT);
+    baResizeT = setTimeout(function(){ baViewport.classList.remove('sem-anim'); }, 150);
+  });
 
   /* um gesto so: perto do controle branco compara, no resto do foto navega */
   var baStartX = 0, baStartY = 0, baMode = null, baDragSlider = null, baWidth = 0;
