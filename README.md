@@ -131,6 +131,16 @@ Os cards de tratamento e os do blog usam o **mesmo componente de painel**
 embaixo da linha do card clicado. Cada card guarda o próprio conteúdo numa
 `<div class="post-content">` — para editar um texto, mexa só nesse bloco.
 
+**Laser CO₂ Fracionado** tem uma aba própria no filtro de tratamentos (e entra
+também em "Todos", "Facial" e "Corporal"). O bloco fica no fim da grade
+(`#treatGrid`, comentário `LASER CO2 FRACIONADO`): um banner escuro com a data
+da aplicação e as condições, um card por região com o preço e um botão de
+WhatsApp **próprio** (a mensagem já vai com a região, o valor e a data), e um
+divisor "Promoções" seguido dos combos. Para mudar um preço ou a data, edite o
+card **e** o texto dentro do `href` do botão dele — os dois estão escritos à
+mão, não são calculados. O link `#laser-co2` (bom para a bio do Instagram) abre
+o site já com essa aba selecionada.
+
 Os dois arquivos precisam ficar **na mesma pasta** — o `index.html` chama o CSS por caminho
 relativo (`<link rel="stylesheet" href="styles.css">`). Se separar um do outro, o site abre
 sem estilo nenhum.

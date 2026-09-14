@@ -187,6 +187,7 @@
     </div>
     <div class="filter-tabs center" id="filterTabs">
       <button class="active" data-filter="all">Todos</button>
+      <button data-filter="laser"><i class="ri-flashlight-line"></i>Laser CO₂ <span class="tab-novo">Novo</span></button>
       <button data-filter="corporal">Corporal</button>
       <button data-filter="facial">Facial</button>
       <button data-filter="saude">Saúde</button>
@@ -342,45 +343,6 @@
           <p>Na luz intensa pulsada, o calor gerado pelos pulsos luminosos estimula a produção de colágeno por fototermólise seletiva. O Face Gym, por sua vez, é uma técnica de massagem muscular de origem milenar que funciona como uma espécie de lifting não invasivo.</p>
         </div>
       </article>
-      <article class="treat-card show" data-cat="facial corporal">
-        <div class="ic"><i class="ri-flashlight-line"></i></div>
-        <h4>Laser CO₂ Fracionado</h4>
-        <p>Renovação profunda da pele, do rosto ao corpo, região por região.</p>
-        <button type="button" class="card-more" aria-expanded="false" aria-controls="treatPanel"><span>Saiba mais</span> <i class="ri-arrow-right-line"></i></button>
-        <div class="post-content">
-          <span class="meta">Facial e corporal</span>
-          <h3>Laser CO₂ Fracionado</h3>
-          <p>O laser de CO₂ fracionado é hoje um dos recursos mais completos da estética avançada. Ele emite microcolunas de luz que atravessam a pele em pontos milimétricos, preservando o tecido ao redor: é esse "fracionamento" que faz a recuperação ser mais rápida do que a do laser tradicional.</p>
-          <p>Na prática, a pele entende esses microestímulos como um chamado para se reconstruir — e responde produzindo colágeno e elastina novos. O resultado aparece em textura mais lisa, poros menos marcados, manchas mais claras, cicatrizes atenuadas e uma firmeza que se instala aos poucos, ao longo das semanas seguintes.</p>
-          <h4>Regiões que tratamos</h4>
-          <ul>
-            <li><strong>Rosto todo</strong> — renovação completa: textura, poros dilatados, manchas e linhas finas</li>
-            <li><strong>Pálpebras</strong> — a pele mais fina do corpo, para um olhar mais aberto e descansado</li>
-            <li><strong>Pescoço</strong> — as linhas horizontais e a flacidez que entregam a idade</li>
-            <li><strong>Colo</strong> — marcas de sol e as ruguinhas verticais da região decotada</li>
-            <li><strong>Braços</strong> — textura e flacidez, sobretudo na face interna</li>
-            <li><strong>Mãos</strong> — manchas senis e pele fina, na região que mais denuncia o tempo</li>
-            <li><strong>Papada</strong> — firmeza sob o queixo e contorno do maxilar mais definido</li>
-            <li><strong>Estrias por região</strong> — inclusive as brancas e antigas, tratadas sulco a sulco</li>
-            <li><strong>Flanco</strong> — a pele da lateral do tronco, que costuma sobrar depois do emagrecimento</li>
-            <li><strong>Abdômen</strong> — flacidez pós-gestação ou pós-emagrecimento, estrias e cicatrizes</li>
-            <li><strong>Interno de coxa</strong> — área de pele frouxa e delicada, tratada com parâmetros suaves</li>
-            <li><strong>Seios</strong> — estrias e perda de firmeza na pele das mamas e do colo</li>
-          </ul>
-          <h4>Como é a sessão</h4>
-          <p>Antes de qualquer aplicação há uma avaliação individual: tipo de pele, histórico, medicações em uso e o objetivo de cada paciente definem a intensidade e o número de sessões. No dia, a área recebe anestésico tópico e o desconforto é bem tolerado — a maioria descreve como um calor pontual e rápido.</p>
-          <p>Depois vem o período de renovação: a pele fica avermelhada e mais sensível por alguns dias, descama de leve e vai revelando o tecido novo. Protetor solar rigoroso, hidratação e as orientações do pós são o que garantem o resultado — e é por isso que acompanhamos cada retorno de perto.</p>
-          <h4>Boa indicação para</h4>
-          <ul>
-            <li><strong>Rejuvenescimento</strong> — linhas finas, flacidez leve e perda de viço</li>
-            <li><strong>Manchas</strong> — melasma e manchas de sol, com protocolo individualizado</li>
-            <li><strong>Cicatrizes</strong> — sequelas de acne e cicatrizes cirúrgicas</li>
-            <li><strong>Estrias</strong> — recentes ou antigas, em qualquer região do corpo</li>
-            <li><strong>Textura</strong> — poros dilatados e pele áspera</li>
-          </ul>
-          <p>O laser CO₂ também pode ser combinado a outros protocolos da clínica, como o PDRN e os bioestimuladores de colágeno, potencializando a resposta da pele. Essa associação é sempre definida na avaliação, caso a caso.</p>
-        </div>
-      </article>
       <article class="treat-card show" data-cat="saude corporal">
         <div class="ic"><i class="ri-hand-heart-line"></i></div>
         <h4>Massoterapia</h4>
@@ -424,6 +386,246 @@
           <p>A massagem relaxante trabalha com pressão constante e ritmo lento, do começo ao fim da sessão: é ela que desacelera a respiração, solta os ombros e tira o corpo do estado de alerta em que a rotina o mantém.</p>
           <p>Na bambuterapia, as varas de bambu agem como se fossem o prolongamento dos dedos, alcançando coxas, glúteos, flancos e abdômen, e também relaxando pés e costas. E a massagem com pedras quentes usa basalto aquecido para relaxar, ativar a circulação, aliviar tensões musculares e favorecer a drenagem.</p>
         </div>
+      </article>
+
+
+      <!-- ================= LASER CO2 FRACIONADO =================
+           Banner + um card por regiao, cada um com o proprio botao de
+           WhatsApp (o texto da mensagem ja vai com a regiao e o valor).
+           Para mudar preco/data: edite o card e o href do botao dele.
+           Entram na aba "Todos", na aba "Laser CO2" e tambem em
+           Facial/Corporal conforme o data-cat de cada card. -->
+      <article class="treat-card laser-banner show" data-cat="laser facial corporal" id="laser-co2">
+        <div class="laser-banner-grid">
+          <div class="laser-banner-txt">
+            <span class="laser-eyebrow"><i class="ri-flashlight-line"></i> Novo na Pio</span>
+            <h4>Laser CO₂ Fracionado</h4>
+            <p>Poucas sessões. Porque cremes levam anos — e o laser transforma. Escolha a região abaixo e agende direto pelo WhatsApp.</p>
+            <button type="button" class="card-more" aria-expanded="false" aria-controls="treatPanel"><span>Saiba mais</span> <i class="ri-arrow-right-line"></i></button>
+          </div>
+          <ul class="laser-banner-info">
+            <li><i class="ri-calendar-event-line"></i><div><strong>Aplicação em 29/09/2026</strong><span>terça-feira</span></div></li>
+            <li><i class="ri-shield-check-line"></i><div><strong>3 sessões de pós-procedimento inclusas</strong><span>incluindo fototerapia</span></div></li>
+            <li><i class="ri-bank-card-line"></i><div><strong>10x sem juros</strong><span>no cartão, ou à vista</span></div></li>
+          </ul>
+        </div>
+        <div class="post-content">
+          <span class="meta">Facial e corporal</span>
+          <h3>Laser CO₂ Fracionado</h3>
+          <p>O laser de CO₂ fracionado é hoje um dos recursos mais completos da estética avançada. Ele emite microcolunas de luz que atravessam a pele em pontos milimétricos, preservando o tecido ao redor: é esse "fracionamento" que faz a recuperação ser mais rápida do que a do laser tradicional.</p>
+          <p>Na prática, a pele entende esses microestímulos como um chamado para se reconstruir — e responde produzindo colágeno e elastina novos. O resultado aparece em textura mais lisa, poros menos marcados, manchas mais claras, cicatrizes atenuadas e uma firmeza que se instala aos poucos, ao longo das semanas seguintes.</p>
+          <h4>Regiões que tratamos</h4>
+          <ul>
+            <li><strong>Rosto todo</strong> — renovação completa: textura, poros dilatados, manchas e linhas finas</li>
+            <li><strong>Pálpebras</strong> — a pele mais fina do corpo, para um olhar mais aberto e descansado</li>
+            <li><strong>Pescoço</strong> — as linhas horizontais e a flacidez que entregam a idade</li>
+            <li><strong>Colo</strong> — marcas de sol e as ruguinhas verticais da região decotada</li>
+            <li><strong>Braços</strong> — textura e flacidez, sobretudo na face interna</li>
+            <li><strong>Mãos</strong> — manchas senis e pele fina, na região que mais denuncia o tempo</li>
+            <li><strong>Papada</strong> — firmeza sob o queixo e contorno do maxilar mais definido</li>
+            <li><strong>Estrias por região</strong> — inclusive as brancas e antigas, tratadas sulco a sulco</li>
+            <li><strong>Flanco</strong> — a pele da lateral do tronco, que costuma sobrar depois do emagrecimento</li>
+            <li><strong>Abdômen</strong> — flacidez pós-gestação ou pós-emagrecimento, estrias e cicatrizes</li>
+            <li><strong>Interno de coxa</strong> — área de pele frouxa e delicada, tratada com parâmetros suaves</li>
+            <li><strong>Seios</strong> — estrias e perda de firmeza na pele das mamas e do colo</li>
+          </ul>
+          <h4>Como é a sessão</h4>
+          <p>Antes de qualquer aplicação há uma avaliação individual: tipo de pele, histórico, medicações em uso e o objetivo de cada paciente definem a intensidade e o número de sessões. No dia, a área recebe anestésico tópico e o desconforto é bem tolerado — a maioria descreve como um calor pontual e rápido.</p>
+          <p>Depois vem o período de renovação: a pele fica avermelhada e mais sensível por alguns dias, descama de leve e vai revelando o tecido novo. Protetor solar rigoroso, hidratação e as orientações do pós são o que garantem o resultado — e é por isso que acompanhamos cada retorno de perto.</p>
+          <h4>Boa indicação para</h4>
+          <ul>
+            <li><strong>Rejuvenescimento</strong> — linhas finas, flacidez leve e perda de viço</li>
+            <li><strong>Manchas</strong> — melasma e manchas de sol, com protocolo individualizado</li>
+            <li><strong>Cicatrizes</strong> — sequelas de acne e cicatrizes cirúrgicas</li>
+            <li><strong>Estrias</strong> — recentes ou antigas, em qualquer região do corpo</li>
+            <li><strong>Textura</strong> — poros dilatados e pele áspera</li>
+          </ul>
+          <p>O laser CO₂ também pode ser combinado a outros protocolos da clínica, como o PDRN e os bioestimuladores de colágeno, potencializando a resposta da pele. Essa associação é sempre definida na avaliação, caso a caso.</p>
+        </div>
+      </article>
+      <article class="laser-card show" data-cat="laser facial">
+        <div class="laser-card-head">
+          <div class="ic"><i class="ri-user-smile-line"></i></div>
+          <span class="laser-badge top">Mais completo</span>
+        </div>
+        <h4>Rosto Todo + Papada</h4>
+        <p class="laser-inclui"><i class="ri-check-double-line"></i> Rosto todo + pálpebras + papada · PDRN + Fototerapia</p>
+        <div class="laser-preco">
+          <span class="laser-parcela">10x de</span>
+          <strong>R$ 90<small>,00</small></strong>
+          <span class="laser-juros">sem juros no cartão</span>
+          <em>ou R$ 900,00 à vista</em>
+        </div>
+        <a class="btn-wa" href="https://wa.me/5543991656200?text=Ol%C3%A1%21%20Vim%20pelo%20site%20e%20tenho%20interesse%20no%20Laser%20CO2%20Fracionado%20%E2%80%94%20Rosto%20Todo%20%2B%20Papada%20%28rosto%20todo%20%2B%20p%C3%A1lpebras%20%2B%20papada%20%2B%20PDRN%20%2B%20fototerapia%29.%20Vi%20o%20valor%20de%20R%24%20900%2C00%20%C3%A0%20vista%20ou%2010x%20de%20R%24%2090%2C00%20sem%20juros%20e%20quero%20agendar%20para%20a%20aplica%C3%A7%C3%A3o%20de%2029%2F09%2F2026." target="_blank" rel="noopener"><i class="ri-whatsapp-line"></i> Agendar no WhatsApp</a>
+      </article>
+      <article class="laser-card show" data-cat="laser facial">
+        <div class="laser-card-head">
+          <div class="ic"><i class="ri-user-3-line"></i></div>
+          <span class="laser-badge">Facial</span>
+        </div>
+        <h4>Papada</h4>
+        <p class="laser-inclui"><i class="ri-check-double-line"></i> PDRN + Fototerapia inclusos</p>
+        <div class="laser-preco">
+          <span class="laser-parcela">10x de</span>
+          <strong>R$ 49<small>,00</small></strong>
+          <span class="laser-juros">sem juros no cartão</span>
+          <em>ou R$ 490,00 à vista</em>
+        </div>
+        <a class="btn-wa" href="https://wa.me/5543991656200?text=Ol%C3%A1%21%20Vim%20pelo%20site%20e%20tenho%20interesse%20no%20Laser%20CO2%20Fracionado%20%E2%80%94%20Papada%20%28PDRN%20%2B%20fototerapia%29.%20Vi%20o%20valor%20de%20R%24%20490%2C00%20%C3%A0%20vista%20ou%2010x%20de%20R%24%2049%2C00%20sem%20juros%20e%20quero%20agendar%20para%20a%20aplica%C3%A7%C3%A3o%20de%2029%2F09%2F2026." target="_blank" rel="noopener"><i class="ri-whatsapp-line"></i> Agendar no WhatsApp</a>
+      </article>
+      <article class="laser-card show" data-cat="laser facial">
+        <div class="laser-card-head">
+          <div class="ic"><i class="ri-eye-line"></i></div>
+          <span class="laser-badge">Facial</span>
+        </div>
+        <h4>Pálpebras</h4>
+        <p class="laser-inclui"><i class="ri-check-double-line"></i> PDRN + Fototerapia inclusos</p>
+        <div class="laser-preco">
+          <span class="laser-parcela">10x de</span>
+          <strong>R$ 65<small>,00</small></strong>
+          <span class="laser-juros">sem juros no cartão</span>
+          <em>ou R$ 650,00 à vista</em>
+        </div>
+        <a class="btn-wa" href="https://wa.me/5543991656200?text=Ol%C3%A1%21%20Vim%20pelo%20site%20e%20tenho%20interesse%20no%20Laser%20CO2%20Fracionado%20%E2%80%94%20P%C3%A1lpebras%20%28PDRN%20%2B%20fototerapia%29.%20Vi%20o%20valor%20de%20R%24%20650%2C00%20%C3%A0%20vista%20ou%2010x%20de%20R%24%2065%2C00%20sem%20juros%20e%20quero%20agendar%20para%20a%20aplica%C3%A7%C3%A3o%20de%2029%2F09%2F2026." target="_blank" rel="noopener"><i class="ri-whatsapp-line"></i> Agendar no WhatsApp</a>
+      </article>
+      <article class="laser-card show" data-cat="laser facial">
+        <div class="laser-card-head">
+          <div class="ic"><i class="ri-user-4-line"></i></div>
+          <span class="laser-badge">Facial</span>
+        </div>
+        <h4>Pescoço</h4>
+        <p class="laser-inclui"><i class="ri-check-double-line"></i> PDRN + Fototerapia inclusos</p>
+        <div class="laser-preco">
+          <span class="laser-parcela">10x de</span>
+          <strong>R$ 65<small>,00</small></strong>
+          <span class="laser-juros">sem juros no cartão</span>
+          <em>ou R$ 650,00 à vista</em>
+        </div>
+        <a class="btn-wa" href="https://wa.me/5543991656200?text=Ol%C3%A1%21%20Vim%20pelo%20site%20e%20tenho%20interesse%20no%20Laser%20CO2%20Fracionado%20%E2%80%94%20Pesco%C3%A7o%20%28PDRN%20%2B%20fototerapia%29.%20Vi%20o%20valor%20de%20R%24%20650%2C00%20%C3%A0%20vista%20ou%2010x%20de%20R%24%2065%2C00%20sem%20juros%20e%20quero%20agendar%20para%20a%20aplica%C3%A7%C3%A3o%20de%2029%2F09%2F2026." target="_blank" rel="noopener"><i class="ri-whatsapp-line"></i> Agendar no WhatsApp</a>
+      </article>
+      <article class="laser-card show" data-cat="laser corporal">
+        <div class="laser-card-head">
+          <div class="ic"><i class="ri-heart-line"></i></div>
+          <span class="laser-badge">Corporal</span>
+        </div>
+        <h4>Colo</h4>
+        <p class="laser-inclui"><i class="ri-check-double-line"></i> PDRN + Fototerapia inclusos</p>
+        <div class="laser-preco">
+          <span class="laser-parcela">10x de</span>
+          <strong>R$ 40<small>,00</small></strong>
+          <span class="laser-juros">sem juros no cartão</span>
+          <em>ou R$ 400,00 à vista</em>
+        </div>
+        <a class="btn-wa" href="https://wa.me/5543991656200?text=Ol%C3%A1%21%20Vim%20pelo%20site%20e%20tenho%20interesse%20no%20Laser%20CO2%20Fracionado%20%E2%80%94%20Colo%20%28PDRN%20%2B%20fototerapia%29.%20Vi%20o%20valor%20de%20R%24%20400%2C00%20%C3%A0%20vista%20ou%2010x%20de%20R%24%2040%2C00%20sem%20juros%20e%20quero%20agendar%20para%20a%20aplica%C3%A7%C3%A3o%20de%2029%2F09%2F2026." target="_blank" rel="noopener"><i class="ri-whatsapp-line"></i> Agendar no WhatsApp</a>
+      </article>
+      <article class="laser-card show" data-cat="laser corporal">
+        <div class="laser-card-head">
+          <div class="ic"><i class="ri-hand-heart-line"></i></div>
+          <span class="laser-badge">Corporal</span>
+        </div>
+        <h4>Mãos</h4>
+        <p class="laser-inclui"><i class="ri-check-double-line"></i> PDRN + Fototerapia inclusos</p>
+        <div class="laser-preco">
+          <span class="laser-parcela">10x de</span>
+          <strong>R$ 69<small>,00</small></strong>
+          <span class="laser-juros">sem juros no cartão</span>
+          <em>ou R$ 690,00 à vista</em>
+        </div>
+        <a class="btn-wa" href="https://wa.me/5543991656200?text=Ol%C3%A1%21%20Vim%20pelo%20site%20e%20tenho%20interesse%20no%20Laser%20CO2%20Fracionado%20%E2%80%94%20M%C3%A3os%20%28PDRN%20%2B%20fototerapia%29.%20Vi%20o%20valor%20de%20R%24%20690%2C00%20%C3%A0%20vista%20ou%2010x%20de%20R%24%2069%2C00%20sem%20juros%20e%20quero%20agendar%20para%20a%20aplica%C3%A7%C3%A3o%20de%2029%2F09%2F2026." target="_blank" rel="noopener"><i class="ri-whatsapp-line"></i> Agendar no WhatsApp</a>
+      </article>
+      <article class="laser-card show" data-cat="laser corporal">
+        <div class="laser-card-head">
+          <div class="ic"><i class="ri-open-arm-line"></i></div>
+          <span class="laser-badge">Corporal</span>
+        </div>
+        <h4>Braços</h4>
+        <p class="laser-inclui"><i class="ri-check-double-line"></i> Laser CO₂ fracionado nos braços</p>
+        <div class="laser-preco">
+          <span class="laser-parcela">10x de</span>
+          <strong>R$ 75<small>,00</small></strong>
+          <span class="laser-juros">sem juros no cartão</span>
+          <em>ou R$ 750,00 à vista</em>
+        </div>
+        <a class="btn-wa" href="https://wa.me/5543991656200?text=Ol%C3%A1%21%20Vim%20pelo%20site%20e%20tenho%20interesse%20no%20Laser%20CO2%20Fracionado%20%E2%80%94%20Bra%C3%A7os.%20Vi%20o%20valor%20de%20R%24%20750%2C00%20%C3%A0%20vista%20ou%2010x%20de%20R%24%2075%2C00%20sem%20juros%20e%20quero%20agendar%20para%20a%20aplica%C3%A7%C3%A3o%20de%2029%2F09%2F2026." target="_blank" rel="noopener"><i class="ri-whatsapp-line"></i> Agendar no WhatsApp</a>
+      </article>
+      <article class="laser-card show" data-cat="laser corporal">
+        <div class="laser-card-head">
+          <div class="ic"><i class="ri-sparkling-line"></i></div>
+          <span class="laser-badge">Corporal</span>
+        </div>
+        <h4>Estrias</h4>
+        <p class="laser-inclui"><i class="ri-check-double-line"></i> PDRN incluso · qualquer região</p>
+        <div class="laser-preco">
+          <span class="laser-parcela">10x de</span>
+          <strong>R$ 69<small>,00</small></strong>
+          <span class="laser-juros">sem juros no cartão</span>
+          <em>ou R$ 690,00 à vista</em>
+        </div>
+        <a class="btn-wa" href="https://wa.me/5543991656200?text=Ol%C3%A1%21%20Vim%20pelo%20site%20e%20tenho%20interesse%20no%20Laser%20CO2%20Fracionado%20%E2%80%94%20Estrias%20%28PDRN%29.%20Vi%20o%20valor%20de%20R%24%20690%2C00%20%C3%A0%20vista%20ou%2010x%20de%20R%24%2069%2C00%20sem%20juros%20e%20quero%20agendar%20para%20a%20aplica%C3%A7%C3%A3o%20de%2029%2F09%2F2026." target="_blank" rel="noopener"><i class="ri-whatsapp-line"></i> Agendar no WhatsApp</a>
+      </article>
+      <div class="laser-divider show" data-cat="laser facial corporal">
+        <i class="ri-sparkling-2-line"></i>
+        <div><strong>Promoções — combine regiões</strong><span>Pacotes com valor especial para quem trata mais de uma região.</span></div>
+      </div>
+      <article class="laser-card show" data-cat="laser corporal">
+        <div class="laser-card-head">
+          <div class="ic"><i class="ri-gift-line"></i></div>
+          <span class="laser-badge promo">Promoção</span>
+        </div>
+        <h4>Mãos + Braços</h4>
+        <p class="laser-inclui"><i class="ri-price-tag-3-line"></i> Duas regiões em um só pacote</p>
+        <div class="laser-preco">
+          <span class="laser-parcela">10x de</span>
+          <strong>R$ 99<small>,00</small></strong>
+          <span class="laser-juros">sem juros no cartão</span>
+          <em>ou R$ 990,00 à vista</em>
+        </div>
+        <a class="btn-wa" href="https://wa.me/5543991656200?text=Ol%C3%A1%21%20Vim%20pelo%20site%20e%20tenho%20interesse%20no%20Laser%20CO2%20Fracionado%20%E2%80%94%20M%C3%A3os%20%2B%20Bra%C3%A7os.%20Vi%20o%20valor%20de%20R%24%20990%2C00%20%C3%A0%20vista%20ou%2010x%20de%20R%24%2099%2C00%20sem%20juros%20e%20quero%20agendar%20para%20a%20aplica%C3%A7%C3%A3o%20de%2029%2F09%2F2026." target="_blank" rel="noopener"><i class="ri-whatsapp-line"></i> Agendar no WhatsApp</a>
+      </article>
+      <article class="laser-card show" data-cat="laser facial corporal">
+        <div class="laser-card-head">
+          <div class="ic"><i class="ri-gift-line"></i></div>
+          <span class="laser-badge promo">Promoção</span>
+        </div>
+        <h4>Pescoço + Colo</h4>
+        <p class="laser-inclui"><i class="ri-price-tag-3-line"></i> Duas regiões em um só pacote</p>
+        <div class="laser-preco">
+          <span class="laser-parcela">10x de</span>
+          <strong>R$ 89<small>,00</small></strong>
+          <span class="laser-juros">sem juros no cartão</span>
+          <em>ou R$ 890,00 à vista</em>
+        </div>
+        <a class="btn-wa" href="https://wa.me/5543991656200?text=Ol%C3%A1%21%20Vim%20pelo%20site%20e%20tenho%20interesse%20no%20Laser%20CO2%20Fracionado%20%E2%80%94%20Pesco%C3%A7o%20%2B%20Colo.%20Vi%20o%20valor%20de%20R%24%20890%2C00%20%C3%A0%20vista%20ou%2010x%20de%20R%24%2089%2C00%20sem%20juros%20e%20quero%20agendar%20para%20a%20aplica%C3%A7%C3%A3o%20de%2029%2F09%2F2026." target="_blank" rel="noopener"><i class="ri-whatsapp-line"></i> Agendar no WhatsApp</a>
+      </article>
+      <article class="laser-card show" data-cat="laser facial">
+        <div class="laser-card-head">
+          <div class="ic"><i class="ri-gift-line"></i></div>
+          <span class="laser-badge promo">Promoção</span>
+        </div>
+        <h4>Papada + Pescoço</h4>
+        <p class="laser-inclui"><i class="ri-price-tag-3-line"></i> Duas regiões em um só pacote</p>
+        <div class="laser-preco">
+          <span class="laser-parcela">10x de</span>
+          <strong>R$ 85<small>,00</small></strong>
+          <span class="laser-juros">sem juros no cartão</span>
+          <em>ou R$ 850,00 à vista</em>
+        </div>
+        <a class="btn-wa" href="https://wa.me/5543991656200?text=Ol%C3%A1%21%20Vim%20pelo%20site%20e%20tenho%20interesse%20no%20Laser%20CO2%20Fracionado%20%E2%80%94%20Papada%20%2B%20Pesco%C3%A7o.%20Vi%20o%20valor%20de%20R%24%20850%2C00%20%C3%A0%20vista%20ou%2010x%20de%20R%24%2085%2C00%20sem%20juros%20e%20quero%20agendar%20para%20a%20aplica%C3%A7%C3%A3o%20de%2029%2F09%2F2026." target="_blank" rel="noopener"><i class="ri-whatsapp-line"></i> Agendar no WhatsApp</a>
+      </article>
+      <article class="laser-card show" data-cat="laser facial corporal">
+        <div class="laser-card-head">
+          <div class="ic"><i class="ri-gift-line"></i></div>
+          <span class="laser-badge promo">Promoção</span>
+        </div>
+        <h4>Pescoço + Papada + Colo</h4>
+        <p class="laser-inclui"><i class="ri-price-tag-3-line"></i> Três regiões em um só pacote</p>
+        <div class="laser-preco">
+          <span class="laser-parcela">10x de</span>
+          <strong>R$ 98<small>,00</small></strong>
+          <span class="laser-juros">sem juros no cartão</span>
+          <em>ou R$ 980,00 à vista</em>
+        </div>
+        <a class="btn-wa" href="https://wa.me/5543991656200?text=Ol%C3%A1%21%20Vim%20pelo%20site%20e%20tenho%20interesse%20no%20Laser%20CO2%20Fracionado%20%E2%80%94%20Pesco%C3%A7o%20%2B%20Papada%20%2B%20Colo.%20Vi%20o%20valor%20de%20R%24%20980%2C00%20%C3%A0%20vista%20ou%2010x%20de%20R%24%2098%2C00%20sem%20juros%20e%20quero%20agendar%20para%20a%20aplica%C3%A7%C3%A3o%20de%2029%2F09%2F2026." target="_blank" rel="noopener"><i class="ri-whatsapp-line"></i> Agendar no WhatsApp</a>
       </article>
 
       <div class="exp-panel" id="treatPanel" hidden>
@@ -939,6 +1141,7 @@
         <li><a href="#tratamentos">Medicina Funcional</a></li><li><a href="#tratamentos">Biomedicina Estética</a></li>
         <li><a href="#tratamentos">Odontologia Estética</a></li><li><a href="#tratamentos">Estética Corporal</a></li>
         <li><a href="#tratamentos">Massoterapia</a></li><li><a href="#tratamentos">Massagem</a></li>
+        <li><a href="#tratamentos" data-filtro="laser">Laser CO₂ Fracionado</a></li>
       </ul></div>
       <div class="footer-col"><h4>Contato</h4><ul>
         <li>Rua Ibiporã, 426 - Londrina, PR</li><li>(43) 3327-6200</li><li>(43) 99165-6200</li>
@@ -1444,7 +1647,7 @@ counters.forEach(function(el){ io2.observe(el); });
 
 /* Filtro de tratamentos */
 var filterButtons = document.querySelectorAll('#filterTabs button');
-var treatCards = document.querySelectorAll('.treat-card');
+var treatCards = document.querySelectorAll('#treatGrid [data-cat]');
 filterButtons.forEach(function(btn){
   btn.addEventListener('click', function(){
     /* fecha o painel antes de trocar o filtro, senao ele fica orfao no meio da grade */
@@ -1459,6 +1662,27 @@ filterButtons.forEach(function(btn){
     });
   });
 });
+
+/* Links que ja abrem a aba do Laser CO2 (rodape) e o hash #laser-co2 */
+function abrirAbaLaser(){
+  var alvo = document.querySelector('#filterTabs button[data-filter="laser"]');
+  if(alvo && !alvo.classList.contains('active')){ alvo.click(); }
+}
+document.querySelectorAll('[data-filtro="laser"]').forEach(function(a){
+  a.addEventListener('click', abrirAbaLaser);
+});
+/* link direto (ex.: bio do Instagram) — abre a aba e rola ate a secao depois
+   que a pagina termina de montar, senao o pulo nativo do navegador se perde */
+if(location.hash === '#laser-co2'){
+  abrirAbaLaser();
+  window.addEventListener('load', function(){
+    setTimeout(function(){
+      var sec = document.getElementById('tratamentos');
+      var folga = parseFloat(getComputedStyle(document.documentElement).scrollPaddingTop) || 90;
+      window.scrollTo({top: Math.max(0, pioTopoReal(sec) - folga), behavior:'smooth'});
+    }, 600);
+  });
+}
 
 /* Carrossel de fotos (hero e sobre) — mesma mecanica nos dois,
    muda apenas o prefixo das classes de cada secao */
