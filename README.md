@@ -133,10 +133,10 @@ embaixo da linha do card clicado. Cada card guarda o próprio conteúdo numa
 
 **Laser CO₂ Fracionado** tem uma aba própria no filtro de tratamentos (e entra
 também em "Todos", "Facial" e "Corporal"). O bloco fica no fim da grade
-(`#treatGrid`, comentário `LASER CO2 FRACIONADO`): um banner escuro com a data
-da aplicação e as condições, um card por região com o preço e um botão de
-WhatsApp **próprio** (a mensagem já vai com a região, o valor e a data), e um
-divisor "Promoções" seguido dos combos. Para mudar um preço ou a data, edite o
+(`#treatGrid`, comentário `LASER CO2 FRACIONADO`): um banner escuro com as
+condições, um card por região com o preço e um botão de
+WhatsApp **próprio** (a mensagem já vai com a região e o valor), e um
+divisor "Promoções" seguido dos combos. Para mudar um preço, edite o
 card **e** o texto dentro do `href` do botão dele — os dois estão escritos à
 mão, não são calculados. O link `#laser-co2` (bom para a bio do Instagram) abre
 o site já com essa aba selecionada.
