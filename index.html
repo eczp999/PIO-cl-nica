@@ -329,6 +329,8 @@
           <span class="meta">Facial</span>
           <h3>Estética Avançada Facial</h3>
           <p>Protocolos de limpeza, renovação e rejuvenescimento da pele do rosto, escolhidos conforme o tipo de pele e a queixa de cada paciente.</p>
+          <!-- ofertas faciais (pecas da clinica): montadas pelo JS a partir de PIO_CAMPANHAS.facial -->
+          <div class="camp-bloco" id="facialDestaques"></div>
           <h4>Procedimentos</h4>
           <ul>
             <li><strong>Hygialux</strong> — terapia com LED</li>
@@ -413,6 +415,8 @@
           <h3>Laser CO₂ Fracionado</h3>
           <p>O laser de CO₂ fracionado é hoje um dos recursos mais completos da estética avançada. Ele emite microcolunas de luz que atravessam a pele em pontos milimétricos, preservando o tecido ao redor: é esse "fracionamento" que faz a recuperação ser mais rápida do que a do laser tradicional.</p>
           <p>Na prática, a pele entende esses microestímulos como um chamado para se reconstruir — e responde produzindo colágeno e elastina novos. O resultado aparece em textura mais lisa, poros menos marcados, manchas mais claras, cicatrizes atenuadas e uma firmeza que se instala aos poucos, ao longo das semanas seguintes.</p>
+          <!-- campanhas oficiais (pecas da clinica): montadas pelo JS a partir de PIO_CAMPANHAS.laser -->
+          <div class="camp-bloco" id="laserCampanhas"></div>
           <h4>Regiões que tratamos</h4>
           <ul>
             <li><strong>Rosto todo</strong> — renovação completa: textura, poros dilatados, manchas e linhas finas</li>
@@ -431,7 +435,7 @@
           <h4>Valores por região</h4>
           <p>Todos os pacotes incluem 3 sessões de pós-procedimento + PDRN + fototerapia. Escolha a região e agende direto pelo WhatsApp — a mensagem já vai com o valor.</p>
           <div class="laser-grid">
-            <article class="laser-card">
+            <article class="laser-card" data-regiao="rosto">
               <div class="laser-card-head">
                 <div class="ic"><i class="ri-user-smile-line"></i></div>
                 <span class="laser-badge top">Mais completo</span>
@@ -446,7 +450,7 @@
               </div>
               <a class="btn-wa" href="https://wa.me/5543991656200?text=Ol%C3%A1%21%20Vim%20pelo%20site%20e%20tenho%20interesse%20no%20Laser%20CO2%20Fracionado%20%E2%80%94%20Rosto%20Todo%20%2B%20Papada%20%28Rosto%20todo%20%2B%20p%C3%A1lpebras%20%2B%20papada%20%C2%B7%203%20sess%C3%B5es%20de%20p%C3%B3s-procedimento%20%2B%20PDRN%20%2B%20fototerapia%29.%20Vi%20o%20valor%20de%20R%24%20900%2C00%20%C3%A0%20vista%20ou%2010x%20de%20R%24%2090%2C00%20sem%20juros%20e%20quero%20agendar." target="_blank" rel="noopener"><i class="ri-whatsapp-line"></i> Agendar no WhatsApp</a>
             </article>
-            <article class="laser-card">
+            <article class="laser-card" data-regiao="papada">
               <div class="laser-card-head">
                 <div class="ic"><i class="ri-user-3-line"></i></div>
                 <span class="laser-badge">Facial</span>
@@ -461,7 +465,7 @@
               </div>
               <a class="btn-wa" href="https://wa.me/5543991656200?text=Ol%C3%A1%21%20Vim%20pelo%20site%20e%20tenho%20interesse%20no%20Laser%20CO2%20Fracionado%20%E2%80%94%20Papada%20%283%20sess%C3%B5es%20de%20p%C3%B3s-procedimento%20%2B%20PDRN%20%2B%20fototerapia%29.%20Vi%20o%20valor%20de%20R%24%20490%2C00%20%C3%A0%20vista%20ou%2010x%20de%20R%24%2049%2C00%20sem%20juros%20e%20quero%20agendar." target="_blank" rel="noopener"><i class="ri-whatsapp-line"></i> Agendar no WhatsApp</a>
             </article>
-            <article class="laser-card">
+            <article class="laser-card" data-regiao="palpebras">
               <div class="laser-card-head">
                 <div class="ic"><i class="ri-eye-line"></i></div>
                 <span class="laser-badge">Facial</span>
@@ -476,7 +480,7 @@
               </div>
               <a class="btn-wa" href="https://wa.me/5543991656200?text=Ol%C3%A1%21%20Vim%20pelo%20site%20e%20tenho%20interesse%20no%20Laser%20CO2%20Fracionado%20%E2%80%94%20P%C3%A1lpebras%20%283%20sess%C3%B5es%20de%20p%C3%B3s-procedimento%20%2B%20PDRN%20%2B%20fototerapia%29.%20Vi%20o%20valor%20de%20R%24%20650%2C00%20%C3%A0%20vista%20ou%2010x%20de%20R%24%2065%2C00%20sem%20juros%20e%20quero%20agendar." target="_blank" rel="noopener"><i class="ri-whatsapp-line"></i> Agendar no WhatsApp</a>
             </article>
-            <article class="laser-card">
+            <article class="laser-card" data-regiao="pescoco">
               <div class="laser-card-head">
                 <div class="ic"><i class="ri-user-4-line"></i></div>
                 <span class="laser-badge">Facial</span>
@@ -491,7 +495,7 @@
               </div>
               <a class="btn-wa" href="https://wa.me/5543991656200?text=Ol%C3%A1%21%20Vim%20pelo%20site%20e%20tenho%20interesse%20no%20Laser%20CO2%20Fracionado%20%E2%80%94%20Pesco%C3%A7o%20%283%20sess%C3%B5es%20de%20p%C3%B3s-procedimento%20%2B%20PDRN%20%2B%20fototerapia%29.%20Vi%20o%20valor%20de%20R%24%20650%2C00%20%C3%A0%20vista%20ou%2010x%20de%20R%24%2065%2C00%20sem%20juros%20e%20quero%20agendar." target="_blank" rel="noopener"><i class="ri-whatsapp-line"></i> Agendar no WhatsApp</a>
             </article>
-            <article class="laser-card">
+            <article class="laser-card" data-regiao="colo">
               <div class="laser-card-head">
                 <div class="ic"><i class="ri-heart-line"></i></div>
                 <span class="laser-badge">Corporal</span>
@@ -506,7 +510,7 @@
               </div>
               <a class="btn-wa" href="https://wa.me/5543991656200?text=Ol%C3%A1%21%20Vim%20pelo%20site%20e%20tenho%20interesse%20no%20Laser%20CO2%20Fracionado%20%E2%80%94%20Colo%20%283%20sess%C3%B5es%20de%20p%C3%B3s-procedimento%20%2B%20PDRN%20%2B%20fototerapia%29.%20Vi%20o%20valor%20de%20R%24%20400%2C00%20%C3%A0%20vista%20ou%2010x%20de%20R%24%2040%2C00%20sem%20juros%20e%20quero%20agendar." target="_blank" rel="noopener"><i class="ri-whatsapp-line"></i> Agendar no WhatsApp</a>
             </article>
-            <article class="laser-card">
+            <article class="laser-card" data-regiao="maos">
               <div class="laser-card-head">
                 <div class="ic"><i class="ri-hand-heart-line"></i></div>
                 <span class="laser-badge">Corporal</span>
@@ -521,7 +525,7 @@
               </div>
               <a class="btn-wa" href="https://wa.me/5543991656200?text=Ol%C3%A1%21%20Vim%20pelo%20site%20e%20tenho%20interesse%20no%20Laser%20CO2%20Fracionado%20%E2%80%94%20M%C3%A3os%20%283%20sess%C3%B5es%20de%20p%C3%B3s-procedimento%20%2B%20PDRN%20%2B%20fototerapia%29.%20Vi%20o%20valor%20de%20R%24%20690%2C00%20%C3%A0%20vista%20ou%2010x%20de%20R%24%2069%2C00%20sem%20juros%20e%20quero%20agendar." target="_blank" rel="noopener"><i class="ri-whatsapp-line"></i> Agendar no WhatsApp</a>
             </article>
-            <article class="laser-card">
+            <article class="laser-card" data-regiao="bracos">
               <div class="laser-card-head">
                 <div class="ic"><i class="ri-open-arm-line"></i></div>
                 <span class="laser-badge">Corporal</span>
@@ -536,7 +540,7 @@
               </div>
               <a class="btn-wa" href="https://wa.me/5543991656200?text=Ol%C3%A1%21%20Vim%20pelo%20site%20e%20tenho%20interesse%20no%20Laser%20CO2%20Fracionado%20%E2%80%94%20Bra%C3%A7os%20%283%20sess%C3%B5es%20de%20p%C3%B3s-procedimento%20%2B%20PDRN%20%2B%20fototerapia%29.%20Vi%20o%20valor%20de%20R%24%20750%2C00%20%C3%A0%20vista%20ou%2010x%20de%20R%24%2075%2C00%20sem%20juros%20e%20quero%20agendar." target="_blank" rel="noopener"><i class="ri-whatsapp-line"></i> Agendar no WhatsApp</a>
             </article>
-            <article class="laser-card">
+            <article class="laser-card" data-regiao="estrias">
               <div class="laser-card-head">
                 <div class="ic"><i class="ri-sparkling-line"></i></div>
                 <span class="laser-badge">Corporal</span>
@@ -1162,6 +1166,18 @@
      funciona exatamente como antes. O painel abaixo so entra por cima disso. -->
 <a href="https://wa.me/5543991656200?text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20gostaria%20de%20agendar%20uma%20avalia%C3%A7%C3%A3o%20gratuita." target="_blank" class="whatsapp-float" id="waFloat" aria-haspopup="dialog" aria-label="Falar no WhatsApp"><i class="ri-whatsapp-line"></i></a>
 
+<!-- Lightbox das pecas de campanha (Laser CO2 e ofertas faciais). Um so para o site inteiro. -->
+<div class="lb" id="lightbox" role="dialog" aria-modal="true" aria-label="Campanha ampliada" hidden>
+  <div class="lb-fundo" data-lb-fechar></div>
+  <button type="button" class="lb-btn lb-fechar" data-lb-fechar aria-label="Fechar"><i class="ri-close-line"></i></button>
+  <button type="button" class="lb-btn lb-nav lb-prev" data-lb-dir="-1" aria-label="Peça anterior"><i class="ri-arrow-left-s-line"></i></button>
+  <figure class="lb-figura">
+    <picture class="lb-picture"></picture>
+    <figcaption class="lb-legenda"></figcaption>
+  </figure>
+  <button type="button" class="lb-btn lb-nav lb-next" data-lb-dir="1" aria-label="Próxima peça"><i class="ri-arrow-right-s-line"></i></button>
+</div>
+
 <div class="wa-fundo" id="waFundo" hidden></div>
 <div class="wa-painel" id="waPainel" role="dialog" aria-modal="true" aria-labelledby="waPainelTitulo" hidden>
   <div class="wa-topo">
@@ -1422,6 +1438,255 @@ document.getElementById('backToTop').addEventListener('click', function(){
   window.scrollTo({top:0, behavior:'smooth'});
 });
 
+
+/* =========================================================================
+   CAMPANHAS OFICIAIS DA CLINICA (pecas de imagem)
+   Tudo que e promocional e sensivel a data fica AQUI, num lugar so.
+   - laser.destaque : peca principal do Laser CO2 (card grande)
+   - laser.pecas    : demais regioes (carrossel). "regiao" casa com o
+                      data-regiao do card de preco, de onde vem o link do
+                      WhatsApp — a mensagem mora num lugar so.
+   - laser.tabela   : imagem-resumo com todos os valores (abre ampliada)
+   - facial         : ofertas de Estetica Avancada Facial (cards com preco)
+   Para tirar uma campanha do ar: apague a linha dela (ou o bloco inteiro
+   deixando a lista vazia). Os arquivos ficam em images/campanhas/, cada um
+   com .jpg (original) + -480.webp + -LARGURA.webp.
+   ATENCAO: as pecas do laser trazem impressa a data 29/09/2026 — quando a
+   campanha passar, troque as imagens ou esvazie as listas.
+   ========================================================================= */
+var PIO_CAMPANHAS = {
+  laser: {
+    titulo: 'Campanhas Laser CO₂',
+    texto: 'Peças oficiais da clínica com as condições de cada região. Toque em uma peça para ampliar.',
+    destaque: {regiao:'rosto', nome:'Rosto todo + pálpebras + papada', selo:'Mais completo', img:'laser-co2-rosto-completo', w:900, h:1599,
+      alt:'Campanha de Laser CO₂ fracionado para rosto todo, pálpebras e papada na Clínica PIO'},
+    pecas: [
+      {regiao:'papada',    nome:'Papada',    img:'laser-co2-papada',    w:900, h:1600, alt:'Condição especial de Laser CO₂ fracionado para papada na Clínica PIO'},
+      {regiao:'palpebras', nome:'Pálpebras', img:'laser-co2-palpebras', w:900, h:1600, alt:'Tratamento com Laser CO₂ fracionado para pálpebras na Clínica PIO'},
+      {regiao:'pescoco',   nome:'Pescoço',   img:'laser-co2-pescoco',   w:900, h:1600, alt:'Tratamento com Laser CO₂ fracionado para pescoço na Clínica PIO'},
+      {regiao:'colo',      nome:'Colo',      img:'laser-co2-colo',      w:900, h:1600, alt:'Tratamento com Laser CO₂ fracionado para colo na Clínica PIO'},
+      {regiao:'maos',      nome:'Mãos',      img:'laser-co2-maos',      w:900, h:1600, alt:'Tratamento com Laser CO₂ fracionado para mãos na Clínica PIO'},
+      {regiao:'estrias',   nome:'Estrias',   img:'laser-co2-estrias',   w:738, h:1300, alt:'Laser CO₂ fracionado com PDRN para estrias na Clínica PIO'}
+    ],
+    tabela: {nome:'Valores e regiões', img:'laser-co2-valores-regioes', w:1080, h:1440,
+      alt:'Tabela de valores do Laser CO₂ fracionado por região e promoções combinadas na Clínica PIO'}
+  },
+  facial: {
+    titulo: 'Cuidados faciais em destaque',
+    texto: 'Dois protocolos de renovação da pele com valor fechado e retorno incluso.',
+    pecas: [
+      {nome:'Peeling de Cristal', img:'peeling-cristal', w:1092, h:1440,
+       alt:'Peeling de cristal na Clínica PIO, com antes e depois do tratamento',
+       inclui:'Clareia manchas, suaviza linhas finas e devolve luminosidade', condicao:'1 sessão + retorno', preco:'299', centavos:'90',
+       wa:'Olá! Vim pelo site e tenho interesse no Peeling de Cristal (1 sessão + retorno, R$ 299,90). Quero agendar.'},
+      {nome:'Limpeza de Pele + Peeling', img:'limpeza-pele-peeling', w:1092, h:1440,
+       alt:'Limpeza de pele com peeling na Clínica PIO',
+       inclui:'Limpeza profunda com retorno de peeling químico de clareamento e renovação', condicao:'Combo com retorno', preco:'199', centavos:'90',
+       wa:'Olá! Vim pelo site e tenho interesse na Limpeza de Pele + Peeling (retorno com peeling químico, R$ 199,90). Quero agendar.'}
+    ]
+  }
+};
+
+(function(){
+  var PASTA = 'images/campanhas/';
+  var NUMERO = '5543991656200';
+  var grupos = {};   /* nome do grupo -> lista de pecas, para o lightbox navegar */
+
+  function escapar(t){ return String(t).replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;'); }
+
+  /* <picture> com WebP em dois tamanhos e o JPG original como reserva.
+     width/height fixos evitam o pulo de layout enquanto a imagem carrega. */
+  function picture(p, sizes){
+    var b = PASTA + p.img;
+    return '<picture><source type="image/webp" srcset="' + b + '-480.webp 480w, ' + b + '-' + p.w + '.webp ' + p.w + 'w" sizes="' + sizes + '">' +
+      '<img src="' + b + '.jpg" width="' + p.w + '" height="' + p.h + '" alt="' + escapar(p.alt) + '" loading="lazy" decoding="async"></picture>';
+  }
+  function botaoImg(p, grupo, i, sizes){
+    return '<button type="button" class="camp-img" data-lb-grupo="' + grupo + '" data-lb-indice="' + i + '" aria-label="Ampliar: ' + escapar(p.nome) + '">' +
+      picture(p, sizes) + '<span class="camp-zoom" aria-hidden="true"><i class="ri-zoom-in-line"></i></span></button>';
+  }
+  /* link do WhatsApp do card de preco da mesma regiao (mensagem mora la) */
+  function waDaRegiao(regiao){
+    var card = document.querySelector('.laser-card[data-regiao="' + regiao + '"] .btn-wa');
+    return card ? card.getAttribute('href') : null;
+  }
+  function btnWa(href, rotulo){
+    if(!href) return '';
+    return '<a class="btn-wa" href="' + href + '" target="_blank" rel="noopener"><i class="ri-whatsapp-line"></i> ' + (rotulo || 'Agendar no WhatsApp') + '</a>';
+  }
+
+  function montarLaser(){
+    var alvo = document.getElementById('laserCampanhas');
+    var c = PIO_CAMPANHAS.laser;
+    if(!alvo || !c || !c.destaque) return;
+    var lista = [c.destaque].concat(c.pecas || []);
+    if(c.tabela) lista.push(c.tabela);
+    grupos.laser = lista;
+
+    var d = c.destaque;
+    var html = '<h4>' + c.titulo + '</h4><p>' + c.texto + '</p>' +
+      '<div class="camp-grid">' +
+        '<figure class="camp-destaque">' + botaoImg(d, 'laser', 0, '(max-width: 768px) 92vw, 300px') +
+          '<figcaption>' + (d.selo ? '<span class="laser-badge top">' + d.selo + '</span>' : '') + '<strong>' + d.nome + '</strong>' + btnWa(waDaRegiao(d.regiao)) + '</figcaption>' +
+        '</figure>';
+    if(c.pecas && c.pecas.length){
+      html += '<div class="camp-carrossel" aria-roledescription="carrossel" aria-label="Campanhas por região">' +
+        '<div class="camp-viewport"><ul class="camp-track">';
+      c.pecas.forEach(function(p, i){
+        html += '<li class="camp-slide"><figure>' + botaoImg(p, 'laser', i + 1, '(max-width: 768px) 78vw, 280px') +
+          '<figcaption><strong>' + p.nome + '</strong>' + btnWa(waDaRegiao(p.regiao), 'Agendar') + '</figcaption></figure></li>';
+      });
+      html += '</ul></div>' +
+        '<button type="button" class="camp-nav camp-prev" aria-label="Anterior"><i class="ri-arrow-left-s-line"></i></button>' +
+        '<button type="button" class="camp-nav camp-next" aria-label="Próxima"><i class="ri-arrow-right-s-line"></i></button>' +
+        '<div class="camp-dots" role="tablist" aria-label="Posição do carrossel"></div></div>';
+    }
+    html += '</div>';
+    if(c.tabela){
+      var t = c.tabela;
+      html += '<button type="button" class="camp-tabela" data-lb-grupo="laser" data-lb-indice="' + (lista.length - 1) + '">' +
+        picture(t, '120px') +
+        '<span class="camp-tabela-txt"><strong>Confira todas as condições</strong><span>Valores por região e promoções combinadas em uma única tabela.</span></span>' +
+        '<span class="camp-tabela-ic" aria-hidden="true"><i class="ri-zoom-in-line"></i></span></button>';
+    }
+    alvo.innerHTML = html;
+  }
+
+  function montarFacial(){
+    var alvo = document.getElementById('facialDestaques');
+    var c = PIO_CAMPANHAS.facial;
+    if(!alvo || !c || !c.pecas || !c.pecas.length) return;
+    grupos.facial = c.pecas;
+    var html = '<h4>' + c.titulo + '</h4><p>' + c.texto + '</p><div class="destaque-grid">';
+    c.pecas.forEach(function(p, i){
+      var href = 'https://wa.me/' + NUMERO + '?text=' + encodeURIComponent(p.wa);
+      html += '<article class="laser-card destaque-card">' + botaoImg(p, 'facial', i, '(max-width: 768px) 92vw, 340px') +
+        '<h4>' + p.nome + '</h4><p class="laser-inclui"><i class="ri-check-double-line"></i> ' + p.inclui + '</p>' +
+        '<div class="laser-preco"><span class="laser-parcela">' + p.condicao + '</span><strong>R$ ' + p.preco + '<small>,' + p.centavos + '</small></strong></div>' +
+        btnWa(href) + '</article>';
+    });
+    alvo.innerHTML = html + '</div>';
+  }
+
+  /* ---- carrossel: rolagem nativa com snap (swipe no celular) + setas e pontos ---- */
+  function iniciarCarrossel(raiz){
+    var viewport = raiz.querySelector('.camp-viewport');
+    var slides = [].slice.call(raiz.querySelectorAll('.camp-slide'));
+    var dots = raiz.querySelector('.camp-dots');
+    if(!viewport || !slides.length) return;
+    var suave = !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    dots.innerHTML = slides.map(function(_, i){
+      return '<button type="button" role="tab" aria-label="Ir para a peça ' + (i + 1) + '"></button>';
+    }).join('');
+    var botoes = [].slice.call(dots.children);
+    function atual(){
+      var x = viewport.scrollLeft, melhor = 0, dist = Infinity;
+      slides.forEach(function(s, i){ var d = Math.abs(s.offsetLeft - x); if(d < dist){ dist = d; melhor = i; } });
+      return melhor;
+    }
+    function irPara(i){
+      i = Math.max(0, Math.min(slides.length - 1, i));
+      viewport.scrollTo({left: slides[i].offsetLeft, behavior: suave ? 'smooth' : 'auto'});
+    }
+    function pintar(){
+      var i = atual();
+      botoes.forEach(function(b, j){ b.classList.toggle('ativo', j === i); b.setAttribute('aria-selected', j === i ? 'true' : 'false'); });
+      slides.forEach(function(s, j){ s.classList.toggle('ativo', j === i); });
+      raiz.querySelector('.camp-prev').disabled = i === 0;
+      raiz.querySelector('.camp-next').disabled = viewport.scrollLeft + viewport.clientWidth >= viewport.scrollWidth - 4;
+    }
+    raiz.querySelector('.camp-prev').addEventListener('click', function(){ irPara(atual() - 1); });
+    raiz.querySelector('.camp-next').addEventListener('click', function(){ irPara(atual() + 1); });
+    botoes.forEach(function(b, i){ b.addEventListener('click', function(){ irPara(i); }); });
+    var t; viewport.addEventListener('scroll', function(){ clearTimeout(t); t = setTimeout(pintar, 80); }, {passive:true});
+    window.addEventListener('resize', pintar);
+    /* o painel ainda esta escondido/animando quando o conteudo e clonado:
+       mede agora, no proximo frame e depois da animacao de altura */
+    pintar(); requestAnimationFrame(pintar); setTimeout(pintar, 700);
+  }
+
+  /* ---- lightbox ---- */
+  var lb = document.getElementById('lightbox');
+  var lbPic = lb && lb.querySelector('.lb-picture');
+  var lbLeg = lb && lb.querySelector('.lb-legenda');
+  var lbGrupo = null, lbIndice = 0, lbOrigem = null;
+
+  function lbMostrar(){
+    var lista = grupos[lbGrupo] || [];
+    var p = lista[lbIndice];
+    if(!p) return;
+    var b = PASTA + p.img;
+    lbPic.innerHTML = '<source type="image/webp" srcset="' + b + '-' + p.w + '.webp"><img src="' + b + '.jpg" width="' + p.w + '" height="' + p.h + '" alt="' + escapar(p.alt) + '" decoding="async">';
+    lbLeg.textContent = p.nome + (lista.length > 1 ? ' · ' + (lbIndice + 1) + ' de ' + lista.length : '');
+    var um = lista.length < 2;
+    lb.querySelector('.lb-prev').hidden = um; lb.querySelector('.lb-next').hidden = um;
+  }
+  function lbAbrir(grupo, indice, origem){
+    if(!lb || !grupos[grupo]) return;
+    lbGrupo = grupo; lbIndice = indice; lbOrigem = origem || document.activeElement;
+    lbMostrar();
+    lb.hidden = false;
+    document.body.classList.add('lb-aberto');
+    requestAnimationFrame(function(){ requestAnimationFrame(function(){ lb.classList.add('aberto'); }); });
+    lb.querySelector('.lb-fechar').focus();
+  }
+  function lbFechar(){
+    if(!lb || lb.hidden) return;
+    lb.classList.remove('aberto');
+    document.body.classList.remove('lb-aberto');
+    setTimeout(function(){ lb.hidden = true; lbPic.innerHTML = ''; }, 260);
+    if(lbOrigem && lbOrigem.focus) lbOrigem.focus();
+  }
+  function lbMover(dir){
+    var n = (grupos[lbGrupo] || []).length;
+    if(n < 2) return;
+    lbIndice = (lbIndice + dir + n) % n;
+    lbMostrar();
+  }
+  if(lb){
+    lb.querySelectorAll('[data-lb-fechar]').forEach(function(el){ el.addEventListener('click', lbFechar); });
+    lb.querySelectorAll('[data-lb-dir]').forEach(function(el){ el.addEventListener('click', function(){ lbMover(+el.getAttribute('data-lb-dir')); }); });
+    document.addEventListener('keydown', function(e){
+      if(lb.hidden) return;
+      /* com o lightbox aberto, ESC fecha so ele (o painel de tratamentos tambem ouve ESC) */
+      if(e.key === 'Escape'){ e.stopImmediatePropagation(); lbFechar(); }
+      else if(e.key === 'ArrowRight'){ lbMover(1); }
+      else if(e.key === 'ArrowLeft'){ lbMover(-1); }
+      else if(e.key === 'Tab'){
+        /* foco preso nos tres botoes do lightbox */
+        var focaveis = [].slice.call(lb.querySelectorAll('button:not([hidden])'));
+        var i = focaveis.indexOf(document.activeElement);
+        if(e.shiftKey && (i <= 0)){ e.preventDefault(); focaveis[focaveis.length - 1].focus(); }
+        else if(!e.shiftKey && i === focaveis.length - 1){ e.preventDefault(); focaveis[0].focus(); }
+      }
+    });
+    /* swipe no lightbox */
+    var x0 = null;
+    lb.addEventListener('touchstart', function(e){ x0 = e.touches[0].clientX; }, {passive:true});
+    lb.addEventListener('touchend', function(e){
+      if(x0 === null) return;
+      var dx = e.changedTouches[0].clientX - x0; x0 = null;
+      if(Math.abs(dx) > 50) lbMover(dx < 0 ? 1 : -1);
+    }, {passive:true});
+  }
+  /* qualquer peca clicada (no painel, que e conteudo clonado) abre o lightbox */
+  document.addEventListener('click', function(e){
+    var b = e.target.closest('[data-lb-grupo]');
+    if(!b) return;
+    e.preventDefault();
+    lbAbrir(b.getAttribute('data-lb-grupo'), +b.getAttribute('data-lb-indice'), b);
+  });
+
+  /* chamado pelo painel expansivel toda vez que um card abre: o conteudo e
+     clonado por innerHTML, entao o carrossel precisa ser iniciado de novo */
+  window.pioIniciarCampanhas = function(body){
+    body.querySelectorAll('.camp-carrossel').forEach(iniciarCarrossel);
+  };
+
+  montarLaser();
+  montarFacial();
+})();
+
 /* Painel expansivel, usado pelo blog e pelos tratamentos: o conteudo abre
    na propria pagina, logo abaixo da linha do card clicado */
 function initExpandingGrid(cfg){
@@ -1474,6 +1739,7 @@ function initExpandingGrid(cfg){
     var from = openCard ? panel.getBoundingClientRect().height : 0;
     if(openCard){ markCard(openCard, false); }
     body.innerHTML = card.querySelector('.post-content').innerHTML;
+    if(cfg.aoAbrir){ cfg.aoAbrir(body, card); }
     panel.style.overflow = 'hidden';
     panel.style.height = from + 'px';
     placePanel(card);
@@ -1511,14 +1777,14 @@ function initExpandingGrid(cfg){
   });
 
   panel.querySelector('.exp-panel-close').addEventListener('click', fechar);
-  document.addEventListener('keydown', function(e){ if(e.key === 'Escape'){ fechar(); } });
+  document.addEventListener('keydown', function(e){ if(e.key === 'Escape' && !document.body.classList.contains('lb-aberto')){ fechar(); } });
   window.addEventListener('resize', function(){ if(openCard){ placePanel(openCard); } });
 
   return { fechar: fechar };
 }
 
 var blogExp = initExpandingGrid({grid:'blogGrid', panel:'blogPanel', card:'.blog-card', label:'Leia mais'});
-var treatExp = initExpandingGrid({grid:'treatGrid', panel:'treatPanel', card:'.treat-card', label:'Saiba mais'});
+var treatExp = initExpandingGrid({grid:'treatGrid', panel:'treatPanel', card:'.treat-card', label:'Saiba mais', aoAbrir:pioIniciarCampanhas});
 
 /* Scroll reveal */
 var revealEls = document.querySelectorAll('.reveal');
@@ -1685,6 +1951,9 @@ if(location.hash === '#laser-co2'){
       var sec = document.getElementById('tratamentos');
       var folga = parseFloat(getComputedStyle(document.documentElement).scrollPaddingTop) || 90;
       window.scrollTo({top: Math.max(0, pioTopoReal(sec) - folga), behavior:'smooth'});
+      /* e ja abre o painel do laser: quem chega pelo link quer ver as condicoes */
+      var abrir = document.querySelector('#laser-co2 .card-more');
+      if(abrir && abrir.getAttribute('aria-expanded') !== 'true'){ abrir.click(); }
     }, 600);
   });
 }

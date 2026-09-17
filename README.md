@@ -143,6 +143,26 @@ edite o card **e** o texto dentro do `href` do botão dele — os dois estão
 escritos à mão, não são calculados. O link `#laser-co2` (bom para a bio do
 Instagram) abre o site já com essa aba selecionada.
 
+**Campanhas em imagem (peças oficiais da clínica).** Ficam em
+`images/campanhas/` — cada peça tem o `.jpg` original, um `-480.webp` (miniaturas e
+carrossel) e um `-LARGURA.webp` (lightbox). Onde entram:
+
+- **Laser CO₂** (dentro do painel do banner, antes de "Regiões que tratamos"):
+  peça principal (rosto todo) + carrossel com papada, pálpebras, pescoço, colo,
+  mãos e estrias + faixa "Confira todas as condições" com a tabela geral. O botão
+  de WhatsApp de cada peça reaproveita o link do card de preço da mesma região
+  (`data-regiao`), então a mensagem mora num lugar só.
+- **Estética Avançada Facial** (dentro do painel, logo após a introdução):
+  "Cuidados faciais em destaque", com Peeling de Cristal (R$ 299,90) e Limpeza de
+  Pele + Peeling (R$ 199,90). São **tratamentos**, não os cursos.
+
+Toda peça abre ampliada num lightbox (ESC, setas e swipe funcionam). Os dados
+— arquivo, nome, texto alternativo, preço das ofertas faciais — estão num único
+objeto, `PIO_CAMPANHAS`, no começo do script do `index.html`. Para tirar uma
+campanha do ar basta apagar a linha dela; para trocar a peça, substitua os três
+arquivos e ajuste `w`/`h`. **As peças do laser trazem impressa a data
+29/09/2026**: quando a campanha passar, troque as imagens ou esvazie as listas.
+
 Os dois arquivos precisam ficar **na mesma pasta** — o `index.html` chama o CSS por caminho
 relativo (`<link rel="stylesheet" href="styles.css">`). Se separar um do outro, o site abre
 sem estilo nenhum.
