@@ -221,10 +221,10 @@ header#navbar{position:fixed;top:0;left:0;width:100%;z-index:1000;padding:14px 0
 
 /* ---------------------------------------------------------------------------
    LASER CO2 FRACIONADO — aba propria na grade de tratamentos
-   Banner escuro de abertura (e um .treat-card, entao o "Saiba mais" abre o
-   painel como os outros) + um card por regiao com preco e botao de WhatsApp
-   proprio + divisor das promocoes. Os cards de preco NAO sao .treat-card,
-   para o clique neles nao tentar abrir o painel. */
+   Na grade fica so o banner escuro (e um .treat-card, entao o clique abre o
+   painel como os outros). Os cards de preco, com um botao de WhatsApp por
+   regiao, ficam dentro do painel (.exp-panel-body .laser-grid) — por isso as
+   regras abaixo precisam vencer as do painel para p, h4 e strong. */
 .filter-tabs button i{font-size:1rem;margin-right:6px;vertical-align:-2px;}
 .tab-novo{display:inline-block;margin-left:8px;padding:2px 8px;border-radius:100px;background:var(--pink-300);color:var(--purple-900);font-size:.62rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;vertical-align:1px;}
 
@@ -242,8 +242,7 @@ header#navbar{position:fixed;top:0;left:0;width:100%;z-index:1000;padding:14px 0
 .laser-banner-info strong{display:block;font-size:.95rem;font-weight:600;line-height:1.3;}
 .laser-banner-info span{font-size:.8rem;color:rgba(255,255,255,.75);}
 
-.laser-card{display:none;flex-direction:column;background:var(--white);border-radius:var(--radius-md);padding:28px 26px 26px;box-shadow:0 12px 30px rgba(90,55,102,.08);border:1px solid rgba(129,99,139,.12);position:relative;overflow:hidden;transition:.4s cubic-bezier(.4,0,.2,1);}
-.laser-card.show{display:flex;animation:fadeCard .5s ease;}
+.laser-card{display:flex;flex-direction:column;background:var(--white);border-radius:var(--radius-md);padding:28px 26px 26px;box-shadow:0 12px 30px rgba(90,55,102,.08);border:1px solid rgba(129,99,139,.12);position:relative;overflow:hidden;transition:.4s cubic-bezier(.4,0,.2,1);}
 .laser-card::before{content:'';position:absolute;top:0;left:0;width:100%;height:4px;background:linear-gradient(90deg,var(--purple-800),var(--pink-300));}
 .laser-card:hover{transform:translateY(-8px);box-shadow:var(--shadow-strong);}
 .laser-card-head{display:flex;justify-content:space-between;align-items:flex-start;gap:10px;margin-bottom:18px;}
@@ -264,11 +263,21 @@ header#navbar{position:fixed;top:0;left:0;width:100%;z-index:1000;padding:14px 0
 .btn-wa:hover{background:#1ebe5b;transform:translateY(-2px);box-shadow:0 14px 30px rgba(37,211,102,.42);}
 .btn-wa i{font-size:1.2rem;}
 
-.laser-divider{display:none;grid-column:1/-1;align-items:center;gap:16px;padding:18px 24px;border-radius:var(--radius-md);background:rgba(255,255,255,.55);border:1px dashed rgba(129,99,139,.4);margin-top:8px;}
-.laser-divider.show{display:flex;animation:fadeCard .5s ease;}
+.laser-divider{display:flex;align-items:center;gap:16px;padding:18px 24px;border-radius:var(--radius-md);background:rgba(255,255,255,.55);border:1px dashed rgba(129,99,139,.4);margin-top:8px;}
 .laser-divider>i{width:46px;height:46px;border-radius:50%;background:var(--pink-200);color:var(--purple-800);display:flex;align-items:center;justify-content:center;font-size:1.3rem;flex:0 0 auto;}
 .laser-divider strong{display:block;font-family:var(--font-serif);font-size:1.35rem;color:var(--purple-900);line-height:1.2;}
 .laser-divider span{font-size:.9rem;color:var(--ink-soft);}
+
+/* grade dos cards dentro do painel + sobreposicoes das regras genericas do painel */
+.exp-panel-body .laser-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin:18px 0 8px;}
+.exp-panel-body .laser-card{padding:24px 20px 22px;}
+.exp-panel-body .laser-card h4{font-family:var(--font-sans);font-size:1.08rem;margin:0 0 6px;}
+.exp-panel-body .laser-inclui{font-size:.82rem;line-height:1.45;margin:0 0 16px;max-width:none;}
+.exp-panel-body .laser-preco{padding:12px 14px;}
+.exp-panel-body .laser-preco strong{font-size:1.75rem;}
+.exp-panel-body .laser-preco em{font-size:.84rem;}
+.exp-panel-body .btn-wa{font-size:.84rem;padding:12px 14px;}
+.exp-panel-body .laser-divider{margin:26px 0 0;}
 #resultados{position:relative;overflow:hidden;}
 .ba-wrap{display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:center;position:relative;z-index:2;}
 /* width:100% e proposital: as fotos sao absolutas dentro do quadro e a
@@ -646,6 +655,7 @@ body.painel-travado{overflow:hidden;}
   .ba-carousel{max-width:520px;justify-self:center;}
   .treat-grid{grid-template-columns:repeat(2,1fr);}
   .laser-banner-grid{grid-template-columns:1fr;}
+  .exp-panel-body .laser-grid{grid-template-columns:repeat(2,1fr);}
   .stats-grid,.dif-grid{grid-template-columns:repeat(2,1fr);}
   .team-grid{grid-template-columns:1fr 1fr;}
   .blog-grid{grid-template-columns:1fr 1fr;}
@@ -662,6 +672,7 @@ body.painel-travado{overflow:hidden;}
   .treat-grid,.stats-grid,.dif-grid,.blog-grid,.footer-grid{grid-template-columns:1fr;}
   .laser-banner{padding:30px 24px;}
   .laser-divider{flex-direction:column;align-items:flex-start;}
+  .exp-panel-body .laser-grid{grid-template-columns:1fr;}
   .quiz-options{grid-template-columns:1fr;}
   .quiz-box{padding:36px 24px;}
   .form-row{grid-template-columns:1fr;}

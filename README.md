@@ -132,14 +132,16 @@ embaixo da linha do card clicado. Cada card guarda o próprio conteúdo numa
 `<div class="post-content">` — para editar um texto, mexa só nesse bloco.
 
 **Laser CO₂ Fracionado** tem uma aba própria no filtro de tratamentos (e entra
-também em "Todos", "Facial" e "Corporal"). O bloco fica no fim da grade
-(`#treatGrid`, comentário `LASER CO2 FRACIONADO`): um banner escuro com as
-condições, um card por região com o preço e um botão de
-WhatsApp **próprio** (a mensagem já vai com a região e o valor), e um
-divisor "Promoções" seguido dos combos. Para mudar um preço, edite o
-card **e** o texto dentro do `href` do botão dele — os dois estão escritos à
-mão, não são calculados. O link `#laser-co2` (bom para a bio do Instagram) abre
-o site já com essa aba selecionada.
+também em "Todos", "Facial" e "Corporal"). Na grade fica **só o banner escuro**
+(comentário `LASER CO2 FRACIONADO` no fim do `#treatGrid`). Ao clicar nele, o
+painel abre com o texto explicativo e, logo depois da lista "Regiões que
+tratamos", a seção **"Valores por região"**: um card por região com o preço e
+um botão de WhatsApp **próprio** (a mensagem já vai com a região, o que está
+incluso e o valor), seguida do divisor "Promoções" com os combos. Tudo isso
+mora dentro da `<div class="post-content">` do banner. Para mudar um preço,
+edite o card **e** o texto dentro do `href` do botão dele — os dois estão
+escritos à mão, não são calculados. O link `#laser-co2` (bom para a bio do
+Instagram) abre o site já com essa aba selecionada.
 
 Os dois arquivos precisam ficar **na mesma pasta** — o `index.html` chama o CSS por caminho
 relativo (`<link rel="stylesheet" href="styles.css">`). Se separar um do outro, o site abre
