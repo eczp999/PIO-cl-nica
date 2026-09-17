@@ -8,7 +8,7 @@ Site estático: **um único arquivo HTML**, sem build, sem dependências para in
 ## Como publicar no GitHub Pages
 
 1. Crie um repositório novo no GitHub (pode ser público ou privado — o Pages funciona nos dois em contas Pro; em conta gratuita, precisa ser **público**).
-2. Envie o conteúdo desta pasta para a raiz do repositório (`index.html`, `styles.css` e este `README.md`).
+2. Envie o conteúdo desta pasta para a raiz do repositório (`index.html`, `styles.css`, `script.js`, a pasta `images/` e este `README.md`).
 3. No repositório, vá em **Settings → Pages**.
 4. Em **Source**, escolha **Deploy from a branch**.
 5. Em **Branch**, selecione `main` e a pasta `/ (root)`. Clique em **Save**.
@@ -112,11 +112,10 @@ A base é **17px** (`html{font-size:106.25%}`), não os 16px padrão do navegado
 ## Estrutura
 
 ```
-index.html    página principal — marcação e JavaScript (no fim do arquivo)
-cursos.html   página de cursos
-equipe.html   página da equipe
-styles.css    todo o CSS das três páginas
-logo-pio.svg  logo da clínica (cabeçalho e rodapé)
+index.html    página principal — só marcação (o JS fica em script.js)
+script.js     todo o JavaScript do site — carregado no fim do index.html
+styles.css    todo o CSS
+images/       fotos, logos e, em images/campanhas/, as peças de campanha
 README.md     este arquivo
 ```
 
@@ -127,7 +126,7 @@ A logo é roxa. No rodapé, que tem fundo escuro, ela é deixada branca por CSS
 (`filter:brightness(0) invert(1)`) — não existe um segundo arquivo de logo.
 
 Os cards de tratamento e os do blog usam o **mesmo componente de painel**
-(`initExpandingGrid`, no fim do `index.html`): o texto abre na própria página,
+(`initExpandingGrid`, no `script.js`): o texto abre na própria página,
 embaixo da linha do card clicado. Cada card guarda o próprio conteúdo numa
 `<div class="post-content">` — para editar um texto, mexa só nesse bloco.
 
@@ -158,14 +157,14 @@ carrossel) e um `-LARGURA.webp` (lightbox). Onde entram:
 
 Toda peça abre ampliada num lightbox (ESC, setas e swipe funcionam). Os dados
 — arquivo, nome, texto alternativo, preço das ofertas faciais — estão num único
-objeto, `PIO_CAMPANHAS`, no começo do script do `index.html`. Para tirar uma
+objeto, `PIO_CAMPANHAS`, no `script.js`. Para tirar uma
 campanha do ar basta apagar a linha dela; para trocar a peça, substitua os três
 arquivos e ajuste `w`/`h`. **As peças do laser trazem impressa a data
 29/09/2026**: quando a campanha passar, troque as imagens ou esvazie as listas.
 
-Os dois arquivos precisam ficar **na mesma pasta** — o `index.html` chama o CSS por caminho
-relativo (`<link rel="stylesheet" href="styles.css">`). Se separar um do outro, o site abre
-sem estilo nenhum.
+`index.html`, `styles.css`, `script.js` e a pasta `images/` precisam ficar **juntos, na
+mesma pasta** — o HTML chama o CSS e o JS por caminho relativo (`href="styles.css"`,
+`src="script.js"`). Se separar, o site abre sem estilo e sem nenhum clique funcionando.
 
 Recursos externos carregados via CDN (funcionam normalmente em HTTPS):
 
@@ -179,7 +178,7 @@ Recursos externos carregados via CDN (funcionam normalmente em HTTPS):
 
 Os três carrosséis de fotos (`#destaque`, `#sobre` e o de antes e depois)
 compartilham a mesma mecânica de arraste, setas e bolinhas — a função
-`montarCarrosselFotos` no fim do `index.html` monta os dois primeiros, mudando
+`montarCarrosselFotos` no `script.js` monta os dois primeiros, mudando
 só o prefixo das classes (`destaque-` e `about-`).
 
 **Os dois giram sozinhos de 5 em 5 segundos, sem parar nunca**, dando a volta
