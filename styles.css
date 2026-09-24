@@ -43,7 +43,7 @@ body{font-family:var(--font-sans);color:var(--ink);background:var(--fade-site);o
    (--fade-site). As unicas excecoes sao as faixas escuras, que continuam
    em tom fechado por causa do texto branco.
    ------------------------------------------------------------------------- */
-#destaque,#hero,#stats,#sobre,#tratamentos,#resultados,#equipe,#cursos,
+#destaque,#hero,#stats,#sobre,#tratamentos,#resultados,#videos,#equipe,#cursos,
 #quiz,#diferenciais,#depoimentos,#instagram,#blog,#contato{background:var(--fade-site);}
 .marquee-wrap{background:var(--fade-escuro-b);}
 #cta-banner{background:var(--fade-escuro-b);}
@@ -330,8 +330,31 @@ header#navbar{position:fixed;top:0;left:0;width:100%;z-index:1000;padding:14px 0
 .camp-tabela-txt span{font-size:.88rem;color:var(--ink-soft);}
 .camp-tabela-ic{flex:0 0 40px;width:40px;height:40px;border-radius:50%;background:var(--pink-100);color:var(--purple-800);display:flex;align-items:center;justify-content:center;font-size:1.15rem;}
 
-/* ofertas faciais: card de preco com a peca em cima (3:4, sem corte) */
-.destaque-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px;max-width:760px;margin:18px 0 8px;}
+/* ofertas faciais e corporais: card de preco com a peca em cima (3:4, sem corte).
+   auto-fit para a grade se ajustar sozinha ao numero de pecas do bloco */
+.destaque-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px;max-width:1140px;margin:18px 0 8px;}
+/* Com uma peca so, o card fica deitado: peca a esquerda e a oferta a direita.
+   Em pe, sozinho, ele deixaria meio painel vazio do lado. As posicoes vao
+   escritas uma a uma porque a ordem do HTML e a mesma do card em pe. */
+.destaque-grid-uma{grid-template-columns:minmax(0,1fr);max-width:700px;}
+.destaque-grid-uma .destaque-card{display:grid;grid-template-columns:230px minmax(0,1fr);grid-template-rows:auto auto auto 1fr;column-gap:26px;padding:26px;}
+.destaque-grid-uma .destaque-card .camp-img{grid-column:1;grid-row:1/-1;align-self:start;margin:0;}
+.destaque-grid-uma .destaque-card h4{grid-column:2;grid-row:1;margin-top:2px;}
+.destaque-grid-uma .destaque-card .laser-inclui{grid-column:2;grid-row:2;}
+.destaque-grid-uma .destaque-card .laser-preco{grid-column:2;grid-row:3;margin-top:0;}
+.destaque-grid-uma .destaque-card .btn-wa{grid-column:2;grid-row:4;align-self:end;}
+@media(max-width:620px){
+  /* Em tela estreita ele volta a ser um card em pe, como os outros. Os
+     seletores sao repetidos um a um de proposito: um ">*" generico perderia
+     para as regras de cima, que tem tres classes, e a peca sumia. */
+  .destaque-grid-uma .destaque-card{grid-template-columns:minmax(0,1fr);grid-template-rows:none;}
+  .destaque-grid-uma .destaque-card .camp-img,
+  .destaque-grid-uma .destaque-card h4,
+  .destaque-grid-uma .destaque-card .laser-inclui,
+  .destaque-grid-uma .destaque-card .laser-preco,
+  .destaque-grid-uma .destaque-card .btn-wa{grid-column:1;grid-row:auto;}
+  .destaque-grid-uma .destaque-card .camp-img{margin-bottom:18px;}
+}
 .destaque-card .camp-img{margin-bottom:18px;box-shadow:none;border:1px solid rgba(129,99,139,.14);}
 .destaque-card .camp-img:hover{transform:none;box-shadow:none;}
 .exp-panel-body .destaque-card .laser-preco{margin-top:auto;}
@@ -349,6 +372,10 @@ header#navbar{position:fixed;top:0;left:0;width:100%;z-index:1000;padding:14px 0
 .lb.aberto .lb-figura{transform:scale(1);}
 .lb-figura img{display:block;max-width:100%;max-height:88vh;width:auto;height:auto;border-radius:var(--radius-md);box-shadow:0 30px 80px rgba(0,0,0,.5);}
 .lb-legenda{color:rgba(255,255,255,.85);font-size:.85rem;letter-spacing:.04em;}
+/* mesmo motivo do .lb[hidden] acima: o display:flex vence o display:none do
+   atributo hidden. Sem esta linha, um grupo de uma peca so (o corporal)
+   mostra as setas de navegacao, que nao levam a lugar nenhum. */
+.lb-btn[hidden]{display:none;}
 .lb-btn{position:absolute;z-index:2;width:46px;height:46px;border-radius:50%;border:0;background:rgba(255,255,255,.92);color:var(--purple-900);display:flex;align-items:center;justify-content:center;font-size:1.5rem;cursor:pointer;box-shadow:0 8px 22px rgba(0,0,0,.3);transition:.25s;}
 .lb-btn:hover,.lb-btn:focus-visible{background:var(--purple-800);color:var(--white);}
 .lb-btn:focus-visible{outline:3px solid var(--pink-300);outline-offset:3px;}
@@ -430,6 +457,95 @@ body.lb-aberto .whatsapp-float{opacity:0;pointer-events:none;}
 .ba-list-item i{color:var(--purple-700);font-size:1.3rem;margin-top:3px;}
 .ba-list-item h4{color:var(--purple-900);font-size:1.02rem;margin-bottom:6px;font-family:var(--font-sans);font-weight:600;}
 .ba-list-item p{color:var(--ink-soft);font-size:.94rem;}
+/* ---------------------------------------------------------------------------
+   SECAO "NA PRATICA" (#videos) — os videos do Instagram hospedados aqui
+   Desenho: palco (player 9:16) + ficha do tratamento ao lado, e embaixo a
+   fila de capas para trocar de video. O conteudo vem de PIO_VIDEOS, no
+   script.js; aqui so mora a aparencia.
+   O entorno segue a mesma regra das campanhas: as pecas ja tem muita cor e
+   texto, entao o cartao em volta e branco e sobrio.
+   --------------------------------------------------------------------------- */
+#videos .vid-bloco{margin-top:50px;}
+.vid-palco{display:grid;grid-template-columns:minmax(0,320px) minmax(0,1fr);gap:40px;align-items:start;}
+
+/* --- o player --- */
+/* o 9:16 e a proporcao nativa dos reels: nada e cortado */
+.vid-quadro{position:relative;border-radius:var(--radius-lg);overflow:hidden;box-shadow:var(--shadow-soft);background:#1d0b22;}
+.vid-player{display:block;width:100%;aspect-ratio:9/16;background:#1d0b22;}
+/* a capa cobre o player enquanto ninguem apertou o play; o video so comeca a
+   baixar no clique (preload="none" la no script) */
+.vid-capa{position:absolute;inset:0;width:100%;height:100%;padding:0;border:0;display:block;cursor:pointer;background:none;transition:opacity .35s ease;}
+.vid-capa picture,.vid-capa img{display:block;width:100%;height:100%;object-fit:cover;}
+.vid-capa::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(29,11,34,0) 45%,rgba(29,11,34,.55) 100%);}
+.vid-capa:focus-visible{outline:3px solid var(--purple-700);outline-offset:-3px;}
+.vid-quadro.tocando .vid-capa{opacity:0;pointer-events:none;}
+.vid-play{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:74px;height:74px;border-radius:50%;background:rgba(255,255,255,.94);color:var(--purple-900);display:flex;align-items:center;justify-content:center;font-size:2.3rem;box-shadow:0 14px 34px rgba(29,11,34,.4);transition:transform .35s cubic-bezier(.4,0,.2,1), background .35s, color .35s;z-index:2;}
+.vid-capa:hover .vid-play,.vid-capa:focus-visible .vid-play{transform:translate(-50%,-50%) scale(1.09);background:var(--purple-800);color:var(--white);}
+.vid-dur{position:absolute;right:14px;bottom:14px;z-index:2;display:inline-flex;align-items:center;gap:5px;padding:5px 11px;border-radius:100px;background:rgba(29,11,34,.72);color:var(--white);font-size:.76rem;font-weight:600;letter-spacing:.03em;backdrop-filter:blur(4px);}
+.vid-dur i{font-size:.92rem;}
+
+/* --- a ficha ao lado --- */
+.vid-ficha{min-width:0;padding-top:6px;}
+.vid-ficha .laser-badge{margin-bottom:14px;}
+.vid-ficha h3{font-size:clamp(1.85rem,3vw,2.35rem);line-height:1.15;margin-bottom:14px;}
+.vid-ficha>p{color:var(--ink-soft);font-size:1.04rem;line-height:1.75;margin-bottom:22px;}
+.vid-itens{display:flex;flex-direction:column;gap:11px;margin-bottom:24px;}
+.vid-itens li{display:flex;align-items:flex-start;gap:10px;font-size:.95rem;color:var(--ink);line-height:1.5;}
+.vid-itens i{color:var(--purple-700);font-size:1.12rem;flex:0 0 auto;margin-top:1px;}
+/* o card de valor e o mesmo dos tratamentos (.laser-preco), so um pouco maior */
+.vid-preco{margin:0 0 22px;max-width:330px;}
+.vid-preco strong{font-size:2.2rem;}
+/* quando a peca nao tem preco e sim um brinde */
+.vid-selo{display:inline-flex;align-items:center;gap:10px;margin-bottom:22px;padding:14px 20px;border-radius:100px;background:var(--pink-050);border:1px solid var(--pink-200);color:var(--purple-900);font-weight:600;font-size:.98rem;}
+.vid-selo i{font-size:1.3rem;color:var(--purple-700);}
+.vid-acoes{display:flex;flex-wrap:wrap;align-items:center;gap:14px;}
+.vid-acoes .btn-wa{width:auto;padding:14px 26px;}
+.vid-insta{display:inline-flex;align-items:center;gap:8px;padding:13px 22px;border-radius:100px;border:1.5px solid rgba(129,99,139,.4);color:var(--purple-700);font-size:.88rem;font-weight:600;transition:.3s;}
+.vid-insta:hover{background:var(--purple-700);border-color:var(--purple-700);color:var(--white);}
+.vid-insta i{font-size:1.15rem;}
+
+/* --- a fila de capas --- */
+/* rolagem nativa com snap: no celular vira um carrossel de arrastar, sem JS */
+.vid-fila{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;margin-top:44px;padding-top:34px;border-top:1px solid rgba(129,99,139,.2);}
+.vid-thumb{display:flex;align-items:center;gap:14px;padding:10px;border-radius:var(--radius-md);background:rgba(255,255,255,.55);border:1px solid rgba(129,99,139,.14);text-align:left;font-family:inherit;transition:.35s cubic-bezier(.4,0,.2,1);}
+.vid-thumb:hover{background:var(--white);transform:translateY(-3px);box-shadow:0 12px 28px rgba(90,55,102,.12);}
+.vid-thumb.ativo{background:var(--white);border-color:var(--purple-700);box-shadow:0 12px 30px rgba(90,55,102,.16);}
+.vid-thumb:focus-visible{outline:3px solid var(--purple-700);outline-offset:2px;}
+.vid-thumb-capa{position:relative;flex:0 0 58px;width:58px;border-radius:var(--radius-sm);overflow:hidden;background:var(--lilac-100);}
+/* height:auto e obrigatorio: o atributo height="960" do <img> vale como altura
+   fixa e, sem isso, ganha do aspect-ratio e a capa estica ate 960px */
+.vid-thumb-capa picture,.vid-thumb-capa img{display:block;width:100%;height:auto;aspect-ratio:9/16;object-fit:cover;}
+.vid-thumb-play{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(29,11,34,.3);color:var(--white);font-size:1.3rem;transition:.3s;}
+.vid-thumb.ativo .vid-thumb-play{background:rgba(119,37,126,.55);}
+.vid-thumb-txt{min-width:0;display:flex;flex-direction:column;gap:3px;}
+.vid-thumb-txt strong{font-family:var(--font-sans);font-size:.92rem;font-weight:600;color:var(--purple-900);line-height:1.3;}
+.vid-thumb-txt>span{font-size:.76rem;color:var(--ink-soft);letter-spacing:.04em;}
+
+@media(max-width:1024px){
+  .vid-palco{grid-template-columns:minmax(0,280px) minmax(0,1fr);gap:30px;}
+  .vid-fila{grid-template-columns:repeat(2,minmax(0,1fr));}
+}
+@media(max-width:768px){
+  /* empilhado: o player vai para o topo, com largura de leitura confortavel */
+  .vid-palco{grid-template-columns:minmax(0,1fr);gap:26px;justify-items:center;}
+  .vid-quadro{width:min(300px,82%);}
+  .vid-ficha{width:100%;text-align:left;}
+  .vid-preco{max-width:none;}
+  .vid-acoes .btn-wa,.vid-insta{flex:1 1 100%;justify-content:center;}
+  /* a fila vira uma faixa de arrastar */
+  .vid-fila{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;gap:12px;margin-top:34px;padding-top:26px;}
+  .vid-fila::-webkit-scrollbar{display:none;}
+  .vid-thumb{flex:0 0 74%;scroll-snap-align:start;}
+}
+@media(max-width:560px){
+  .vid-quadro{width:min(280px,88%);}
+  .vid-thumb{flex:0 0 82%;}
+}
+@media(prefers-reduced-motion:reduce){
+  .vid-capa,.vid-play,.vid-thumb{transition:none;}
+  .vid-fila{scroll-behavior:auto;}
+}
+
 .quiz-box{max-width:820px;margin:0 auto;background:var(--white);border-radius:var(--radius-lg);box-shadow:var(--shadow-strong);padding:56px 60px;position:relative;overflow:hidden;}
 .quiz-box::after{content:'';position:absolute;width:260px;height:260px;background:var(--pink-300);opacity:.3;border-radius:50%;bottom:-100px;right:-100px;}
 .quiz-step{display:none;}
@@ -692,8 +808,9 @@ body.painel-travado{overflow:hidden;}
 }
 
 /* o CTA "Agendar avaliacao gratuita" e largo — o menu vira gaveta mais cedo
-   para o cabecalho nao estourar a largura da tela */
-@media(max-width:1100px){
+   para o cabecalho nao estourar a largura da tela. O limite subiu de 1100 para
+   1200 quando entrou o link "Videos": com sete itens o menu encostava no logo. */
+@media(max-width:1200px){
   /* 100dvh acompanha a barra de endereco do navegador do celular;
      100vh fica como fallback para navegadores antigos */
   .nav-links{position:fixed;top:0;right:-100%;width:78%;height:100vh;height:100dvh;background:var(--white);flex-direction:column;justify-content:center;gap:30px;transition:.45s;box-shadow:-10px 0 40px rgba(90,55,102,.18);}

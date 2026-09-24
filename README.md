@@ -116,6 +116,7 @@ index.html    página principal — só marcação (o JS fica em script.js)
 script.js     todo o JavaScript do site — carregado no fim do index.html
 styles.css    todo o CSS
 images/       fotos, logos e, em images/campanhas/, as peças de campanha
+videos/       os vídeos da seção "Na prática" — cada um com .mp4 + capa .jpg e .webp
 README.md     este arquivo
 ```
 
@@ -152,12 +153,22 @@ carrossel) e um `-LARGURA.webp` (lightbox). Onde entram:
   de WhatsApp de cada peça reaproveita o link do card de preço da mesma região
   (`data-regiao`), então a mensagem mora num lugar só.
 - **Estética Avançada Facial** (dentro do painel, logo após a introdução):
-  "Cuidados faciais em destaque", com Peeling de Cristal (R$ 299,90) e Limpeza de
+  "Cuidados faciais em destaque", com Microagulhamento com PDRN + Exossomas
+  (R$ 299,90 a sessão + 1 retorno), Peeling de Cristal (R$ 299,90) e Limpeza de
   Pele + Peeling (R$ 199,90). São **tratamentos**, não os cursos.
+- **Estética Avançada Corporal** (mesmo lugar, dentro do painel): "Protocolo
+  corporal em destaque", com o pacote Corpo Leve e Definido — 12 sessões de
+  drenagem, hidrolipoclasia com Heccus, modelagem corporal e maleta quântica,
+  R$ 690,00. Como é uma peça só, o card fica **deitado** (peça à esquerda,
+  oferta à direita); com duas ou mais, a grade volta a ser de cards em pé —
+  isso é automático, quem faz é a classe `destaque-grid-uma`.
 
 Toda peça abre ampliada num lightbox (ESC, setas e swipe funcionam). Os dados
-— arquivo, nome, texto alternativo, preço das ofertas faciais — estão num único
-objeto, `PIO_CAMPANHAS`, no `script.js`. Para tirar uma
+— arquivo, nome, texto alternativo, preço das ofertas — estão num único
+objeto, `PIO_CAMPANHAS`, no `script.js`. Para criar um bloco desses em outro
+card de tratamento: acrescente a chave em `PIO_CAMPANHAS`, ponha um
+`<div class="camp-bloco" id="...">` dentro do `post-content` do card e chame
+`montarDestaques('chave', 'id')` junto das outras chamadas. Para tirar uma
 campanha do ar basta apagar a linha dela; para trocar a peça, substitua os três
 arquivos e ajuste `w`/`h`. **As peças do laser trazem impressa a data
 29/09/2026**: quando a campanha passar, troque as imagens ou esvazie as listas.
@@ -174,7 +185,7 @@ Recursos externos carregados via CDN (funcionam normalmente em HTTPS):
 
 ### Seções
 
-`#destaque` (faixa de fotos grandes de ponta a ponta) · `#hero` (a parte escrita: título, chamada e números) · `#sobre` · `#tratamentos` (com filtro por categoria) · `#resultados` (carrossel de antes e depois) · `#equipe` · `#cursos` · quiz "Descubra o seu" · `#diferenciais` · `#depoimentos` · Instagram · `#blog` (artigos abrem na própria página) · `#contato` (formulário que envia para o WhatsApp) · rodapé
+`#destaque` (faixa de fotos grandes de ponta a ponta) · `#hero` (a parte escrita: título, chamada e números) · `#sobre` · `#tratamentos` (com filtro por categoria) · `#resultados` (carrossel de antes e depois) · `#videos` (os vídeos dos tratamentos) · `#equipe` · `#cursos` · quiz "Descubra o seu" · `#diferenciais` · `#depoimentos` · Instagram · `#blog` (artigos abrem na própria página) · `#contato` (formulário que envia para o WhatsApp) · rodapé
 
 Os três carrosséis de fotos (`#destaque`, `#sobre` e o de antes e depois)
 compartilham a mesma mecânica de arraste, setas e bolinhas — a função
@@ -188,6 +199,51 @@ a contagem dos 5 segundos, para a foto não trocar logo depois do toque. A
 (`prefers-reduced-motion`) — aí o giro automático não começa, e ele navega
 pelas setas. Para mudar o intervalo, procure por `5000` dentro de
 `montarCarrosselFotos`.
+
+### Vídeos dos tratamentos (`#videos`)
+
+A seção **"Na prática"**, entre `#resultados` e `#equipe`. Os vídeos são os
+reels do Instagram da clínica, mas **hospedados aqui**, na pasta `videos/` — o
+embed oficial da Meta é o mesmo que já tinha colapsado na janela de posts do
+`#instagram`, então aqui o arquivo é nosso e não depende de ninguém.
+
+O desenho é um **palco** (o player, em 9:16) com a **ficha do tratamento** ao
+lado — categoria, resumo, o que está incluso, valor e botão de WhatsApp — e,
+embaixo, a **fila de capas** para trocar de vídeo. No celular tudo empilha e a
+fila vira uma faixa de arrastar.
+
+Nenhum vídeo é baixado antes do clique: o `<video>` nasce com `preload="none"` e
+a capa fica por cima até a pessoa apertar o play. Quando o vídeo acaba, a capa
+volta. Trocar de vídeo **reconstrói o palco**, de propósito: assim existe um
+único `<video>` na página de cada vez, em vez de quatro players parados
+ocupando memória do celular.
+
+Cada vídeo precisa de **três arquivos** em `videos/`, com o mesmo nome:
+
+| Arquivo | O que é |
+|---|---|
+| `nome.mp4` | o vídeo, vertical (9:16) |
+| `nome.jpg` | a capa, 540×960 — é ela que o `poster` usa |
+| `nome.webp` | a mesma capa em WebP, para quem aceita o formato |
+
+Os quatro que estão no ar:
+
+| Arquivo | Tratamento | Condição |
+|---|---|---|
+| `protocolo-corporal-completo` | Protocolo Corpo Leve e Definido | 9 sessões · R$ 790,00 |
+| `liberacao-miofascial` | Liberação Miofascial | sessão de 1h · R$ 130,00 |
+| `pedras-quentes` | Massagem com Pedras Quentes | promocional · R$ 130,00 |
+| `relaxar-modelagem-abdominal` | Bastidores da massagem | ganha modelagem abdominal |
+
+Os textos, valores, links e mensagens de WhatsApp ficam num objeto só,
+`PIO_VIDEOS`, no começo do `script.js`, logo abaixo de `PIO_CAMPANHAS` — tudo
+que é promocional e sensível a data mora num lugar só. **Para tirar um vídeo do
+ar, apague a linha dele**; se a lista ficar vazia, a seção inteira some sozinha
+e não deixa buraco no meio do site.
+
+Os quatro `.mp4` somam cerca de **11 MB**. Como nada é baixado antes do clique,
+isso não pesa no carregamento do site — mas vale manter a conta em mente ao
+acrescentar vídeos novos.
 
 ### Fotos do "Sobre a clínica"
 

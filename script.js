@@ -67,8 +67,12 @@ var PIO_CAMPANHAS = {
   },
   facial: {
     titulo: 'Cuidados faciais em destaque',
-    texto: 'Dois protocolos de renovação da pele com valor fechado e retorno incluso.',
+    texto: 'Três protocolos de renovação da pele com valor fechado e retorno incluso.',
     pecas: [
+      {nome:'Microagulhamento com PDRN + Exossomas', img:'microagulhamento-pdrn-exossomas', w:1092, h:1365,
+       alt:'Microagulhamento com PDRN e exossomas na Clínica PIO, com antes e depois do rejuvenescimento facial',
+       inclui:'Regeneração profunda: suaviza rugas e linhas finas, uniformiza o tom, clareia manchas e devolve firmeza e viço', condicao:'1 sessão + 1 retorno', preco:'299', centavos:'90',
+       wa:'Olá! Vim pelo site e tenho interesse no Microagulhamento com PDRN + Exossomas (1 sessão + retorno, R$ 299,90). Quero agendar.'},
       {nome:'Peeling de Cristal', img:'peeling-cristal', w:1092, h:1440,
        alt:'Peeling de cristal na Clínica PIO, com antes e depois do tratamento',
        inclui:'Clareia manchas, suaviza linhas finas e devolve luminosidade', condicao:'1 sessão + retorno', preco:'299', centavos:'90',
@@ -77,6 +81,16 @@ var PIO_CAMPANHAS = {
        alt:'Limpeza de pele com peeling na Clínica PIO',
        inclui:'Limpeza profunda com retorno de peeling químico de clareamento e renovação', condicao:'Combo com retorno', preco:'199', centavos:'90',
        wa:'Olá! Vim pelo site e tenho interesse na Limpeza de Pele + Peeling (retorno com peeling químico, R$ 199,90). Quero agendar.'}
+    ]
+  },
+  corporal: {
+    titulo: 'Protocolo corporal em destaque',
+    texto: 'O pacote fechado que combina tecnologia e terapia manual, sessão a sessão.',
+    pecas: [
+      {nome:'Corpo Leve e Definido', img:'protocolo-corporal-tecnologias', w:1092, h:1456,
+       alt:'Campanha do tratamento corporal completo da Clínica PIO, com drenagem, hidrolipoclasia, Heccus, modelagem e maleta quântica',
+       inclui:'Drenagem, hidrolipoclasia com Heccus, modelagem corporal e maleta quântica em sessões estruturadas', condicao:'12 sessões no total', preco:'690', centavos:'00',
+       wa:'Olá! Vim pelo site e tenho interesse no Tratamento Completo Corpo Leve e Definido (12 sessões: drenagem, hidrolipoclasia com Heccus, modelagem corporal e maleta quântica, R$ 690,00). Quero agendar minha avaliação.'}
     ]
   }
 };
@@ -146,15 +160,22 @@ var PIO_CAMPANHAS = {
     alvo.innerHTML = html;
   }
 
-  function montarFacial(){
-    var alvo = document.getElementById('facialDestaques');
-    var c = PIO_CAMPANHAS.facial;
+  /* Blocos de oferta com preco (facial e corporal). E a mesma peca visual nos
+     dois: muda so a chave dentro de PIO_CAMPANHAS e o <div> de destino no
+     index.html. Para criar um bloco novo em outro card de tratamento, basta
+     acrescentar a chave em PIO_CAMPANHAS, por um <div class="camp-bloco">
+     com id proprio no post-content do card e chamar montarDestaques aqui. */
+  function montarDestaques(chave, idAlvo){
+    var alvo = document.getElementById(idAlvo);
+    var c = PIO_CAMPANHAS[chave];
     if(!alvo || !c || !c.pecas || !c.pecas.length) return;
-    grupos.facial = c.pecas;
-    var html = '<h4>' + c.titulo + '</h4><p>' + c.texto + '</p><div class="destaque-grid">';
+    grupos[chave] = c.pecas;
+    /* com uma peca so a grade de 2 colunas deixaria um buraco do lado */
+    var html = '<h4>' + c.titulo + '</h4><p>' + c.texto + '</p>' +
+      '<div class="destaque-grid' + (c.pecas.length === 1 ? ' destaque-grid-uma' : '') + '">';
     c.pecas.forEach(function(p, i){
       var href = 'https://wa.me/' + NUMERO + '?text=' + encodeURIComponent(p.wa);
-      html += '<article class="laser-card destaque-card">' + botaoImg(p, 'facial', i, '(max-width: 768px) 92vw, 340px') +
+      html += '<article class="laser-card destaque-card">' + botaoImg(p, chave, i, '(max-width: 768px) 92vw, 340px') +
         '<h4>' + p.nome + '</h4><p class="laser-inclui"><i class="ri-check-double-line"></i> ' + p.inclui + '</p>' +
         '<div class="laser-preco"><span class="laser-parcela">' + p.condicao + '</span><strong>R$ ' + p.preco + '<small>,' + p.centavos + '</small></strong></div>' +
         btnWa(href) + '</article>';
@@ -278,8 +299,187 @@ var PIO_CAMPANHAS = {
   };
 
   montarLaser();
-  montarFacial();
+  montarDestaques('facial', 'facialDestaques');
+  montarDestaques('corporal', 'corporalDestaques');
 })();
+/* =========================================================================
+   VIDEOS DOS TRATAMENTOS — secao "Na pratica" (#videos)
+   Mesma ideia do PIO_CAMPANHAS logo acima: tudo que e conteudo promocional
+   mora aqui, num lugar so, e o HTML da secao e montado a partir daqui.
+
+   Cada item precisa de um par de arquivos na pasta videos/:
+     nome.mp4   — o video (vertical, 9:16, o formato nativo dos reels)
+     nome.jpg   — a capa, 540x960  |  nome.webp — a mesma capa em WebP
+   O campo "arq" e esse nome, sem extensao.
+
+   Campos do item:
+     cat      selo de categoria que aparece em cima do titulo
+     nome     titulo do tratamento
+     texto    o resumo — a legenda do Instagram enxugada
+     itens    3 linhas curtas com o que esta incluso
+     condicao + preco + centavos  -> card de valor
+     selo     usado no lugar do valor quando a peca nao tem preco
+     dur      duracao escrita (so enfeite, aparece na capa)
+     insta    link do post original
+     wa       mensagem que ja vai escrita no WhatsApp
+     alt      descricao da capa para leitores de tela
+
+   PARA TIRAR UM VIDEO DO AR: apague a linha dele. A secao inteira some
+   sozinha se a lista ficar vazia.
+   ========================================================================= */
+var PIO_VIDEOS = {
+  itens: [
+    {arq:'protocolo-corporal-completo', cat:'Corporal', nome:'Protocolo Corpo Leve e Definido',
+     texto:'Nove sessões desenhadas para reduzir medidas e redesenhar o contorno do corpo. As enzimas agem sobre a gordura localizada, a lipocavitação potencializa o resultado e o Sculpe Detox fecha o protocolo com modelagem abdominal.',
+     itens:['3 sessões de enzimas', '3 sessões de lipocavitação', '3 sessões de Sculpe Detox com modelagem abdominal'],
+     condicao:'9 sessões no total', preco:'790', centavos:'00', dur:'0:36',
+     insta:'https://www.instagram.com/reel/DaYkho-sbn6/',
+     wa:'Olá! Vim pelo site e tenho interesse no Protocolo Corpo Leve e Definido (9 sessões: 3 de enzimas, 3 de lipocavitação e 3 de Sculpe Detox com modelagem abdominal, R$ 790,00). Quero agendar minha avaliação.',
+     alt:'Peça da campanha do protocolo corporal completo da Clínica PIO, com as nove sessões e o valor'},
+
+    {arq:'liberacao-miofascial', cat:'Massoterapia', nome:'Liberação Miofascial',
+     texto:'A tensão muscular se instala devagar e um dia começa a limitar o movimento. A liberação miofascial desativa os pontos de tensão, devolve mobilidade e alivia dores crônicas — inclusive em casos de bruxismo, cefaleia e fascite plantar.',
+     itens:['Alivia dores musculares e crônicas', 'Melhora a mobilidade no dia a dia', 'Atendimento personalizado, do começo ao fim'],
+     condicao:'Sessão de 1 hora', preco:'130', centavos:'00', dur:'0:45',
+     insta:'https://www.instagram.com/reel/DbOf_NGs357/',
+     wa:'Olá! Vim pelo site e tenho interesse na Liberação Miofascial (sessão de 1 hora, R$ 130,00). Quero agendar.',
+     alt:'Peça da Clínica PIO sobre a liberação miofascial, com os benefícios e o valor da sessão'},
+
+    {arq:'pedras-quentes', cat:'Relaxamento', nome:'Massagem com Pedras Quentes',
+     texto:'O calor do basalto sobre o corpo abre a circulação, solta a musculatura e desmancha a tensão acumulada. Uma sessão para desacelerar de verdade e cuidar do corpo e da mente ao mesmo tempo.',
+     itens:['Ativa a circulação e a drenagem linfática', 'Alivia dores e tensões musculares', 'Relaxamento profundo de corpo e mente'],
+     condicao:'Valor promocional', preco:'130', centavos:'00', dur:'0:41',
+     insta:'https://www.instagram.com/reel/DbOXxWAMEsr/',
+     wa:'Olá! Vim pelo site e tenho interesse na Massagem com Pedras Quentes (valor promocional de R$ 130,00). Quero agendar.',
+     alt:'Peça da Clínica PIO sobre a massagem com pedras quentes, com os benefícios e o valor promocional'},
+
+    {arq:'relaxar-modelagem-abdominal', cat:'Bastidores', nome:'O lugar certo para a sua massagem',
+     texto:'Ambiente acolhedor, mãos experientes e um tempo reservado só para você. Quem vem relaxar na Pio ainda sai com uma modelagem abdominal de cortesia.',
+     itens:['Modelagem abdominal de cortesia', 'Profissionais formadas em cada técnica', 'Sala preparada para o seu relaxamento'],
+     selo:'Ganhe uma modelagem abdominal', dur:'0:17',
+     insta:'https://www.instagram.com/reel/Dc8dUmRDNjg/',
+     wa:'Olá! Vim pelo site, quero agendar uma massagem e vi que ganho uma modelagem abdominal de cortesia.',
+     alt:'Sessão de massagem nas costas na Clínica PIO'}
+  ]
+};
+
+(function(){
+  var PASTA = 'videos/';
+  var NUMERO = '5543991656200';
+  var bloco = document.getElementById('videosBloco');
+  var itens = (typeof PIO_VIDEOS !== 'undefined' && PIO_VIDEOS.itens) || [];
+  if(!bloco) return;
+  /* sem itens a secao inteira sai do ar — nao fica um buraco no meio do site */
+  if(!itens.length){
+    var secao = document.getElementById('videos');
+    if(secao) secao.hidden = true;
+    return;
+  }
+
+  function escapar(t){ return String(t).replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;'); }
+
+  /* a capa e sempre 540x960: as medidas fixas seguram o layout enquanto a
+     imagem carrega, e o WebP entra na frente do JPG quando o navegador aceita */
+  function capa(v){
+    return '<picture><source type="image/webp" srcset="' + PASTA + v.arq + '.webp">' +
+      '<img src="' + PASTA + v.arq + '.jpg" width="540" height="960" alt="' + escapar(v.alt) + '" loading="lazy" decoding="async"></picture>';
+  }
+
+  /* O palco e reescrito a cada troca de video. E de proposito: assim existe
+     UM unico <video> na pagina de cada vez, em vez de quatro players parados
+     ocupando memoria — o que pesa bastante no celular. */
+  function palcoHtml(v){
+    var valor = v.preco
+      ? '<div class="laser-preco vid-preco"><span class="laser-parcela">' + v.condicao + '</span><strong>R$ ' + v.preco + '<small>,' + v.centavos + '</small></strong></div>'
+      : '<div class="vid-selo"><i class="ri-gift-line"></i> ' + v.selo + '</div>';
+    var lista = (v.itens || []).map(function(t){
+      return '<li><i class="ri-check-double-line"></i>' + t + '</li>';
+    }).join('');
+    return '<div class="vid-quadro">' +
+        '<video class="vid-player" preload="none" playsinline controls poster="' + PASTA + v.arq + '.jpg">' +
+          '<source src="' + PASTA + v.arq + '.mp4" type="video/mp4">' +
+          'Seu navegador não abre vídeos. <a href="' + v.insta + '" target="_blank" rel="noopener">Assista no Instagram</a>.' +
+        '</video>' +
+        '<button type="button" class="vid-capa" aria-label="Assistir: ' + escapar(v.nome) + '">' +
+          capa(v) +
+          '<span class="vid-play" aria-hidden="true"><i class="ri-play-fill"></i></span>' +
+          '<span class="vid-dur" aria-hidden="true"><i class="ri-time-line"></i>' + v.dur + '</span>' +
+        '</button>' +
+      '</div>' +
+      '<div class="vid-ficha">' +
+        '<span class="laser-badge">' + v.cat + '</span>' +
+        '<h3>' + v.nome + '</h3>' +
+        '<p>' + v.texto + '</p>' +
+        '<ul class="vid-itens">' + lista + '</ul>' +
+        valor +
+        '<div class="vid-acoes">' +
+          '<a class="btn-wa" href="https://wa.me/' + NUMERO + '?text=' + encodeURIComponent(v.wa) + '" target="_blank" rel="noopener"><i class="ri-whatsapp-line"></i> Agendar no WhatsApp</a>' +
+          '<a class="vid-insta" href="' + v.insta + '" target="_blank" rel="noopener"><i class="ri-instagram-line"></i> Ver o post original</a>' +
+        '</div>' +
+      '</div>';
+  }
+
+  var fila = itens.map(function(v, i){
+    return '<button type="button" class="vid-thumb" role="tab" aria-selected="' + (i === 0 ? 'true' : 'false') + '" data-i="' + i + '">' +
+      '<span class="vid-thumb-capa">' + capa(v) + '<span class="vid-thumb-play" aria-hidden="true"><i class="ri-play-fill"></i></span></span>' +
+      '<span class="vid-thumb-txt"><strong>' + v.nome + '</strong><span>' + v.cat + ' · ' + v.dur + '</span></span>' +
+      '</button>';
+  }).join('');
+
+  bloco.innerHTML = '<div class="vid-palco"></div>' +
+    '<div class="vid-fila" role="tablist" aria-label="Escolher vídeo">' + fila + '</div>';
+
+  var palco = bloco.querySelector('.vid-palco');
+  var thumbs = [].slice.call(bloco.querySelectorAll('.vid-thumb'));
+  var atual = -1;
+
+  function trocar(i, focar){
+    if(i === atual) return;
+    atual = i;
+    palco.innerHTML = palcoHtml(itens[i]);
+    thumbs.forEach(function(b, j){
+      b.classList.toggle('ativo', j === i);
+      b.setAttribute('aria-selected', j === i ? 'true' : 'false');
+    });
+    /* quando o video acaba a capa volta, e o bloco fica arrumado de novo */
+    var player = palco.querySelector('.vid-player');
+    var quadro = palco.querySelector('.vid-quadro');
+    player.addEventListener('ended', function(){ quadro.classList.remove('tocando'); });
+    if(focar){ palco.querySelector('.vid-capa').focus(); }
+  }
+
+  /* o play so acontece no clique: o <video> nasce com preload="none", entao
+     nada e baixado enquanto a pessoa nao pedir */
+  palco.addEventListener('click', function(e){
+    var b = e.target.closest('.vid-capa');
+    if(!b) return;
+    var quadro = b.parentNode;
+    var player = quadro.querySelector('.vid-player');
+    quadro.classList.add('tocando');
+    var p = player.play();
+    if(p && p['catch']) p['catch'](function(){ quadro.classList.remove('tocando'); });
+  });
+
+  bloco.addEventListener('click', function(e){
+    var b = e.target.closest('.vid-thumb');
+    if(!b) return;
+    trocar(+b.getAttribute('data-i'), true);
+  });
+
+  /* setas do teclado andam pela fila, como manda o padrao de abas */
+  bloco.addEventListener('keydown', function(e){
+    if(!e.target.closest('.vid-thumb')) return;
+    var passo = e.key === 'ArrowRight' ? 1 : (e.key === 'ArrowLeft' ? -1 : 0);
+    if(!passo) return;
+    e.preventDefault();
+    var i = (atual + passo + itens.length) % itens.length;
+    thumbs[i].focus();
+    trocar(i);
+  });
+
+  trocar(0);
+})();
+
 
 /* Painel expansivel, usado pelo blog e pelos tratamentos: o conteudo abre
    na propria pagina, logo abaixo da linha do card clicado */

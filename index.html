@@ -53,6 +53,7 @@
       <a href="#sobre">Sobre</a>
       <a href="#tratamentos">Tratamentos</a>
       <a href="#resultados">Resultados</a>
+      <a href="#videos">Vídeos</a>
       <a href="#equipe">Equipe</a>
       <a href="#cursos">Cursos</a>
       <a href="#contato">Contato</a>
@@ -301,6 +302,8 @@
           <span class="meta">Corporal</span>
           <h3>Estética Avançada Corporal</h3>
           <p>Um conjunto de procedimentos não invasivos e minimamente invasivos para reduzir medidas, tratar flacidez e celulite e modelar o contorno do corpo — combinados de acordo com o objetivo de cada paciente.</p>
+          <!-- ofertas corporais (pecas da clinica): montadas pelo JS a partir de PIO_CAMPANHAS.corporal -->
+          <div class="camp-bloco" id="corporalDestaques"></div>
           <h4>Procedimentos</h4>
           <ul>
             <li><strong>Criolipólise de placas</strong> — o frio elimina células de gordura</li>
@@ -711,6 +714,33 @@
         <a href="#contactForm" class="btn btn-primary" style="margin-top:10px;"><i class="ri-camera-3-line"></i> Quero meu antes e depois</a>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- ===================== VIDEOS: OS TRATAMENTOS NA PRATICA =====================
+     As pecas em video do Instagram da clinica, hospedadas aqui mesmo
+     (pasta videos/) em vez de embutidas pela Meta — o embed oficial e o
+     mesmo que ja tinha colapsado na secao #instagram, entao aqui o video
+     e nosso e nao depende de ninguem.
+     COMO FUNCIONA: um palco (player grande) + a ficha do tratamento ao
+     lado + a fila de capas embaixo. Nada de video e baixado antes do
+     clique: o <video> nasce com preload="none" e por cima dele fica a
+     capa, que so sai quando a pessoa aperta o play.
+     O CONTEUDO (nome, texto, valor, link do WhatsApp) mora em PIO_VIDEOS,
+     no comeco do script.js, junto com PIO_CAMPANHAS — tudo que e
+     promocional e sensivel a data fica num lugar so.
+     PARA TROCAR UM VIDEO: coloque em videos/ o par nome.mp4 + a capa
+     (nome.jpg e nome.webp, 540x960, que e o 9:16 dos reels) e acerte a
+     linha correspondente em PIO_VIDEOS. -->
+<section id="videos">
+  <div class="container">
+    <div class="center reveal" style="max-width:720px;">
+      <div class="eyebrow">Na prática</div>
+      <h2 class="title">Veja os tratamentos acontecendo</h2>
+      <p class="subtitle">As condições do mês e os bastidores de quem já está em tratamento — direto do nosso Instagram, sem sair do site.</p>
+    </div>
+    <!-- montado pelo JS a partir de PIO_VIDEOS -->
+    <div class="vid-bloco reveal" id="videosBloco"></div>
   </div>
 </section>
 
