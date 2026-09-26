@@ -390,14 +390,14 @@ var PIO_S = {
      ocupando memoria — o que pesa bastante no celular. */
   function palcoHtml(v){
     var valor = v.preco
-      ? '<div class="laser-preco vid-preco"><span class="laser-parcela">' + v.condicao + '</span><strong>R$ ' + v.preco + '<small>,' + v.centavos + '</small></strong></div>'
+      ? '<div class="laser-preco -preco"><span class="laser-parcela">' + v.condicao + '</span><strong>R$ ' + v.preco + '<small>,' + v.centavos + '</small></strong></div>'
       : '<div class="vid-selo"><i class="ri-gift-line"></i> ' + v.selo + '</div>';
     var lista = (v.itens || []).map(function(t){
       return '<li><i class="ri-check-double-line"></i>' + t + '</li>';
     }).join('');
     return '<div class="vid-quadro">' +
-        '< class="vid-player" preload="none" playsinline controls poster="' + v.arq + '.jpg">' +
-          '<source src="' + v.arq + '.mp4" type="/mp4">' +
+        '< class="vid-player" preload="none" playsinline controls poster="'v.arq + '.jpg">' +
+          '<source src="'v.arq + '.mp4" type="/mp4">' +
           'Seu navegador não abre vídeos. <a href="' + v.insta + '" target="_blank" rel="noopener">Assista no Instagram</a>.' +
         '</>' +
         '<button type="button" class="vid-capa" aria-label="Assistir: ' + escapar(v.nome) + '">' +
