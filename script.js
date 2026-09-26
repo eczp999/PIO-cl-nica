@@ -303,12 +303,12 @@ var PIO_CAMPANHAS = {
   montarDestaques('corporal', 'corporalDestaques');
 })();
 /* =========================================================================
-   VIDEOS DOS TRATAMENTOS — secao "Na pratica" (#videos)
+   S DOS TRATAMENTOS — secao "Na pratica" (#s)
    Mesma ideia do PIO_CAMPANHAS logo acima: tudo que e conteudo promocional
    mora aqui, num lugar so, e o HTML da secao e montado a partir daqui.
 
-   Cada item precisa de um par de arquivos na pasta videos/:
-     nome.mp4   — o video (vertical, 9:16, o formato nativo dos reels)
+   Cada item precisa de um par de arquivos na pasta s/:
+     nome.mp4   — o  (vertical, 9:16, o formato nativo dos reels)
      nome.jpg   — a capa, 540x960  |  nome.webp — a mesma capa em WebP
    O campo "arq" e esse nome, sem extensao.
 
@@ -324,10 +324,10 @@ var PIO_CAMPANHAS = {
      wa       mensagem que ja vai escrita no WhatsApp
      alt      descricao da capa para leitores de tela
 
-   PARA TIRAR UM VIDEO DO AR: apague a linha dele. A secao inteira some
+   PARA TIRAR UM  DO AR: apague a linha dele. A secao inteira some
    sozinha se a lista ficar vazia.
    ========================================================================= */
-var PIO_VIDEOS = {
+var PIO_S = {
   itens: [
     {arq:'protocolo-corporal-completo', cat:'Corporal', nome:'Protocolo Corpo Leve e Definido',
      texto:'Nove sessões desenhadas para reduzir medidas e redesenhar o contorno do corpo. As enzimas agem sobre a gordura localizada, a lipocavitação potencializa o resultado e o Sculpe Detox fecha o protocolo com modelagem abdominal.',
@@ -364,14 +364,14 @@ var PIO_VIDEOS = {
 };
 
 (function(){
-  var PASTA = 'videos/';
+  var PASTA = 's/';
   var NUMERO = '5543991656200';
-  var bloco = document.getElementById('videosBloco');
-  var itens = (typeof PIO_VIDEOS !== 'undefined' && PIO_VIDEOS.itens) || [];
+  var bloco = document.getElementById('sBloco');
+  var itens = (typeof PIO_S !== 'undefined' && PIO_S.itens) || [];
   if(!bloco) return;
   /* sem itens a secao inteira sai do ar — nao fica um buraco no meio do site */
   if(!itens.length){
-    var secao = document.getElementById('videos');
+    var secao = document.getElementById('s');
     if(secao) secao.hidden = true;
     return;
   }
@@ -385,8 +385,8 @@ var PIO_VIDEOS = {
       '<img src="' + PASTA + v.arq + '.jpg" width="540" height="960" alt="' + escapar(v.alt) + '" loading="lazy" decoding="async"></picture>';
   }
 
-  /* O palco e reescrito a cada troca de video. E de proposito: assim existe
-     UM unico <video> na pagina de cada vez, em vez de quatro players parados
+  /* O palco e reescrito a cada troca de . E de proposito: assim existe
+     UM unico <> na pagina de cada vez, em vez de quatro players parados
      ocupando memoria — o que pesa bastante no celular. */
   function palcoHtml(v){
     var valor = v.preco
@@ -396,10 +396,10 @@ var PIO_VIDEOS = {
       return '<li><i class="ri-check-double-line"></i>' + t + '</li>';
     }).join('');
     return '<div class="vid-quadro">' +
-        '<video class="vid-player" preload="none" playsinline controls poster="' + PASTA + v.arq + '.jpg">' +
-          '<source src="' + PASTA + v.arq + '.mp4" type="video/mp4">' +
+        '< class="vid-player" preload="none" playsinline controls poster="' + v.arq + '.jpg">' +
+          '<source src="' + v.arq + '.mp4" type="/mp4">' +
           'Seu navegador não abre vídeos. <a href="' + v.insta + '" target="_blank" rel="noopener">Assista no Instagram</a>.' +
-        '</video>' +
+        '</>' +
         '<button type="button" class="vid-capa" aria-label="Assistir: ' + escapar(v.nome) + '">' +
           capa(v) +
           '<span class="vid-play" aria-hidden="true"><i class="ri-play-fill"></i></span>' +
@@ -441,14 +441,14 @@ var PIO_VIDEOS = {
       b.classList.toggle('ativo', j === i);
       b.setAttribute('aria-selected', j === i ? 'true' : 'false');
     });
-    /* quando o video acaba a capa volta, e o bloco fica arrumado de novo */
+    /* quando o  acaba a capa volta, e o bloco fica arrumado de novo */
     var player = palco.querySelector('.vid-player');
     var quadro = palco.querySelector('.vid-quadro');
     player.addEventListener('ended', function(){ quadro.classList.remove('tocando'); });
     if(focar){ palco.querySelector('.vid-capa').focus(); }
   }
 
-  /* o play so acontece no clique: o <video> nasce com preload="none", entao
+  /* o play so acontece no clique: o <> nasce com preload="none", entao
      nada e baixado enquanto a pessoa nao pedir */
   palco.addEventListener('click', function(e){
     var b = e.target.closest('.vid-capa');
