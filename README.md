@@ -115,8 +115,8 @@ A base é **17px** (`html{font-size:106.25%}`), não os 16px padrão do navegado
 index.html    página principal — só marcação (o JS fica em script.js)
 script.js     todo o JavaScript do site — carregado no fim do index.html
 styles.css    todo o CSS
-images/       fotos, logos e, em images/campanhas/, as peças de campanha
-videos/       os vídeos da seção "Na prática" — cada um com .mp4 + capa .jpg e .webp
+images/       fotos, logos, os vídeos (arquivos `video-*`) e, em
+              images/campanhas/, as peças de campanha
 README.md     este arquivo
 ```
 
@@ -203,9 +203,17 @@ pelas setas. Para mudar o intervalo, procure por `5000` dentro de
 ### Vídeos dos tratamentos (`#videos`)
 
 A seção **"Na prática"**, entre `#resultados` e `#equipe`. Os vídeos são os
-reels do Instagram da clínica, mas **hospedados aqui**, na pasta `videos/` — o
-embed oficial da Meta é o mesmo que já tinha colapsado na janela de posts do
-`#instagram`, então aqui o arquivo é nosso e não depende de ninguém.
+reels do Instagram da clínica, mas **hospedados aqui** — o embed oficial da
+Meta é o mesmo que já tinha colapsado na janela de posts do `#instagram`, então
+aqui o arquivo é nosso e não depende de ninguém.
+
+> **Os vídeos ficam soltos dentro de `images/`, junto com as fotos, e não numa
+> pasta só deles.** Isso é de propósito. Numa versão anterior eles ficavam em
+> `videos/`; ao enviar o site para o GitHub pelo navegador essa pasta não subiu
+> junto, os arquivos caíram na raiz do repositório e nenhum vídeo tocava — os
+> quadros apareciam, mas o clique não fazia nada. Dentro de `images/`, que já
+> sobe certo desde sempre, o problema não se repete. O prefixo `video-` no nome
+> serve só para eles não se perderem no meio das fotos.
 
 O desenho é um **palco** (o player, em 9:16) com a **ficha do tratamento** ao
 lado — categoria, resumo, o que está incluso, valor e botão de WhatsApp — e,
@@ -218,28 +226,36 @@ volta. Trocar de vídeo **reconstrói o palco**, de propósito: assim existe um
 único `<video>` na página de cada vez, em vez de quatro players parados
 ocupando memória do celular.
 
-Cada vídeo precisa de **três arquivos** em `videos/`, com o mesmo nome:
+Cada vídeo precisa de **três arquivos** em `images/`, com o mesmo nome:
 
 | Arquivo | O que é |
 |---|---|
-| `nome.mp4` | o vídeo, vertical (9:16) |
-| `nome.jpg` | a capa, 540×960 — é ela que o `poster` usa |
-| `nome.webp` | a mesma capa em WebP, para quem aceita o formato |
+| `video-nome.mp4` | o vídeo, vertical (9:16) |
+| `video-nome.jpg` | a capa, 540×960 — é ela que o `poster` usa |
+| `video-nome.webp` | a mesma capa em WebP, para quem aceita o formato |
+
+O caminho é sempre `images/` + o campo `arq` + a extensão, sem nenhum pedaço
+escondido no meio — se o arquivo existir com esse nome, o vídeo toca.
 
 Os quatro que estão no ar:
 
-| Arquivo | Tratamento | Condição |
+| Arquivo (`arq`) | Tratamento | Condição |
 |---|---|---|
-| `protocolo-corporal-completo` | Protocolo Corpo Leve e Definido | 9 sessões · R$ 790,00 |
-| `liberacao-miofascial` | Liberação Miofascial | sessão de 1h · R$ 130,00 |
-| `pedras-quentes` | Massagem com Pedras Quentes | promocional · R$ 130,00 |
-| `relaxar-modelagem-abdominal` | Bastidores da massagem | ganha modelagem abdominal |
+| `video-protocolo-corporal-completo` | Protocolo Corpo Leve e Definido | 9 sessões · R$ 790,00 |
+| `video-liberacao-miofascial` | Liberação Miofascial | sessão de 1h · R$ 130,00 |
+| `video-pedras-quentes` | Massagem com Pedras Quentes | promocional · R$ 130,00 |
+| `video-relaxar-modelagem-abdominal` | Bastidores da massagem | ganha modelagem abdominal |
 
 Os textos, valores, links e mensagens de WhatsApp ficam num objeto só,
 `PIO_VIDEOS`, no começo do `script.js`, logo abaixo de `PIO_CAMPANHAS` — tudo
 que é promocional e sensível a data mora num lugar só. **Para tirar um vídeo do
 ar, apague a linha dele**; se a lista ficar vazia, a seção inteira some sozinha
 e não deixa buraco no meio do site.
+
+**Se um arquivo faltar**, o card não fica morto: o quadro ganha a classe
+`sem-video` e mostra um aviso com o link do post no Instagram, para o visitante
+conseguir assistir de qualquer jeito. Serve de alarme também — se esse aviso
+aparecer no site publicado, é sinal de que algum `video-*.mp4` não subiu.
 
 Os quatro `.mp4` somam cerca de **11 MB**. Como nada é baixado antes do clique,
 isso não pesa no carregamento do site — mas vale manter a conta em mente ao

@@ -303,14 +303,23 @@ var PIO_CAMPANHAS = {
   montarDestaques('corporal', 'corporalDestaques');
 })();
 /* =========================================================================
-   S DOS TRATAMENTOS — secao "Na pratica" (#s)
+   VIDEOS DOS TRATAMENTOS — secao "Na pratica" (#videos)
    Mesma ideia do PIO_CAMPANHAS logo acima: tudo que e conteudo promocional
    mora aqui, num lugar so, e o HTML da secao e montado a partir daqui.
 
-   Cada item precisa de um par de arquivos na pasta s/:
-     nome.mp4   — o  (vertical, 9:16, o formato nativo dos reels)
-     nome.jpg   — a capa, 540x960  |  nome.webp — a mesma capa em WebP
-   O campo "arq" e esse nome, sem extensao.
+   TODOS os arquivos de video ficam SOLTOS dentro de images/, junto com as
+   fotos — nao existe pasta so deles. E de proposito: quando o site foi
+   enviado para o GitHub pelo navegador, uma pasta videos/ separada nao subiu
+   junto e os arquivos cairam na raiz, entao os videos nao tocavam. Dentro de
+   images/, que ja sobe certo, isso nao acontece. Os nomes comecam com
+   "video-" so para nao se perderem no meio das fotos.
+
+   Cada item precisa de tres arquivos em images/:
+     video-nome.mp4   — o video (vertical, 9:16, o formato nativo dos reels)
+     video-nome.jpg   — a capa, 540x960
+     video-nome.webp  — a mesma capa em WebP
+   O campo "arq" e esse nome completo, sem a extensao — o caminho e sempre
+   images/ + arq + extensao, sem nenhum pedaco escondido no meio.
 
    Campos do item:
      cat      selo de categoria que aparece em cima do titulo
@@ -324,12 +333,12 @@ var PIO_CAMPANHAS = {
      wa       mensagem que ja vai escrita no WhatsApp
      alt      descricao da capa para leitores de tela
 
-   PARA TIRAR UM  DO AR: apague a linha dele. A secao inteira some
+   PARA TIRAR UM VIDEO DO AR: apague a linha dele. A secao inteira some
    sozinha se a lista ficar vazia.
    ========================================================================= */
-var PIO_S = {
+var PIO_VIDEOS = {
   itens: [
-    {arq:'protocolo-corporal-completo', cat:'Corporal', nome:'Protocolo Corpo Leve e Definido',
+    {arq:'video-protocolo-corporal-completo', cat:'Corporal', nome:'Protocolo Corpo Leve e Definido',
      texto:'Nove sessões desenhadas para reduzir medidas e redesenhar o contorno do corpo. As enzimas agem sobre a gordura localizada, a lipocavitação potencializa o resultado e o Sculpe Detox fecha o protocolo com modelagem abdominal.',
      itens:['3 sessões de enzimas', '3 sessões de lipocavitação', '3 sessões de Sculpe Detox com modelagem abdominal'],
      condicao:'9 sessões no total', preco:'790', centavos:'00', dur:'0:36',
@@ -337,7 +346,7 @@ var PIO_S = {
      wa:'Olá! Vim pelo site e tenho interesse no Protocolo Corpo Leve e Definido (9 sessões: 3 de enzimas, 3 de lipocavitação e 3 de Sculpe Detox com modelagem abdominal, R$ 790,00). Quero agendar minha avaliação.',
      alt:'Peça da campanha do protocolo corporal completo da Clínica PIO, com as nove sessões e o valor'},
 
-    {arq:'liberacao-miofascial', cat:'Massoterapia', nome:'Liberação Miofascial',
+    {arq:'video-liberacao-miofascial', cat:'Massoterapia', nome:'Liberação Miofascial',
      texto:'A tensão muscular se instala devagar e um dia começa a limitar o movimento. A liberação miofascial desativa os pontos de tensão, devolve mobilidade e alivia dores crônicas — inclusive em casos de bruxismo, cefaleia e fascite plantar.',
      itens:['Alivia dores musculares e crônicas', 'Melhora a mobilidade no dia a dia', 'Atendimento personalizado, do começo ao fim'],
      condicao:'Sessão de 1 hora', preco:'130', centavos:'00', dur:'0:45',
@@ -345,7 +354,7 @@ var PIO_S = {
      wa:'Olá! Vim pelo site e tenho interesse na Liberação Miofascial (sessão de 1 hora, R$ 130,00). Quero agendar.',
      alt:'Peça da Clínica PIO sobre a liberação miofascial, com os benefícios e o valor da sessão'},
 
-    {arq:'pedras-quentes', cat:'Relaxamento', nome:'Massagem com Pedras Quentes',
+    {arq:'video-pedras-quentes', cat:'Relaxamento', nome:'Massagem com Pedras Quentes',
      texto:'O calor do basalto sobre o corpo abre a circulação, solta a musculatura e desmancha a tensão acumulada. Uma sessão para desacelerar de verdade e cuidar do corpo e da mente ao mesmo tempo.',
      itens:['Ativa a circulação e a drenagem linfática', 'Alivia dores e tensões musculares', 'Relaxamento profundo de corpo e mente'],
      condicao:'Valor promocional', preco:'130', centavos:'00', dur:'0:41',
@@ -353,7 +362,7 @@ var PIO_S = {
      wa:'Olá! Vim pelo site e tenho interesse na Massagem com Pedras Quentes (valor promocional de R$ 130,00). Quero agendar.',
      alt:'Peça da Clínica PIO sobre a massagem com pedras quentes, com os benefícios e o valor promocional'},
 
-    {arq:'relaxar-modelagem-abdominal', cat:'Bastidores', nome:'O lugar certo para a sua massagem',
+    {arq:'video-relaxar-modelagem-abdominal', cat:'Bastidores', nome:'O lugar certo para a sua massagem',
      texto:'Ambiente acolhedor, mãos experientes e um tempo reservado só para você. Quem vem relaxar na Pio ainda sai com uma modelagem abdominal de cortesia.',
      itens:['Modelagem abdominal de cortesia', 'Profissionais formadas em cada técnica', 'Sala preparada para o seu relaxamento'],
      selo:'Ganhe uma modelagem abdominal', dur:'0:17',
@@ -364,14 +373,14 @@ var PIO_S = {
 };
 
 (function(){
-  var PASTA = 's/';
+  var PASTA = 'images/';
   var NUMERO = '5543991656200';
-  var bloco = document.getElementById('sBloco');
-  var itens = (typeof PIO_S !== 'undefined' && PIO_S.itens) || [];
+  var bloco = document.getElementById('videosBloco');
+  var itens = (typeof PIO_VIDEOS !== 'undefined' && PIO_VIDEOS.itens) || [];
   if(!bloco) return;
   /* sem itens a secao inteira sai do ar — nao fica um buraco no meio do site */
   if(!itens.length){
-    var secao = document.getElementById('s');
+    var secao = document.getElementById('videos');
     if(secao) secao.hidden = true;
     return;
   }
@@ -385,26 +394,35 @@ var PIO_S = {
       '<img src="' + PASTA + v.arq + '.jpg" width="540" height="960" alt="' + escapar(v.alt) + '" loading="lazy" decoding="async"></picture>';
   }
 
-  /* O palco e reescrito a cada troca de . E de proposito: assim existe
-     UM unico <> na pagina de cada vez, em vez de quatro players parados
+  /* O palco e reescrito a cada troca de video. E de proposito: assim existe
+     UM unico <video> na pagina de cada vez, em vez de quatro players parados
      ocupando memoria — o que pesa bastante no celular. */
   function palcoHtml(v){
     var valor = v.preco
-      ? '<div class="laser-preco -preco"><span class="laser-parcela">' + v.condicao + '</span><strong>R$ ' + v.preco + '<small>,' + v.centavos + '</small></strong></div>'
+      ? '<div class="laser-preco vid-preco"><span class="laser-parcela">' + v.condicao + '</span><strong>R$ ' + v.preco + '<small>,' + v.centavos + '</small></strong></div>'
       : '<div class="vid-selo"><i class="ri-gift-line"></i> ' + v.selo + '</div>';
     var lista = (v.itens || []).map(function(t){
       return '<li><i class="ri-check-double-line"></i>' + t + '</li>';
     }).join('');
     return '<div class="vid-quadro">' +
-        '< class="vid-player" preload="none" playsinline controls poster="'v.arq + '.jpg">' +
-          '<source src="'v.arq + '.mp4" type="/mp4">' +
+        '<video class="vid-player" preload="none" playsinline controls poster="' + PASTA + v.arq + '.jpg">' +
+          '<source src="' + PASTA + v.arq + '.mp4" type="video/mp4">' +
           'Seu navegador não abre vídeos. <a href="' + v.insta + '" target="_blank" rel="noopener">Assista no Instagram</a>.' +
-        '</>' +
+        '</video>' +
         '<button type="button" class="vid-capa" aria-label="Assistir: ' + escapar(v.nome) + '">' +
           capa(v) +
           '<span class="vid-play" aria-hidden="true"><i class="ri-play-fill"></i></span>' +
           '<span class="vid-dur" aria-hidden="true"><i class="ri-time-line"></i>' + v.dur + '</span>' +
         '</button>' +
+        /* plano B: se o arquivo do video nao estiver no ar (um envio incompleto
+           para o GitHub, por exemplo), o card nao fica morto — aparece este
+           aviso e a pessoa vai assistir no Instagram. Fica escondido ate a
+           classe .sem-video entrar no quadro. */
+        '<div class="vid-aviso">' +
+          '<i class="ri-error-warning-line" aria-hidden="true"></i>' +
+          '<strong>Não foi possível carregar o vídeo</strong>' +
+          '<a href="' + v.insta + '" target="_blank" rel="noopener"><i class="ri-instagram-line"></i> Assistir no Instagram</a>' +
+        '</div>' +
       '</div>' +
       '<div class="vid-ficha">' +
         '<span class="laser-badge">' + v.cat + '</span>' +
@@ -441,14 +459,21 @@ var PIO_S = {
       b.classList.toggle('ativo', j === i);
       b.setAttribute('aria-selected', j === i ? 'true' : 'false');
     });
-    /* quando o  acaba a capa volta, e o bloco fica arrumado de novo */
+    /* quando o video acaba a capa volta, e o bloco fica arrumado de novo */
     var player = palco.querySelector('.vid-player');
     var quadro = palco.querySelector('.vid-quadro');
     player.addEventListener('ended', function(){ quadro.classList.remove('tocando'); });
+    /* arquivo faltando ou corrompido: troca o card pelo aviso com o link do
+       Instagram. O <source> avisa por ele mesmo; o <video> avisa quando o
+       problema aparece so depois de comecar a carregar. */
+    function semVideo(){ quadro.classList.remove('tocando'); quadro.classList.add('sem-video'); }
+    player.addEventListener('error', semVideo);
+    var fonte = player.querySelector('source');
+    if(fonte) fonte.addEventListener('error', semVideo);
     if(focar){ palco.querySelector('.vid-capa').focus(); }
   }
 
-  /* o play so acontece no clique: o <> nasce com preload="none", entao
+  /* o play so acontece no clique: o <video> nasce com preload="none", entao
      nada e baixado enquanto a pessoa nao pedir */
   palco.addEventListener('click', function(e){
     var b = e.target.closest('.vid-capa');
@@ -457,7 +482,11 @@ var PIO_S = {
     var player = quadro.querySelector('.vid-player');
     quadro.classList.add('tocando');
     var p = player.play();
-    if(p && p['catch']) p['catch'](function(){ quadro.classList.remove('tocando'); });
+    if(p && p['catch']) p['catch'](function(){
+      quadro.classList.remove('tocando');
+      /* networkState 3 = NETWORK_NO_SOURCE: o navegador nao achou o arquivo */
+      if(player.error || player.networkState === 3) quadro.classList.add('sem-video');
+    });
   });
 
   bloco.addEventListener('click', function(e){

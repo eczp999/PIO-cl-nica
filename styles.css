@@ -481,6 +481,18 @@ body.lb-aberto .whatsapp-float{opacity:0;pointer-events:none;}
 .vid-quadro.tocando .vid-capa{opacity:0;pointer-events:none;}
 .vid-play{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:74px;height:74px;border-radius:50%;background:rgba(255,255,255,.94);color:var(--purple-900);display:flex;align-items:center;justify-content:center;font-size:2.3rem;box-shadow:0 14px 34px rgba(29,11,34,.4);transition:transform .35s cubic-bezier(.4,0,.2,1), background .35s, color .35s;z-index:2;}
 .vid-capa:hover .vid-play,.vid-capa:focus-visible .vid-play{transform:translate(-50%,-50%) scale(1.09);background:var(--purple-800);color:var(--white);}
+/* aviso de reserva: so aparece quando o JS marca o quadro com .sem-video,
+   ou seja, quando o arquivo do video nao esta no ar. Cobre o card inteiro e
+   deixa um caminho aberto (o Instagram) em vez de um retangulo morto. */
+.vid-aviso{position:absolute;inset:0;z-index:3;display:none;flex-direction:column;align-items:center;justify-content:center;gap:14px;padding:26px;text-align:center;background:linear-gradient(180deg,rgba(29,11,34,.82),rgba(29,11,34,.94));color:var(--white);}
+.vid-quadro.sem-video .vid-aviso{display:flex;}
+/* com o aviso na frente, a capa vira so o fundo: nada de botao de play morto */
+.vid-quadro.sem-video .vid-capa{pointer-events:none;}
+.vid-quadro.sem-video .vid-play,.vid-quadro.sem-video .vid-dur{display:none;}
+.vid-aviso>i{font-size:2.3rem;color:var(--pink-300);}
+.vid-aviso strong{font-family:var(--font-sans);font-size:1rem;font-weight:600;line-height:1.4;}
+.vid-aviso a{display:inline-flex;align-items:center;gap:8px;padding:12px 22px;border-radius:100px;background:var(--white);color:var(--purple-900);font-size:.88rem;font-weight:600;transition:.3s;}
+.vid-aviso a:hover{background:var(--pink-200);}
 .vid-dur{position:absolute;right:14px;bottom:14px;z-index:2;display:inline-flex;align-items:center;gap:5px;padding:5px 11px;border-radius:100px;background:rgba(29,11,34,.72);color:var(--white);font-size:.76rem;font-weight:600;letter-spacing:.03em;backdrop-filter:blur(4px);}
 .vid-dur i{font-size:.92rem;}
 
