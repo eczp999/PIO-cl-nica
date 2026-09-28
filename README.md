@@ -47,7 +47,7 @@ Dá para trocar o endereço por um nome melhor em *Site settings → Change site
 ## Antes de mandar o link para o cliente
 
 - [ ] **Confirmar a ordem das 5 fotos do "Sobre a clínica".** Estão na ordem fachada → recepção → sala de espera → sala de atendimento → sala de fotodepilação. Ver a seção "Fotos do Sobre a clínica", mais abaixo.
-- [ ] **Fechar as fotos da faixa de destaque.** É a faixa larga no topo da página (`#destaque`), com as fotos passando de ponta a ponta. São **4 fotos, e esse é o limite definido pela clínica** — e só de **tratamento**: foto do ambiente não entra nesta faixa. O formato ideal é **1440×576 (proporção 5:2)** — nessa medida a foto aparece inteira, sem corte. Para trocar uma, substitua o `src` do bloco `<div class="destaque-slide">` correspondente.
+- [ ] **Fechar as fotos da faixa de destaque.** É a faixa larga no topo da página (`#destaque`), com as fotos passando de ponta a ponta. São **4 fotos, e esse é o limite definido pela clínica** — e só de **tratamento**: foto do ambiente não entra nesta faixa. O formato ideal é **1440×576 (proporção 5:2)** — nessa medida a foto aparece inteira, sem corte. Para trocar uma, substitua o `src` do bloco `<div class="destaque-slide">` correspondente. **Mande a foto sem a logo**: ela entra por cima, por CSS, igual nas quatro (ver "A logo da faixa de destaque").
 - [ ] **Trocar as imagens de exemplo.** Sobraram **12** imagens vindas do `placehold.co`, todas no carrossel de antes e depois (os retângulos escritos "ANTES" e "DEPOIS"). Procure por `placehold.co` no `index.html` e substitua pelas fotos reais. As demais seções já estão com foto de verdade.
 - [ ] **Montar o carrossel de antes e depois.** São 6 casos (Criolipólise, Hidrolipoclasia, Preenchimento facial, Peeling coreano, Harmonização do sorriso e Fotodepilação), cada um com um par de fotos. As duas fotos de cada par **precisam ter o mesmo enquadramento, distância e iluminação** — é isso que faz a comparação funcionar. Para incluir ou remover um caso, basta duplicar ou apagar um bloco `<div class="ba-slide">`: as bolinhas, o contador e as setas se ajustam sozinhos.
 - [ ] **Conferir a autorização de uso de imagem** dos pacientes antes de publicar qualquer antes e depois.
@@ -199,6 +199,52 @@ a contagem dos 5 segundos, para a foto não trocar logo depois do toque. A
 (`prefers-reduced-motion`) — aí o giro automático não começa, e ele navega
 pelas setas. Para mudar o intervalo, procure por `5000` dentro de
 `montarCarrosselFotos`.
+
+### A logo da faixa de destaque
+
+**A logo do canto não faz parte das fotos.** Ela é um elemento do carrossel
+(`<img class="destaque-logo">`, logo depois do contador no `index.html`), então
+é a mesma imagem, do mesmo tamanho, nos quatro slides.
+
+Nem sempre foi assim. As quatro fotos da faixa passaram por um upscaling que
+regravou a logo dentro de cada imagem — e, como cada foto foi processada
+separada, a logo saiu de um tamanho diferente em cada uma:
+
+| Foto | Diâmetro do anel na imagem |
+|---|---|
+| `drenagemlinfatica.jpeg` | 167 px |
+| `limpeza de pele.jpeg` | 167 px |
+| `tratamendogorduralocalizada.jpeg` | 168 px |
+| `massagens.jpeg` | **217 px** |
+
+Além do tamanho desigual, ela ficava perto demais da borda direita: como
+`.destaque-slide img` usa `object-fit:cover`, em tela estreita as laterais da
+foto são cortadas — e a logo, que estava a 93% da largura, **sumia inteira no
+celular**.
+
+No v28 a logo embutida foi apagada das quatro imagens e passou a ser desenhada
+por CSS. Assim ela é idêntica em todos os slides e nunca é cortada, porque está
+presa ao quadro e não à foto.
+
+**As medidas do CSS não são aleatórias:**
+
+- `height:22.5%` do quadro é a altura em que o anel colorido fica com os mesmos
+  ~167 px que tinha impresso em três das quatro fotos — ou seja, o tamanho de
+  antes, agora igual em todas.
+- `right:2.4%` e `bottom:8.5%` colocam a logo em cima do ponto onde as logos
+  antigas estavam (a média dos quatro centros), então a área que foi retocada
+  fica coberta.
+- O `clamp(40px, 22.5%, 148px)` segura os extremos: em tela muito estreita a
+  faixa fica baixa e a logo viraria um pontinho; em tela muito larga, um cartaz.
+
+**Se um dia trocar uma foto da faixa**, mande uma **sem logo**. Ela vem de
+graça, por cima, no tamanho certo. E se precisar mexer no tamanho ou na posição,
+mexa só em `.destaque-logo`, no `styles.css` — muda nas quatro de uma vez.
+
+> Os **títulos** ("Drenagem linfática", "Massagens"…) continuam impressos nas
+> fotos, e por isso ainda são cortados pela lateral no celular. Resolver isso
+> pede o mesmo tratamento dado à logo: apagar o texto das imagens e escrevê-lo
+> em HTML sobre a foto.
 
 ### Vídeos dos tratamentos (`#videos`)
 

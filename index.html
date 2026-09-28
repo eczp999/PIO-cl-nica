@@ -96,6 +96,13 @@
       <button type="button" class="destaque-nav prev" aria-label="Foto anterior"><i class="ri-arrow-left-s-line"></i></button>
       <button type="button" class="destaque-nav next" aria-label="Próxima foto"><i class="ri-arrow-right-s-line"></i></button>
       <span class="destaque-counter" aria-hidden="true">1/4</span>
+      <!-- A logo da faixa mora AQUI, no quadro, e nao dentro de cada foto.
+           Antes ela vinha impressa nas quatro imagens, e como cada uma foi
+           gerada separada, saiu de um tamanho diferente em cada — e no celular
+           sumia junto com a lateral que o object-fit:cover corta. Sendo um
+           elemento do carrossel, ela e a mesma nos quatro slides, do mesmo
+           tamanho, e nunca sai da tela. -->
+      <img class="destaque-logo" src="images/logo-pio-anel.png" width="441" height="442" alt="" aria-hidden="true" decoding="async">
       <div class="destaque-dots" role="tablist" aria-label="Escolher foto"></div>
     </div>
   </div>
