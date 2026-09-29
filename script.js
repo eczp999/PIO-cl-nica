@@ -338,14 +338,6 @@ var PIO_CAMPANHAS = {
    ========================================================================= */
 var PIO_VIDEOS = {
   itens: [
-    {arq:'video-protocolo-corporal-completo', cat:'Corporal', nome:'Protocolo Corpo Leve e Definido',
-     texto:'Nove sessões desenhadas para reduzir medidas e redesenhar o contorno do corpo. As enzimas agem sobre a gordura localizada, a lipocavitação potencializa o resultado e o Sculpe Detox fecha o protocolo com modelagem abdominal.',
-     itens:['3 sessões de enzimas', '3 sessões de lipocavitação', '3 sessões de Sculpe Detox com modelagem abdominal'],
-     condicao:'9 sessões no total', preco:'790', centavos:'00', dur:'0:36',
-     insta:'https://www.instagram.com/reel/DaYkho-sbn6/',
-     wa:'Olá! Vim pelo site e tenho interesse no Protocolo Corpo Leve e Definido (9 sessões: 3 de enzimas, 3 de lipocavitação e 3 de Sculpe Detox com modelagem abdominal, R$ 790,00). Quero agendar minha avaliação.',
-     alt:'Peça da campanha do protocolo corporal completo da Clínica PIO, com as nove sessões e o valor'},
-
     {arq:'video-liberacao-miofascial', cat:'Massoterapia', nome:'Liberação Miofascial',
      texto:'A tensão muscular se instala devagar e um dia começa a limitar o movimento. A liberação miofascial desativa os pontos de tensão, devolve mobilidade e alivia dores crônicas — inclusive em casos de bruxismo, cefaleia e fascite plantar.',
      itens:['Alivia dores musculares e crônicas', 'Melhora a mobilidade no dia a dia', 'Atendimento personalizado, do começo ao fim'],
@@ -353,6 +345,14 @@ var PIO_VIDEOS = {
      insta:'https://www.instagram.com/reel/DbOf_NGs357/',
      wa:'Olá! Vim pelo site e tenho interesse na Liberação Miofascial (sessão de 1 hora, R$ 130,00). Quero agendar.',
      alt:'Peça da Clínica PIO sobre a liberação miofascial, com os benefícios e o valor da sessão'},
+
+    {arq:'video-protocolo-corporal-completo', cat:'Corporal', nome:'Protocolo Corpo Leve e Definido',
+     texto:'Nove sessões desenhadas para reduzir medidas e redesenhar o contorno do corpo. As enzimas agem sobre a gordura localizada, a lipocavitação potencializa o resultado e o Sculpe Detox fecha o protocolo com modelagem abdominal.',
+     itens:['3 sessões de enzimas', '3 sessões de lipocavitação', '3 sessões de Sculpe Detox com modelagem abdominal'],
+     condicao:'9 sessões no total', preco:'790', centavos:'00', dur:'0:36',
+     insta:'https://www.instagram.com/reel/DaYkho-sbn6/',
+     wa:'Olá! Vim pelo site e tenho interesse no Protocolo Corpo Leve e Definido (9 sessões: 3 de enzimas, 3 de lipocavitação e 3 de Sculpe Detox com modelagem abdominal, R$ 790,00). Quero agendar minha avaliação.',
+     alt:'Peça da campanha do protocolo corporal completo da Clínica PIO, com as nove sessões e o valor'},
 
     {arq:'video-pedras-quentes', cat:'Relaxamento', nome:'Massagem com Pedras Quentes',
      texto:'O calor do basalto sobre o corpo abre a circulação, solta a musculatura e desmancha a tensão acumulada. Uma sessão para desacelerar de verdade e cuidar do corpo e da mente ao mesmo tempo.',

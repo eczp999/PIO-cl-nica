@@ -170,8 +170,16 @@ card de tratamento: acrescente a chave em `PIO_CAMPANHAS`, ponha um
 `<div class="camp-bloco" id="...">` dentro do `post-content` do card e chame
 `montarDestaques('chave', 'id')` junto das outras chamadas. Para tirar uma
 campanha do ar basta apagar a linha dela; para trocar a peça, substitua os três
-arquivos e ajuste `w`/`h`. **As peças do laser trazem impressa a data
-29/09/2026**: quando a campanha passar, troque as imagens ou esvazie as listas.
+arquivos e ajuste `w`/`h`.
+
+**As 8 peças do laser vinham com a data 29/09/2026 impressa** (o selo "DIA
+29/09/2026" nas 6 fotos de região + "TERÇA-FEIRA" na de estrias + o banner
+"APLICAÇÃO: 29/09/2026" na tabela de valores). Essa data foi **apagada por
+edição de imagem** (detecção de cor + preenchimento do fundo, sem Photoshop
+nem arquivo de origem em camadas) porque a campanha ficaria com prazo vencido.
+Se um dia quiser imprimir uma data nova nessas peças, é preciso reabrir o
+design original (Canva/PSD) — a versão em `images/campanhas/` já não tem
+camadas, só o JPG final.
 
 `index.html`, `styles.css`, `script.js` e a pasta `images/` precisam ficar **juntos, na
 mesma pasta** — o HTML chama o CSS e o JS por caminho relativo (`href="styles.css"`,
@@ -283,14 +291,19 @@ Cada vídeo precisa de **três arquivos** em `images/`, com o mesmo nome:
 O caminho é sempre `images/` + o campo `arq` + a extensão, sem nenhum pedaço
 escondido no meio — se o arquivo existir com esse nome, o vídeo toca.
 
-Os quatro que estão no ar:
+Os quatro que estão no ar, **na ordem em que aparecem** (o primeiro da lista é
+o que abre sozinho, em destaque, quando a seção carrega):
 
 | Arquivo (`arq`) | Tratamento | Condição |
 |---|---|---|
-| `video-protocolo-corporal-completo` | Protocolo Corpo Leve e Definido | 9 sessões · R$ 790,00 |
 | `video-liberacao-miofascial` | Liberação Miofascial | sessão de 1h · R$ 130,00 |
+| `video-protocolo-corporal-completo` | Protocolo Corpo Leve e Definido | 9 sessões · R$ 790,00 |
 | `video-pedras-quentes` | Massagem com Pedras Quentes | promocional · R$ 130,00 |
 | `video-relaxar-modelagem-abdominal` | Bastidores da massagem | ganha modelagem abdominal |
+
+**Para trocar qual vídeo abre em destaque**, basta mudar a ordem dos blocos
+dentro de `PIO_VIDEOS.itens` — o primeiro do array é sempre o primeiro a
+tocar (`trocar(0)`, no fim do módulo).
 
 Os textos, valores, links e mensagens de WhatsApp ficam num objeto só,
 `PIO_VIDEOS`, no começo do `script.js`, logo abaixo de `PIO_CAMPANHAS` — tudo
