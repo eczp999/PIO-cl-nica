@@ -220,7 +220,7 @@ painel de condições, pula até os valores por região e acende o card da regi�
 pedida** — a borda fica roxa, o fundo rosado e um pulso roda três vezes, para
 o olho achar na hora.
 
-Cole depois do endereço do site (`https://eczp999.github.io/PIO-cl-nica/`):
+Cole depois do endereço do site (`https://www.clinicapio.com.br/`):
 
 | Link | Onde cai |
 |---|---|
@@ -244,6 +244,13 @@ regiões a acender (os mesmos nomes do `data-regiao` dos cards de preço).
 
 ### Páginas de entrada para anúncio (Google Ads)
 
+> **O endereço oficial do site é `https://www.clinicapio.com.br/`.** O
+> repositório do GitHub está ligado à **Vercel**: tudo que entra no GitHub vai
+> sozinho para o ar nesse domínio, em um ou dois minutos. O endereço
+> `eczp999.github.io/PIO-cl-nica/` é só uma cópia de teste do GitHub Pages —
+> **nunca use ele em anúncio, cartão ou bio**: manda a pessoa para fora do
+> domínio da clínica e divide a força do site no Google.
+
 O site é de **uma página só**, então não existe "a página do laser" para apontar
 o anúncio. O que existe são **endereços de entrada**: a pessoa clica no anúncio
 no Google, cai num endereço limpo e o site abre já no ponto certo, com a aba do
@@ -253,8 +260,8 @@ Estes são os endereços para colar no campo **URL final** do Google Ads:
 
 | Endereço | Para que anúncio | Onde a pessoa cai |
 |---|---|---|
-| `https://eczp999.github.io/PIO-cl-nica/laser-co2-facial/` | Laser CO₂ facial / rosto | acende *Rosto Todo + Papada* e *Pálpebras* |
-| `https://eczp999.github.io/PIO-cl-nica/laser-co2-palpebras/` | Laser CO₂ pálpebras | acende *Pálpebras* |
+| `https://www.clinicapio.com.br/laser-co2-facial/` | Laser CO₂ facial / rosto | acende *Rosto Todo + Papada* e *Pálpebras* |
+| `https://www.clinicapio.com.br/laser-co2-palpebras/` | Laser CO₂ pálpebras | acende *Pálpebras* |
 
 Cada um é uma pasta com um `index.html` que repassa a pessoa, na hora, para o
 site com o destino marcado (`../#laser-facial`). Quem clica nem vê a página de
@@ -276,7 +283,7 @@ um dos atalhos de `PIO_ATALHOS_LASER` no `script.js`, e ajuste o `<title>`, a
 `description` e o texto da tela.
 
 > Se preferir não usar pasta, o endereço com `#` funciona igual no Google Ads:
-> `https://eczp999.github.io/PIO-cl-nica/#laser-facial`. A pasta existe só
+> `https://www.clinicapio.com.br/#laser-facial`. A pasta existe só
 > porque fica mais apresentável no anúncio e permite uma `description` própria
 > por campanha.
 
