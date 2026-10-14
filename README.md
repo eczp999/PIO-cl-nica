@@ -117,6 +117,8 @@ script.js     todo o JavaScript do site — carregado no fim do index.html
 styles.css    todo o CSS
 images/       fotos, logos, os vídeos (arquivos `video-*`) e, em
               images/campanhas/, as peças de campanha
+laser-co2-facial/      página de entrada de anúncio (Google Ads)
+laser-co2-palpebras/   idem, para o anúncio de pálpebras
 README.md     este arquivo
 ```
 
@@ -140,8 +142,9 @@ um botão de WhatsApp **próprio** (a mensagem já vai com a região, o que est�
 incluso e o valor), seguida do divisor "Promoções" com os combos. Tudo isso
 mora dentro da `<div class="post-content">` do banner. Para mudar um preço,
 edite o card **e** o texto dentro do `href` do botão dele — os dois estão
-escritos à mão, não são calculados. O link `#laser-co2` (bom para a bio do
-Instagram) abre o site já com essa aba selecionada.
+escritos à mão, não são calculados. Existem **links diretos para cada região**
+(bons para a bio do Instagram e para o WhatsApp) — ver "Links diretos para uma
+região do Laser CO₂", mais abaixo.
 
 **Campanhas em imagem (peças oficiais da clínica).** Ficam em
 `images/campanhas/` — cada peça tem o `.jpg` original, um `-480.webp` (miniaturas e
@@ -207,6 +210,75 @@ a contagem dos 5 segundos, para a foto não trocar logo depois do toque. A
 (`prefers-reduced-motion`) — aí o giro automático não começa, e ele navega
 pelas setas. Para mudar o intervalo, procure por `5000` dentro de
 `montarCarrosselFotos`.
+
+### Links diretos para uma região do Laser CO₂
+
+O site é de **uma página só**, então "mandar a pessoa direto para a parte que
+fala de X" não é uma página nova: é o endereço do site com um `#` no fim. Ao
+abrir um desses links o site, sozinho, **seleciona a aba Laser CO₂, abre o
+painel de condições, pula até os valores por região e acende o card da região
+pedida** — a borda fica roxa, o fundo rosado e um pulso roda três vezes, para
+o olho achar na hora.
+
+Cole depois do endereço do site (`https://eczp999.github.io/PIO-cl-nica/`):
+
+| Link | Onde cai |
+|---|---|
+| `#laser-facial` | **CO₂ facial + pálpebras** — acende *Rosto Todo + Papada* e *Pálpebras* |
+| `#laser-palpebras` | só Pálpebras |
+| `#laser-rosto` | só Rosto Todo + Papada |
+| `#laser-papada` · `#laser-pescoco` · `#laser-colo` · `#laser-maos` · `#laser-bracos` · `#laser-estrias` | a região do nome |
+| `#laser-co2` | abre o painel do laser sem acender nada (é o link antigo, continua valendo) |
+
+**Para criar um link novo**, acrescente uma linha em `PIO_ATALHOS_LASER`, no
+`script.js`: a chave é o que vem depois de `#laser-`, e o valor é a lista de
+regiões a acender (os mesmos nomes do `data-regiao` dos cards de preço).
+
+> **Por que o salto não é suave.** O site tem `html{scroll-behavior:smooth}`,
+> mas aqui o pulo é de milhares de pixels e acontece com a página ainda se
+> ajeitando (imagens entrando, painel abrindo). Nessa situação o navegador
+> **cancela** a rolagem suave no meio do caminho e a pessoa fica parada no
+> topo — era exatamente o que acontecia. Por isso `saltarAte()` desliga o
+> `scroll-behavior`, pula de uma vez e confere a posição mais duas vezes
+> (450 ms e 1,2 s), caso o que carregou acima tenha empurrado o alvo.
+
+### Páginas de entrada para anúncio (Google Ads)
+
+O site é de **uma página só**, então não existe "a página do laser" para apontar
+o anúncio. O que existe são **endereços de entrada**: a pessoa clica no anúncio
+no Google, cai num endereço limpo e o site abre já no ponto certo, com a aba do
+Laser CO₂ selecionada, o painel de condições aberto e o card da região aceso.
+
+Estes são os endereços para colar no campo **URL final** do Google Ads:
+
+| Endereço | Para que anúncio | Onde a pessoa cai |
+|---|---|---|
+| `https://eczp999.github.io/PIO-cl-nica/laser-co2-facial/` | Laser CO₂ facial / rosto | acende *Rosto Todo + Papada* e *Pálpebras* |
+| `https://eczp999.github.io/PIO-cl-nica/laser-co2-palpebras/` | Laser CO₂ pálpebras | acende *Pálpebras* |
+
+Cada um é uma pasta com um `index.html` que repassa a pessoa, na hora, para o
+site com o destino marcado (`../#laser-facial`). Quem clica nem vê a página de
+passagem.
+
+**O `gclid` é repassado de propósito.** Com o acompanhamento automático ligado,
+o Google Ads gruda `?gclid=…` no fim do endereço. A página de entrada copia
+esse `location.search` para o endereço de destino — sem isso a conversão não é
+atribuída ao anúncio e o relatório da campanha fica cego. O mesmo vale para
+`utm_source` e companhia.
+
+**Três camadas, para nunca falhar:** o `location.replace()` no JavaScript (o
+caminho normal), um `<meta http-equiv="refresh">` para quem está sem JavaScript
+e um botão "Ver as condições" visível na tela, caso os dois falhem.
+
+**Para criar uma página de entrada nova:** copie a pasta `laser-co2-facial/`,
+troque o `#laser-…` nos **dois** lugares (o `<script>` e o `<meta refresh>`) por
+um dos atalhos de `PIO_ATALHOS_LASER` no `script.js`, e ajuste o `<title>`, a
+`description` e o texto da tela.
+
+> Se preferir não usar pasta, o endereço com `#` funciona igual no Google Ads:
+> `https://eczp999.github.io/PIO-cl-nica/#laser-facial`. A pasta existe só
+> porque fica mais apresentável no anúncio e permite uma `description` própria
+> por campanha.
 
 ### A logo da faixa de destaque
 

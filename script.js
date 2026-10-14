@@ -765,21 +765,129 @@ function abrirAbaLaser(){
 document.querySelectorAll('[data-filtro="laser"]').forEach(function(a){
   a.addEventListener('click', abrirAbaLaser);
 });
-/* link direto (ex.: bio do Instagram) — abre a aba e rola ate a secao depois
-   que a pagina termina de montar, senao o pulo nativo do navegador se perde */
-if(location.hash === '#laser-co2'){
-  abrirAbaLaser();
-  window.addEventListener('load', function(){
+/* =========================================================================
+   LINKS DIRETOS PARA O LASER CO2
+   O site e de uma pagina so, entao "levar a pessoa direto para a parte que
+   fala de X" e um link com # no fim. Ao abrir um desses enderecos o site:
+     1. seleciona a aba Laser CO2 no filtro de tratamentos
+     2. abre o painel com as condicoes
+     3. rola ate os valores por regiao
+     4. acende o(s) card(es) da regiao pedida, para o olho achar na hora
+
+   Os enderecos (cole depois do endereco do site):
+
+     #laser-co2         abre o painel do laser, sem acender nada
+     #laser-facial      CO2 facial + palpebras  <- o link de divulgacao
+     #laser-rosto       so Rosto Todo + Papada
+     #laser-palpebras   so Palpebras
+     #laser-papada  #laser-pescoco  #laser-colo  #laser-maos
+     #laser-bracos  #laser-estrias
+
+   PARA CRIAR UM LINK NOVO: acrescente uma linha em PIO_ATALHOS_LASER. A
+   chave e o que vem depois de "#laser-"; o valor e a lista de regioes a
+   acender, usando os mesmos nomes do data-regiao dos cards de preco.
+   ========================================================================= */
+var PIO_ATALHOS_LASER = {
+  'co2':       [],
+  'facial':    ['rosto', 'palpebras'],
+  'rosto':     ['rosto'],
+  'papada':    ['papada'],
+  'palpebras': ['palpebras'],
+  'pescoco':   ['pescoco'],
+  'colo':      ['colo'],
+  'maos':      ['maos'],
+  'bracos':    ['bracos'],
+  'estrias':   ['estrias']
+};
+
+(function(){
+  var painel = document.getElementById('treatPanel');
+  if(!painel) return;
+
+  function folgaDoTopo(){
+    return parseFloat(getComputedStyle(document.documentElement).scrollPaddingTop) || 90;
+  }
+
+  /* Salto direto ate um elemento, SEM rolagem suave.
+     O site tem html{scroll-behavior:smooth}, mas aqui o salto e de milhares de
+     pixels e acontece com a pagina ainda assentando (imagens entrando, painel
+     abrindo). Uma rolagem suave nessa situacao e cancelada no meio do caminho
+     pelo navegador e a pessoa fica parada no topo — era exatamente o que
+     acontecia. Entao: desliga o suave, pula, religa. E confere de novo um
+     instante depois, porque o que carrega acima pode ter empurrado o alvo. */
+  function saltarAte(el){
+    var raiz = document.documentElement;
+    function pular(){
+      var guardado = raiz.style.scrollBehavior;
+      raiz.style.scrollBehavior = 'auto';
+      window.scrollTo(0, Math.max(0, pioTopoReal(el) - folgaDoTopo() - 16));
+      raiz.style.scrollBehavior = guardado;
+    }
+    pular();
+    setTimeout(pular, 450);
+    setTimeout(pular, 1200);
+  }
+
+  /* acende os cards pedidos e rola ate o primeiro deles */
+  function acender(regioes){
+    var alvos = [];
+    regioes.forEach(function(r){
+      var c = painel.querySelector('.laser-card[data-regiao="' + r + '"]');
+      if(c){ alvos.push(c); }
+    });
+    painel.querySelectorAll('.laser-destaque').forEach(function(c){
+      c.classList.remove('laser-destaque');
+    });
+    if(!alvos.length) return false;
+    alvos.forEach(function(c){ c.classList.add('laser-destaque'); });
+    saltarAte(alvos[0]);
+    return true;
+  }
+
+  function irPara(chave){
+    var regioes = PIO_ATALHOS_LASER[chave];
+    if(!regioes) return;
+    abrirAbaLaser();
+
+    var abrir = document.querySelector('#laser-co2 .card-more');
+    var jaAberto = abrir && abrir.getAttribute('aria-expanded') === 'true';
+    if(abrir && !jaAberto){ abrir.click(); }
+
+    /* o painel leva ~650 ms para terminar de abrir (e da um ajuste de rolagem
+       proprio no meio do caminho). So depois disso vale medir a posicao do
+       card e rolar, senao a conta sai errada e a pessoa para no lugar errado. */
+    var espera = jaAberto ? 120 : 820;
     setTimeout(function(){
-      var sec = document.getElementById('tratamentos');
-      var folga = parseFloat(getComputedStyle(document.documentElement).scrollPaddingTop) || 90;
-      window.scrollTo({top: Math.max(0, pioTopoReal(sec) - folga), behavior:'smooth'});
-      /* e ja abre o painel do laser: quem chega pelo link quer ver as condicoes */
-      var abrir = document.querySelector('#laser-co2 .card-more');
-      if(abrir && abrir.getAttribute('aria-expanded') !== 'true'){ abrir.click(); }
-    }, 600);
+      if(!regioes.length){
+        saltarAte(document.getElementById('tratamentos'));
+        return;
+      }
+      acender(regioes);
+    }, espera);
+  }
+
+  function lerHash(){
+    var h = (location.hash || '').replace('#', '');
+    if(h.indexOf('laser-') !== 0) return null;
+    return h.slice(6);
+  }
+
+  /* na chegada: espera a pagina montar (o preloader some em ~500 ms depois do
+     load), senao o pulo acontece antes de a grade existir */
+  var chave = lerHash();
+  if(chave && PIO_ATALHOS_LASER[chave]){
+    abrirAbaLaser();
+    window.addEventListener('load', function(){
+      setTimeout(function(){ irPara(chave); }, 500);
+    });
+  }
+
+  /* com o site ja aberto (alguem cola o link na barra, ou volta pelo historico) */
+  window.addEventListener('hashchange', function(){
+    var c = lerHash();
+    if(c && PIO_ATALHOS_LASER[c]){ irPara(c); }
   });
-}
+})();
 
 /* Carrossel de fotos (hero e sobre) — mesma mecanica nos dois,
    muda apenas o prefixo das classes de cada secao */

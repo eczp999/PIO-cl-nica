@@ -251,6 +251,20 @@ header#navbar{position:fixed;top:0;left:0;width:100%;z-index:1000;padding:14px 0
 .laser-card{display:flex;flex-direction:column;background:var(--white);border-radius:var(--radius-md);padding:28px 26px 26px;box-shadow:0 12px 30px rgba(90,55,102,.08);border:1px solid rgba(129,99,139,.12);position:relative;overflow:hidden;transition:.4s cubic-bezier(.4,0,.2,1);}
 .laser-card::before{content:'';position:absolute;top:0;left:0;width:100%;height:4px;background:linear-gradient(90deg,var(--purple-800),var(--pink-300));}
 .laser-card:hover{transform:translateY(-8px);box-shadow:var(--shadow-strong);}
+/* Card aceso por um link direto (#laser-facial, #laser-palpebras...).
+   O pulso roda 3 vezes so para o olho encontrar o card no meio da grade; a
+   borda roxa e o fundo rosado ficam, marcando o que a pessoa veio ver.
+   Sem "both" no fim de proposito: assim a sombra volta para a do card e o
+   :hover continua funcionando normalmente depois do pulso. */
+.laser-destaque{border-color:var(--purple-700);background:linear-gradient(180deg,var(--pink-050),var(--white));animation:laserPulso 1.6s ease-out 3;}
+@keyframes laserPulso{
+  0%  {box-shadow:0 0 0 0 rgba(119,37,126,.5), 0 12px 30px rgba(90,55,102,.08);}
+  70% {box-shadow:0 0 0 15px rgba(119,37,126,0), 0 12px 30px rgba(90,55,102,.08);}
+  100%{box-shadow:0 0 0 0 rgba(119,37,126,0), 0 12px 30px rgba(90,55,102,.08);}
+}
+@media(prefers-reduced-motion:reduce){
+  .laser-destaque{animation:none;box-shadow:0 0 0 2px var(--purple-700), var(--shadow-soft);}
+}
 .laser-card-head{display:flex;justify-content:space-between;align-items:flex-start;gap:10px;margin-bottom:18px;}
 .laser-card .ic{width:52px;height:52px;border-radius:14px;background:linear-gradient(135deg,var(--purple-800),var(--purple-900));display:flex;align-items:center;justify-content:center;color:var(--pink-200);font-size:1.45rem;flex:0 0 auto;}
 .laser-badge{font-size:.64rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:5px 10px;border-radius:100px;background:var(--lilac-100);color:var(--purple-700);white-space:nowrap;}

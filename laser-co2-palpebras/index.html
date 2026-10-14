@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Laser CO₂ Fracionado para Pálpebras | Clínica PIO Londrina</title>
+<meta name="description" content="Laser CO₂ fracionado para pálpebras na Clínica PIO, em Londrina: olhar mais aberto e descansado em poucas sessões. 3 sessões de pós-procedimento inclusas e 10x sem juros.">
+<link rel="canonical" href="https://eczp999.github.io/PIO-cl-nica/">
+<link rel="icon" href="../favicon.ico">
+
+<!-- =====================================================================
+     PÁGINA DE ENTRADA DE ANÚNCIO (Google Ads) — Laser CO2 pálpebras
+
+     PARA QUE SERVE: dar ao anúncio um endereço limpo, sem "#", que é o que
+     se cola no campo "URL final" do Google Ads:
+
+         https://eczp999.github.io/PIO-cl-nica/laser-co2-palpebras/
+
+     O QUE ELA FAZ: manda a pessoa, na hora, para o site com o destino já
+     marcado (#laser-facial). Lá o site seleciona a aba do Laser CO2, abre o
+     painel de condições e acende o card "Pálpebras". Quem chega nem vê esta
+     página — a troca é imediata.
+
+     POR QUE location.replace E NÃO location.href: replace não deixa esta
+     página no histórico. Se deixasse, o "voltar" do celular traria a pessoa
+     para cá e ela seria reenviada ao site, prendendo o botão voltar.
+
+     O location.search É REPASSADO DE PROPÓSITO: o Google Ads gruda o gclid
+     (e o wbraid/gbraid) no fim do endereço. Sem repassar, a conversão não é
+     atribuída ao anúncio e o relatório da campanha fica cego.
+
+     O <meta refresh> é a rede de segurança para quem está com JavaScript
+     desligado; o link visível abaixo é a terceira.
+
+     PARA CRIAR OUTRA PÁGINA DESTAS: copie a pasta, troque o #laser-... do
+     script e do <meta refresh> por um dos atalhos de PIO_ATALHOS_LASER (no
+     script.js) e ajuste título, descrição e o texto da tela.
+     ===================================================================== -->
+<meta http-equiv="refresh" content="0;url=../#laser-palpebras">
+<script>
+  (function(){
+    /* o que o Google Ads grudou no endereço (gclid etc.) segue junto */
+    var busca = window.location.search || '';
+    window.location.replace('../' + busca + '#laser-palpebras');
+  })();
+</script>
+
+<style>
+  :root{
+    --roxo:#3a1142; --roxo-medio:#77257e; --rosa:#fcd3e6; --rosa-claro:#fdeaf3;
+    --lilas:#eddef2; --texto:#503a58;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{
+    min-height:100vh;min-height:100dvh;display:flex;align-items:center;justify-content:center;
+    padding:24px;text-align:center;
+    font-family:'Poppins','Segoe UI',system-ui,-apple-system,sans-serif;color:var(--texto);
+    background:linear-gradient(120deg,var(--rosa-claro) 0%,var(--rosa) 45%,var(--lilas) 100%);
+  }
+  .caixa{max-width:420px;}
+  .marca{width:88px;height:88px;margin:0 auto 22px;display:block;}
+  h1{font-size:1.18rem;line-height:1.45;color:var(--roxo);font-weight:600;margin-bottom:10px;}
+  p{font-size:.95rem;line-height:1.6;margin-bottom:26px;}
+  a{
+    display:inline-flex;align-items:center;justify-content:center;
+    padding:15px 32px;border-radius:100px;text-decoration:none;font-weight:600;font-size:.95rem;
+    background:linear-gradient(120deg,var(--roxo-medio),var(--roxo));color:#fff;
+    box-shadow:0 14px 32px rgba(51,16,58,.3);
+  }
+  .pontos{display:flex;gap:7px;justify-content:center;margin-bottom:26px;}
+  .pontos i{width:9px;height:9px;border-radius:50%;background:var(--roxo-medio);opacity:.3;animation:pisca 1.3s infinite;}
+  .pontos i:nth-child(2){animation-delay:.18s;}
+  .pontos i:nth-child(3){animation-delay:.36s;}
+  @keyframes pisca{0%,100%{opacity:.25;transform:scale(1);}50%{opacity:1;transform:scale(1.25);}}
+  @media(prefers-reduced-motion:reduce){.pontos i{animation:none;opacity:.5;}}
+</style>
+</head>
+<body>
+  <div class="caixa">
+    <img class="marca" src="../images/logo-pio-anel.png" width="441" height="442" alt="Clínica PIO">
+    <h1>Laser CO₂ Fracionado para pálpebras</h1>
+    <p>Abrindo as condições na Clínica PIO…</p>
+    <div class="pontos" aria-hidden="true"><i></i><i></i><i></i></div>
+    <a href="../#laser-palpebras">Ver as condições</a>
+  </div>
+</body>
+</html>
