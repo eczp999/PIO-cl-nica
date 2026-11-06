@@ -89,7 +89,7 @@ var PIO_CAMPANHAS = {
     pecas: [
       {nome:'Corpo Leve e Definido', img:'protocolo-corporal-tecnologias', w:1092, h:1456,
        alt:'Campanha do tratamento corporal completo da Clínica PIO, com drenagem, hidrolipoclasia, Heccus, modelagem e maleta quântica',
-       inclui:'Drenagem, hidrolipoclasia com Heccus, modelagem corporal e maleta quântica em sessões estruturadas', condicao:'9 sessões no total', preco:'690', centavos:'00',
+       inclui:'Drenagem, hidrolipoclasia com Heccus, modelagem corporal e maleta quântica em sessões estruturadas', condicao:'9 sessões no total', preco:'790', centavos:'00',
        wa:'Olá! Vim pelo site e tenho interesse no Tratamento Completo Corpo Leve e Definido (9 sessões: drenagem, hidrolipoclasia com Heccus, modelagem corporal e maleta quântica, R$ 690,00). Quero agendar minha avaliação.'}
     ]
   }
